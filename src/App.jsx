@@ -8,6 +8,7 @@ import Login from './Components/Login'
 import SignUp from './Components/Register'
 import Profile from './Components/Profile'
 import Test from './Components/Test'
+import HomePage from './Pages/HomePage'
 
 import 'react-toastify/dist/ReactToastify.css'
 import './App.css'
@@ -34,6 +35,8 @@ function App() {
           path="/"
           element={user ? <Navigate to="/profile" /> : <Login />}
         />
+        
+        <Route path="/home" element={<HomePage />} /> 
         <Route path="/test" element={user ? <Test /> : <Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<SignUp />} />
