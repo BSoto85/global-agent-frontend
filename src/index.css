@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800");
 
 * {
   margin: 0;
@@ -17,8 +17,8 @@
 button {
   width: 85px;
   height: 45px;
-  color: white;
-  background: green;
+  color: #253759;
+  /* background: green; */
   border-radius: 5px;
   font-size: 1.1rem;
   cursor: pointer;
