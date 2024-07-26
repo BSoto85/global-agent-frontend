@@ -1,6 +1,6 @@
 @import url("https://fonts.cdnfonts.com/css/film-noir-adventure");
 @import url("https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Berkshire+Swash&family=Marcellus&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Yeseva+One&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 body,
 html {
@@ -42,10 +42,6 @@ h2 {
   color: white;
 }
 .border-container {
-  /* border: 2px solid #ffc107; */
-  /* border-color: #253759; */
-  /* border-style: solid;  */
-  /* border-width: 2px; */
   background-color: #253759;
   height: 150px;
   margin-top: 12px;

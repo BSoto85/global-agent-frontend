@@ -28,12 +28,13 @@ const About = () => {
           </p>
           <img
             className="dev-photo"
-            src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1720015246/AnitaMagentaphoto1_dt1uea.jpg"
+            src="https://res.cloudinary.com/dnqfg86zq/image/upload/t_Fill300x300/v1717880476/j14p9hrk2w3gn3naiwlr.jpg"
             alt="Anita!"
             width="300"
             height="300"
           />
-          <hr />
+        </li>
+        <li className="developer">
           <h2>Armando</h2>
           <p className="linkedin-link">
             <a
@@ -58,7 +59,8 @@ const About = () => {
             width="300"
             height="300"
           />
-          <hr />
+        </li>
+        <li className="developer">
           <h2>Brenda</h2>
           <p className="linkedin-link">
             <a
@@ -83,7 +85,8 @@ const About = () => {
             width="300"
             height="300"
           />
-          <hr />
+        </li>
+        <li className="developer">
           <h2>Luis</h2>
           <p className="linkedin-link">
             <a
@@ -103,12 +106,13 @@ const About = () => {
           </p>
           <img
             className="dev-photo"
-            src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1720021062/Luis_Tejada_2_xyauz4.jpg"
+            src="https://res.cloudinary.com/dnqfg86zq/image/upload/t_Fill300x300/v1722020041/t1ridxaboszvx3g42bwx.jpg"
             alt="Luis!"
             width="300"
             height="300"
           />
-          <hr />
+        </li>
+        <li className="developer">
           <h2>Marlon</h2>
           <p className="linkedin-link">
             <a
@@ -128,7 +132,7 @@ const About = () => {
           </p>
           <img
             className="dev-photo"
-            src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1720539158/GlobalAgent-MR_ljphpa.jpg"
+            src="https://res.cloudinary.com/dnqfg86zq/image/upload/t_Fill300x300/v1722018837/iongntujjouzgendz1s2.jpg"
             alt="Marlon!"
             width="300"
             height="300"
