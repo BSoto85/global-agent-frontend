@@ -1,36 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useLocation } from "react-router-dom";
-// import Navbar from "../Components/NavBar";
+import ProgressReport from "../Components/ProgessReport";
 import "../CSS/ResultPage.css";
 const URL = import.meta.env.VITE_BASE_URL;
 
-const ResultsPage = ({ userStats, user }) => {
+const ResultsPage = ({ userStats, user, userProfile }) => {
   const { countryId, caseFileId } = useParams();
-  const location = useLocation(); // Access the current location object
-  const [currentStats, setCurrentStats] = useState(userStats); 
-  const [hasUpdated, setHasUpdated] = useState(false); 
+  const location = useLocation();
+  const [currentStats, setCurrentStats] = useState(userStats);
+  const [hasUpdated, setHasUpdated] = useState(false);
 
-  // EXTRACT SCORE AND TOTALQUESTIONS
-  const score = location.state?.score || 0; // Get score from the location state, default to 0
-  const totalQuestions = location.state?.totalQuestions || 0; // Get totalQuestions from the location state, default to 0
+  const score = location.state?.score || 0;
+  const totalQuestions = location.state?.totalQuestions || 0;
 
   useEffect(() => {
     if (userStats) {
-      setCurrentStats(userStats); 
+      setCurrentStats(userStats);
     }
   }, [userStats]);
 
   const calculateXPEarned = () => {
-    return score * 25; 
+    return score * 25;
   };
 
   const updatePlayerStats = async (updatedStats) => {
+    if (!userProfile || !userProfile.uid) {
+      console.error("User profile UID is missing.");
+      return;
+    }
+
     try {
-      const response = await fetch(`${URL}/api/stats/${user.id}`, {
+      const response = await fetch(`${URL}/api/stats/${userProfile.uid}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${user.accessToken}`, 
+          Authorization: `Bearer ${await user?.getIdToken()}`,
         },
         body: JSON.stringify(updatedStats),
       });
@@ -69,7 +73,7 @@ const ResultsPage = ({ userStats, user }) => {
       updatePlayerStats(smallIncrement);
       setHasUpdated(true);
     }
-  }, [currentStats, score, totalQuestions, hasUpdated]);
+  }, [currentStats, score, totalQuestions, hasUpdated, userProfile]);
 
   if (!currentStats) {
     return <p>Loading player stats...</p>;
@@ -88,7 +92,7 @@ const ResultsPage = ({ userStats, user }) => {
           <Link
             to={`/countries/${countryId}/case_files/${caseFileId}/questions`}
             className="retry-link"
-            state={{ refresh: true }} // Pass refresh state to retry link
+            state={{ refresh: true }}
           >
             <button className="retry-button">Retry Quiz</button>
           </Link>
@@ -97,18 +101,28 @@ const ResultsPage = ({ userStats, user }) => {
           </Link>
         </div>
       </div>
-      <div className="player-stats">
-        <h2>Progress Report</h2>
-        <h3>Rank: Junior Detective</h3>
-        <p>XP: {currentStats.xp}</p>
-        <p>Games Played: {currentStats.games_played}</p>
-        <p>Questions Correct: {currentStats.questions_correct}</p>
-        <p>Questions Wrong: {currentStats.questions_wrong}</p>
-      </div>
-      {/* <Navbar /> */}
+      {userProfile !== null ? (
+        <ProgressReport currentStats={currentStats} />
+      ) : (
+        <div className="register-save">
+          <p>Want to save your progress?</p>
+          <Link to="/login">
+            <button>Login to Save Progress</button>
+          </Link>
+          <Link to="/register">
+            <button>Register and Save</button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
 
 export default ResultsPage;
+
+
+
+
+
+
 

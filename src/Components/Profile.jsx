@@ -7,7 +7,7 @@ import { logout } from '../helpers/logout'
 
 import placeholderImage from '../assets/placeholder.png'
 
-function Profile() {
+function Profile({ userProfile }) {
   const navigate = useNavigate()
 
   const [userDetails, setUserDetails] = useState(null)
@@ -29,7 +29,6 @@ function Profile() {
       console.error('Error logging out:', error.message)
     }
   }
-
   useEffect(() => {
     async function getUser() {
       // this is a helper function that will check the state of the current user in firebase and fetch the user using the JWT token from localstorage and the uid
@@ -40,6 +39,31 @@ function Profile() {
 
     getUser()
   }, [])
+
+  // async function handleLogout() {
+  //   try {
+  //     await logout(userProfile);
+  //     toast.success('User logged out successfully!', {
+  //       position: 'top-center',
+  //     });
+  //     // Clear user details state
+  //     setUserDetails(null);
+  //     navigate('/login');
+  //     console.log('User logged out successfully!');
+  //   } catch (error) {
+  //     toast.error(error.message, {
+  //       position: 'bottom-center',
+  //     });
+  //     console.error('Error logging out:', error.message);
+  //   }
+  // }
+  // useEffect(() => {
+  //   if (userProfile) {
+  //     setUserDetails(userProfile);
+  //   }
+  // }, [userProfile]);
+
+ 
 
   return (
     <div style={{ textAlign: 'center' }}>
