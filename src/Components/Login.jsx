@@ -1,55 +1,60 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { getUserData} from "../helpers/getUserData"
 
 import SignInWithGoogle from "./SignInWithGoogle";
 import { auth } from "../helpers/firebase";
 
-function Login() {
-	const navigate = useNavigate();
+function Login({setUser, user }) {
+  const navigate = useNavigate();
 
-	const [loginUser, setLoginNewUser] = useState({ password: "", email: "" });
+  const [loginUser, setLoginNewUser] = useState({ password: "", email: "" });
 
-	const handleChange = (e) => {
-		setLoginNewUser({ ...loginUser, [e.target.id]: e.target.value });
-	};
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
+  const handleChange = (e) => {
+    setLoginNewUser({ ...loginUser, [e.target.id]: e.target.value });
+  };
 
-		const { email, password } = loginUser;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-		try {
-			const loggedUser = await signInWithEmailAndPassword(
-				auth,
-				email,
-				password
-			);
-			console.log("User logged in to Firebase Successfully");
+    const { email, password } = loginUser;
 
-			// store the JWT token so that you know the user is logged in.
-			const token = await loggedUser.user.getIdToken();
-			localStorage.setItem("token", token);
+    try {
+      const loggedUser = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("User logged in to Firebase Successfully");
 
-			setLoginNewUser({ password: "", email: "" });
-			toast.success("User logged in Successfully", {
-				position: "top-center",
-			});
+      // store the JWT token so that you know the user is logged in.
+      const token = await loggedUser.user.getIdToken();
+      localStorage.setItem("token", token);
 
-			// you do not have to create a login in the backend because firebase is handling it.
-			// when you navigate to profile, you will see a fetch for the user.
-			navigate(`/profile/${loggedUser.user.uid}`);
-		} catch (error) {
-			console.log(error.message);
+      setLoginNewUser({ password: "", email: "" });
+      toast.success("User logged in Successfully", {
+        position: "top-center",
+      });
 
-			toast.error(error.message, {
-				position: "bottom-center",
-			});
-		}
-	};
+      // you do not have to create a login in the backend because firebase is handling it.
+      // when you navigate to profile, you will see a fetch for the user.
+      const userData = await getUserData()
+      setUser(userData)
+      navigate(`/profile/${userData.uid}`);
+      
+    } catch (error) {
+      console.log(error.message);
 
-	return (
+      toast.error(error.message, {
+        position: "bottom-center",
+      });
+    }
+  };
+
+ 	return (
 		<div className="form-container">
 			<h3 className="form-title">Login</h3>
 			<div>

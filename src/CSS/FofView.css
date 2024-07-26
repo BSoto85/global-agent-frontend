@@ -1,0 +1,16 @@
+.fof-view h1 {
+    color: #253759;
+  }
+  
+  .fof-view {
+    margin: 0 auto;
+    text-align: center;
+    place-items: center;
+    margin-top: 10%;
+  }
+  
+  .fof-view img {
+    margin: 0 auto;
+    width: 400px;
+    display: block;
+  }

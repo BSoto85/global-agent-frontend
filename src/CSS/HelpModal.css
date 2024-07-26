@@ -1,45 +1,70 @@
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #c0d9d9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal-content {
-    background: #253759;
-    padding: 20px 30px;
-    border-radius: 5px;
-    max-width: 600px;
-    width: 100%;
-    text-align: left;
-    position: relative;
-    margin: 20px;
-    color: #fff;
-    font-size: 0.9rem;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #c0d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
-  .modal-content h2{
-    color: #ffc121;
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: -15px;
-    background: none;
-    border: none;
-    font-size: 1.0rem;
-    cursor: pointer;
-    color: #ffc121;
-  }
+.modal-content {
+  background: #253759;
+  padding: 20px 30px;
+  border-radius: 5px;
+  max-width: 600px;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  margin: 20px;
+  color: #fff;
+  font-size: 0.9rem;
+}
 
-  .modal-content h1 {
-    color: aqua
-  }
-  
+.modal-content h2 {
+  color: #ffc121;
+  text-align: center;
+  margin-bottom: 0px;
+  background-color: #253759;
+  padding: 10px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+.modal-content ul {
+  background-color: #253759;
+  /* margin: 5px; */
+  padding: 10px 10px 10px 30px;
+  color: white;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #ffc121;
+  background-color: #253759;
+  width: fit-content;
+}
+
+.close-button-aleart {
+  background-color: #253759;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: #ffc121;
+}
+
+.alert-close-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,68 +1,97 @@
 .about-container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
-  }
-  
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.developer-pro {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.developer {
+  width: 80%;
+  margin: 15px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  background-color: #253759;
+}
+.developer p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.developer h2 {
+  color: white;
+}
+
+.dev-photo {
+  border-radius: 10px;
+  width: 125px;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.developer:hover {
+  transform: scale(1.05);
+}
+
+.about-us {
+  font-size: 2.5em;
+  color: #253759;
+  text-align: center;
+  margin-top: -30px;
+}
+
+.developer hr {
+  color: white;
+}
+
+/* h2 {
+  font-size: 1.5em;
+  color: #ffc121;
+} */
+
+.github-link {
+  display: block;
+  /* margin: 15px 0; */
+  text-decoration: none;
+  color: white;
+}
+
+.github-link:hover {
+  text-decoration: underline;
+}
+
+.linkedin-link a {
+  font-size: 1em;
+  color: white;
+  padding: 0 5px;
+}
+
+.linkedin-link a:hover {
+  color: #ffc121;
+}
+
+.developer h2 {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+@media (min-width: 917px) {
   .developer-pro {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    grid-template-columns: 1fr 1fr;
   }
-  
-  .developer {
-    width: 80%;
-    margin: 15px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-    background-color: white;
-  }
-
-  .dev-photo {
-    border-radius: 10px;
-    width: 125px;
-    height: auto;
-
-  }
-  
-  .developer:hover {
-    transform: scale(1.05);
-  }
-  
-  .about-us {
-    font-size: 2.5em;
-    color: #253759;
-    text-align: center;
-  }
-  
-  h2 {
-    font-size: 1.5em;
-    color: #ffc121;
-  }
-  
-  .github-link {
-    display: block;
-    margin: 15px 0;
-    text-decoration: none;
-    color: #466273;
-  }
-  
-  .github-link:hover {
-    text-decoration: underline;
-  }
-  
-  .linkedin-link {
-    font-size: 1em;
-    color: #253759;
-  }
-  
-  .developer h2 {
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  }
-  
+}

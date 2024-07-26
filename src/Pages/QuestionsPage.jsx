@@ -1,55 +1,77 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import Navbar from '../Components/NavBar';
-import '../CSS/QuestionsPage.css';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import shuffleAnswers from "../helpers/shuffleAnswers";
+import calculateAge from "../helpers/calculateAge";
+import "../CSS/QuestionsPage.css";
+const URL = import.meta.env.VITE_BASE_URL;
 
-const QuestionsPage = () => {
-  const { countryId, caseFileId } = useParams(); // Get URL parameters
-  const navigate = useNavigate(); // Navigation hook
-  const [questions, setQuestions] = useState([]); // State to hold questions
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // State to track current question index
-  const [score, setScore] = useState(0); // State to track score
-  const [selectedAnswer, setSelectedAnswer] = useState(''); // State to hold selected answer
+const QuestionsPage = ({ user }) => {
+  const { countryId, caseFileId } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  // Fetch questions from the API when the component mounts
+  const [questions, setQuestions] = useState([]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [score, setScore] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState("");
+
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch(`http://localhost:3003/api/younger_questions/${caseFileId}`);
+        console.log("Fetching questions for caseFileId:", caseFileId);
+        const age = user ? calculateAge(user.dob) : null;
+        const personAge = age >= 18 ? `older_questions` : `younger_questions`;
+        console.log("User age:", age);
+        const response = await fetch(`${URL}/api/${personAge}/${caseFileId}`);
         if (!response.ok) {
-          throw new Error('Failed to fetch questions');
+          throw new Error("Failed to fetch questions");
         }
         const data = await response.json();
-        setQuestions(data);
+        const shuffledQuestions = data.map((question) => ({
+          ...question,
+          answers: shuffleAnswers([
+            question.y_correct_answer || question.o_correct_answer,
+            question.y_incorrect_answer1 || question.o_incorrect_answer1,
+            question.y_incorrect_answer2 || question.o_incorrect_answer2,
+            question.y_incorrect_answer3 || question.o_incorrect_answer3,
+          ]),
+        }));
+        setQuestions(shuffledQuestions);
+        setCurrentQuestionIndex(0);
+        setScore(0);
       } catch (error) {
-        console.error('Error fetching questions:', error);
+        console.error("Error fetching questions:", error);
       }
     };
 
     fetchQuestions();
-  }, [caseFileId]);
+  }, [caseFileId, user, location.state?.refresh]);
 
-  // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
     const currentQuestion = questions[currentQuestionIndex];
-    // Check if the selected answer is correct and update score
-    if (selectedAnswer === currentQuestion.y_correct_answer) {
-      setScore(score + 1);
+    const isCorrect =
+      selectedAnswer ===
+      (currentQuestion.y_correct_answer || currentQuestion.o_correct_answer);
+
+    if (isCorrect) {
+      setScore((prevScore) => prevScore + 1);
     }
 
-    // Check if it is the last question
     if (currentQuestionIndex === questions.length - 1) {
-      // Navigate to the results page
-      navigate(`/countries/${countryId}/case_files/${caseFileId}/questions/results/${score + 1}/${questions.length}`);
+      const finalScore = isCorrect ? score + 1 : score;
+      navigate(
+        `/countries/${countryId}/case_files/${caseFileId}/results`,
+        {
+          state: { score: finalScore, totalQuestions: questions.length },
+        }
+      );
     } else {
-      // Move to the next question
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setSelectedAnswer(''); // Clear selected answer for the next question
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+      setSelectedAnswer("");
     }
   };
 
-  // Calculate the progress of the quiz
   const calculateProgress = () => {
     return ((currentQuestionIndex + 1) / questions.length) * 100;
   };
@@ -61,35 +83,42 @@ const QuestionsPage = () => {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div>
+    <div> 
       <div className="QuestionsPage">
         <div className="progress-bar">
-          <div className="progress" style={{ width: `${calculateProgress()}%` }}></div>
+          <div
+            className="progress"
+            style={{ width: `${calculateProgress()}%` }}
+          ></div>
         </div>
-        <h2>Question {currentQuestionIndex + 1}</h2>
-        <p>{currentQuestion.y_question}</p>
+        <h2>{currentQuestion.y_question || currentQuestion.o_question}</h2>
         <form onSubmit={handleSubmit}>
-          <div className="answers">
-            {/* Render answer options */}
-            {[currentQuestion.y_correct_answer, currentQuestion.y_incorrect_answer1, currentQuestion.y_incorrect_answer2, currentQuestion.y_incorrect_answer3].map((answer, index) => (
-              <label key={index}>
-                <input
-                  type="radio"
-                  value={answer}
-                  checked={selectedAnswer === answer}
-                  onChange={(e) => setSelectedAnswer(e.target.value)}
-                />
-                {answer}
-              </label>
-            ))}
-          </div>
-          <button type="submit" className='submit' disabled={!selectedAnswer}>Submit</button>
+          {currentQuestion.answers.map((answer, index) => (
+            <label
+              key={index}
+              className={`answer-label ${
+                selectedAnswer === answer ? "selected" : ""
+              }`}
+            >
+              <input
+                type="radio"
+                name="answer"
+                value={answer}
+                checked={selectedAnswer === answer}
+                onChange={(e) => setSelectedAnswer(e.target.value)}
+              />
+              {answer}
+            </label>
+          ))}
+          <button type="submit" disabled={!selectedAnswer}>
+            Submit
+          </button>
         </form>
       </div>
-      <Navbar />
     </div>
   );
 };
 
 export default QuestionsPage;
+
 
