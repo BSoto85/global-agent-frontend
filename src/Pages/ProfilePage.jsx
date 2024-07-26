@@ -69,9 +69,6 @@ const ProfilePage = ({ user, isLoading, stats }) => {
   return (
     <div className="profile-page">
       <div className="header-actions">
-        <Link to="/about" className="header-button">
-          <button className="header-button">About Us</button>
-        </Link>
         <button
           className="edit-profile-icon"
           onClick={() => setIsModalOpen(true)}

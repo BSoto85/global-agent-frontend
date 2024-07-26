@@ -14,10 +14,6 @@ const Help = ({ isOpen, onClose }) => {
             Read the Case Brief: Get the scoop on the news story, check out the
             full article if you want.
           </li>
-          <li>
-            Look at the Photos: Check out pics related to the case, when you're
-            set, hit "Collect Evidence"
-          </li>
           <li>Answer Questions</li>
           <li>See How You Did</li>
           <li>What's Next? Try again, pick a new case, or change countries</li>

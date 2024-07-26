@@ -22,9 +22,11 @@ const AleartModal = ({ isOpen, onClose, countryId, caseFile }) => {
         >
           <button className="questions-button">Collect Evidence</button>
         </Link>
-        <button onClick={onClose} className="close-button-aleart">
-          Close
-        </button>
+        <div className="alert-close-container">
+          <button onClick={onClose} className="close-button-aleart">
+            Close
+          </button>
+        </div>
       </div>
     </div>
   );

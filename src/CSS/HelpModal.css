@@ -55,18 +55,16 @@
   width: fit-content;
 }
 
-/* .modal-content h1 {
-  color: aqua;
-} */
 .close-button-aleart {
   background-color: #253759;
   border: none;
   font-size: 14px;
   cursor: pointer;
   color: #ffc121;
+}
+
+.alert-close-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 100px;
-  /* padding-left: 120px; */
 }
