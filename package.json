@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "build": "rm -r _static 2>/dev/null; vite build",
+    "start": "serve -s _static -l tcp://0.0.0.0:$PORT -n",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "dev": "vite",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -24,6 +25,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.24.1",
     "react-toastify": "^10.0.5",
+    "serve": "^14.2.3",
     "toastify": "^2.0.1"
   },
   "devDependencies": {

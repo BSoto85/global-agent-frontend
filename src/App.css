@@ -22,7 +22,6 @@ p,
 * {
   /* font-family: "Film Noir Adventure", Arial, sans-serif; */
   font-family: Marcellus;
-  font-weight: 500;
 }
 
 main {
@@ -57,7 +56,7 @@ h2 {
 .border-container p {
   color: white;
   text-align: center;
-  font-size: 13.9px;
+  font-size: 18px;
   margin-top: 15px;
   box-shadow: 18px 18px 18px 18px rgba(1, 1, 22, 0.1);
   padding: 5px;
@@ -127,6 +126,9 @@ h2 {
   .detective-image {
     max-width: 100%;
     height: auto;
+  }
+  .border-container p {
+    font-size: 13px;
   }
 }
 

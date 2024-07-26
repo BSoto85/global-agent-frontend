@@ -7,7 +7,7 @@ import { getRank, ranks } from "../helpers/Ranks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserPen,
-  faCog,
+  faCircleQuestion,
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import "../CSS/Profile.css";
@@ -80,7 +80,7 @@ const ProfilePage = ({ user, isLoading, stats }) => {
             marginTop: "-30px",
           }}
         >
-          <FontAwesomeIcon icon={faCog} />
+          <FontAwesomeIcon icon={faCircleQuestion} size="xl" />
         </button>
         <button
           className="edit-profile-icon"
@@ -93,7 +93,7 @@ const ProfilePage = ({ user, isLoading, stats }) => {
             marginTop: "-30px",
           }}
         >
-          <FontAwesomeIcon icon={faSignOutAlt} />
+          <FontAwesomeIcon icon={faSignOutAlt} size="xl" />
         </button>
       </div>
       <div className="profile-header">
