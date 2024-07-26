@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { logout } from "../helpers/logout";
 import { useNavigate, Link } from "react-router-dom";
-// import Navbar from "../Components/NavBar";
 import EditProfileModal from "../Components/EditProfileModal";
 import { getRank, ranks } from "../helpers/Ranks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {auth} from "../helpers/firebase"
+import { toast } from "react-toastify";
 import {
   faUserPen,
   faCircleQuestion,
@@ -13,10 +13,43 @@ import {
 import "../CSS/Profile.css";
 const URL = import.meta.env.VITE_BASE_URL;
 
-const ProfilePage = ({ user, isLoading, stats }) => {
+const ProfilePage = ({ stats, userProfile, setUserProfile, setUserStats, setUser }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [updatedUser, setUpdatedUser] = useState(user);
   const navigate = useNavigate();
+
+  async function handleLogout() {
+    try {
+      const logout = async () => {
+        try {
+          //firebase logout
+          localStorage.removeItem('token')
+          await auth.signOut()
+          return true
+        } catch (error) {
+          console.log(error)
+          
+          return false
+        }
+      }  
+      const loggedOut = await logout()
+      if (loggedOut === true) {
+      setUserProfile(null)
+      setUserStats(null)
+      navigate('/');
+      toast.success('User logged out successfully!', {
+        position: 'top-center',
+      });
+    }
+      
+      // setUser(null)
+      console.log('User logged out successfully!');
+    } catch (error) {
+      toast.error(error.message, {
+        position: 'bottom-center',
+      });
+      console.error('Error logging out:', error.message);
+    }
+  }
 
   const handleEditProfile = async (updatedUser) => {
     try {
@@ -34,38 +67,37 @@ const ProfilePage = ({ user, isLoading, stats }) => {
       }
 
       const updatedProfile = await response.json();
-      setUpdatedUser(updatedProfile);
+      setUserProfile(updatedProfile);
       setIsModalOpen(false);
     } catch (error) {
       console.error("Failed to update profile:", error);
     }
   };
 
-  const handleLogout = async () => {
-    const result = await logout();
-    if (result) {
-      navigate("/");
-    } else {
-      console.error("Failed to log out");
-    }
-  };
-
   // Get the current rank and next rank
+  
+  let userRank, nextRank, nextBadgeXP, previousRankXP, xpNeededForNextBadge;
+
+  if (stats) {
   const userRank = getRank(stats.xp);
+
   const currentRankIndex = ranks.findIndex((rank) => rank.name === userRank);
-  const nextRank =
+    nextRank =
     currentRankIndex + 1 < ranks.length
       ? ranks[currentRankIndex + 1]
       : ranks[currentRankIndex];
-  const nextBadgeXP = nextRank.minXP;
-  const previousRankXP = ranks[currentRankIndex]?.minXP || 0;
+      nextBadgeXP = nextRank.minXP;
+      previousRankXP = ranks[currentRankIndex]?.minXP || 0;
+      xpNeededForNextBadge = nextBadgeXP - stats.xp;
+  }
 
   const calculateXPProgress = () => {
     return ((stats.xp - previousRankXP) / (nextBadgeXP - previousRankXP)) * 100;
   };
 
-  const xpNeededForNextBadge = nextBadgeXP - stats.xp;
 
+  // const xpNeededForNextBadge = nextBadgeXP - stats.xp;
+  console.log(userProfile)
   return (
     <div className="profile-page">
       <div className="header-actions">
@@ -98,11 +130,11 @@ const ProfilePage = ({ user, isLoading, stats }) => {
       </div>
       <div className="profile-header">
         <div className="profile-picture">
-          <img src={user.photo} alt="Profile" />
+          <img src={userProfile.photo} alt="Profile" />
         </div>
         <div className="profile-details">
           <h2>
-            {user.first_name} {user.last_name}
+            {userProfile.first_name} {userProfile.last_name}Profile
             <button
               className="edit-profile-icon-2"
               onClick={() => setIsModalOpen(true)}
@@ -116,8 +148,8 @@ const ProfilePage = ({ user, isLoading, stats }) => {
               <FontAwesomeIcon icon={faUserPen} />
             </button>
           </h2>
-          <p>{user.email}</p>
-          <p>DOB: {new Date(user.dob).toLocaleDateString()}</p>
+          <p>{userProfile.email}</p>
+          <p>DOB: {new Date(userProfile.dob).toLocaleDateString()}</p>
         </div>
       </div>
       <div className="profile-badges">
@@ -160,7 +192,7 @@ const ProfilePage = ({ user, isLoading, stats }) => {
       <EditProfileModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        user={user}
+        user={userProfile}
         updateUser={handleEditProfile}
       />
     </div>

@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { getUserData} from "../helpers/getUserData"
 
 import SignInWithGoogle from "./SignInWithGoogle";
 import { auth } from "../helpers/firebase";
 
-function Login() {
+function Login({setUser, user }) {
   const navigate = useNavigate();
 
   const [loginUser, setLoginNewUser] = useState({ password: "", email: "" });
+
 
   const handleChange = (e) => {
     setLoginNewUser({ ...loginUser, [e.target.id]: e.target.value });
@@ -39,7 +41,10 @@ function Login() {
 
       // you do not have to create a login in the backend because firebase is handling it.
       // when you navigate to profile, you will see a fetch for the user.
-      navigate(`/profile/${loggedUser.user.uid}`);
+      const userData = await getUserData()
+      setUser(userData)
+      navigate(`/profile/${userData.uid}`);
+      
     } catch (error) {
       console.log(error.message);
 

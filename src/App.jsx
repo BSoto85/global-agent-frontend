@@ -7,6 +7,7 @@ import { auth } from "./helpers/firebase";
 import Login from "./Components/Login";
 import SignUpView from "./Pages/SignUpView.jsx";
 
+
 import FofPage from "./Pages/FofPage.jsx";
 
 import Test from "./Components/Test";
@@ -32,15 +33,8 @@ function App() {
   const [userStats, setUserStats] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [countries, setCountries] = useState([]);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const handleHowToPlayClick = () => {
-  //   setIsModalOpen(true);
-  // };
 
-  // const handleCloseModal = () => {
-  //   setIsModalOpen(false);
-  // };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -62,7 +56,7 @@ function App() {
             }
           );
           const profileData = await profileResponse.json();
-          // console.log(profileData);
+          console.log(profileData);
           setUserProfile(profileData);
 
           const statsResponse = await fetch(
@@ -118,16 +112,18 @@ function App() {
         /> */}
         <Route path="/" element={<HomePage />} />
         <Route path="/test" element={user ? <Test /> : <Login />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setUser={setUser} user={user}/> } />
         <Route path="/register" element={<SignUpView />} />
         <Route path="/leaderboard" element={<LeaderboardPage />} />
         <Route
           path="/profile/:userUid"
           element={
             <ProfilePage
-              user={userProfile}
+              userProfile={userProfile}
               isLoading={isLoading}
               stats={userStats}
+              setUserProfile={setUserProfile}
+              setUserStats={setUserStats}
             />
           }
         />
