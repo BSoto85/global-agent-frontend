@@ -12,3 +12,18 @@ export const logout = async () => {
     return false
   }
 }
+
+// import { auth } from './firebase';
+
+// export const logout = async (userProfile) => {
+//   try {
+//     // Perform any user-specific cleanup if necessary
+//     console.log(`Logging out user: ${userProfile.email}`);
+
+//     localStorage.removeItem('token');
+//     await auth.signOut();
+//     return true;
+//   } catch (error) {
+//     console.log(error);
+//     return false;
+//   }

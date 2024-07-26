@@ -31,7 +31,7 @@ const CountriesPage = ({ countries }) => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-
+  console.log(countries)
   return (
     <div className="CountriesPage">
       <main className="main-content">

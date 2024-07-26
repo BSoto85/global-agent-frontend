@@ -48,7 +48,6 @@ function App() {
     });
     return () => unsubscribe();
   }, []);
-  console.log(userProfile);
 
   useEffect(() => {
     const fetchUserProfileAndStats = async () => {
@@ -63,6 +62,7 @@ function App() {
             }
           );
           const profileData = await profileResponse.json();
+          // console.log(profileData);
           setUserProfile(profileData);
 
           const statsResponse = await fetch(

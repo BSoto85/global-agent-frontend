@@ -2,7 +2,7 @@ const ranks = [
     { name: "Rookie Detective", minXP: 0 },
     { name: "Junior Investigator", minXP: 1000 },
     { name: "Gumshoe", minXP: 2000 },
-    { name: "Cheif Detective", minXP: 3000 },
+    { name: "Chief Detective", minXP: 3000 },
     { name: "Master Sleuth", minXP: 4000 },
   ];
   
