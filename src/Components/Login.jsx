@@ -54,43 +54,51 @@ function Login({setUser, user }) {
     }
   };
 
-  return (
-    <div style={{ textAlign: "center" }}>
-      <h3>LOGIN</h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">
-          Email Address:{" "}
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter email"
-            value={loginUser.email}
-            onChange={handleChange}
-          />
-        </label>
+ 	return (
+		<div className="form-container">
+			<h3 className="form-title">Login</h3>
+			<div>
+				New user{" "}
+				<Link to="/register" className="register-link">
+					Register Here
+				</Link>
+				{/* <p>--Or continue with--</p> */}
+			</div>
+			<form onSubmit={handleSubmit}>
+				<div className="input-container">
+					<label htmlFor="email" className="label-header">
+						Email Address:{" "}
+						<input
+							type="email"
+							id="email"
+							name="email"
+							placeholder="Enter email"
+							value={loginUser.email}
+							onChange={handleChange}
+						/>
+					</label>
 
-        <label htmlFor="password">
-          Password:{" "}
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Enter password"
-            value={loginUser.password}
-            onChange={handleChange}
-          />
-        </label>
+					<label htmlFor="password" className="label-header">
+						Password:{" "}
+						<input
+							type="password"
+							id="password"
+							name="password"
+							placeholder="Enter password"
+							value={loginUser.password}
+							onChange={handleChange}
+						/>
+					</label>
 
-        <button type="submit">Submit</button>
-      </form>
-      <div>
-        New user <Link to="/register">Register Here</Link>
-        <p>--Or continue with--</p>
-      </div>
-      <SignInWithGoogle />
-    </div>
-  );
+					<button type="submit" className="submit-play">
+						Submit{" "}
+					</button>
+				</div>
+			</form>
+
+			<SignInWithGoogle />
+		</div>
+	);
 }
 
 export default Login;

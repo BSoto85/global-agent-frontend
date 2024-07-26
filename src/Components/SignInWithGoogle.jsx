@@ -1,12 +1,12 @@
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
-import { auth } from '../helpers/firebase'
-import { register } from '../helpers/register'
-import { fetchUser } from '../helpers/fetchUser'
+import { auth } from "../helpers/firebase";
+import { register } from "../helpers/register";
+import { fetchUser } from "../helpers/fetchUser";
 
-import googleBadge from '../assets/google.png'
+import googleBadge from "../assets/google.png";
 
 async function handleGoogleSignIn() {
   const provider = new GoogleAuthProvider()
@@ -34,24 +34,27 @@ async function handleGoogleSignIn() {
 }
 
 function SignInWithGoogle() {
-  const navigate = useNavigate()
+	const navigate = useNavigate();
 
-  const googleLogin = async () => {
-    try {
-      const result = await handleGoogleSignIn()
-      navigate(result.navigateTo)
-    } catch (error) {
-      toast.error(error.message, {
-        position: 'bottom-center',
-      })
-    }
-  }
+	const googleLogin = async () => {
+		try {
+			const result = await handleGoogleSignIn();
+			navigate(result.navigateTo);
+		} catch (error) {
+			toast.error(error.message, {
+				position: "bottom-center",
+			});
+		}
+	};
 
-  return (
-    <div style={{ cursor: 'pointer' }} onClick={googleLogin}>
-      <img src={googleBadge} width={'20%'} />
-    </div>
-  )
+	return (
+		<div
+			/*style={{ cursor: "pointer" }}*/ onClick={googleLogin}
+			className="google-sign-in"
+		>
+			<img src={googleBadge} width={"30%"} />
+		</div>
+	);
 }
 
-export default SignInWithGoogle
+export default SignInWithGoogle;

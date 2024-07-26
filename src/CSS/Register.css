@@ -1,0 +1,159 @@
+.form-container {
+	text-align: center;
+	padding: 25px;
+	background-color: #c0d9d9;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	max-width: 600px;
+	margin: auto;
+}
+
+.form-title {
+	margin-bottom: 20px;
+	font-size: 24px;
+}
+
+.input-container {
+	margin: 20px;
+	width: 90%;
+	max-width: 600px;
+	max-height: 600px;
+	background-color: #253759;
+	border-radius: 10px;
+	padding: 20px;
+}
+
+.input-container input {
+	width: calc(100% - 20px);
+	padding: 10px;
+	margin: 10px 0;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+}
+
+.submit-play {
+	padding: 10px;
+	margin-top: 10px;
+	background-color: #253759;
+	color: #ffc121;
+	border-color: white;
+
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 16px;
+	width: 140px;
+	transition: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.submit-play:hover {
+	background-color: #ffc121;
+	color: #253759;
+	width: 160px;
+}
+
+.register-link {
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+.register-link {
+	color: #253759;
+	width: 80px;
+	transition: width 0.3s ease;
+}
+
+.register-link:hover {
+	font-size: 16px;
+	color: #ffc121;
+}
+
+.label-header {
+	color: white;
+}
+
+.google-sign-in {
+	margin-top: 0px;
+	cursor: pointer;
+}
+
+.google-sign-in img {
+	width: 180px;
+	transition: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.google-sign-in:hover img {
+	width: 195px;
+}
+
+@media (max-width: 1200px) {
+	.form-container {
+		max-width: 80%; /* Reduce max-width for smaller screens */
+	}
+
+	.input-container {
+		padding: 15px;
+	}
+
+	.submit-button {
+		padding: 8px;
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 768px) {
+	.form-container {
+		max-width: 90%; /* Reduce max-width for smaller screens */
+	}
+
+	.input-container {
+		padding: 10px;
+	}
+
+	.input-container input {
+		font-size: 14px;
+	}
+
+	.submit-button {
+		padding: 8px 16px;
+		font-size: 14px;
+	}
+
+	.google-sign-in img {
+		width: 100%;
+	}
+
+	.register-link {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 480px) {
+	.form-container {
+		max-width: 95%; /* Reduce max-width for smaller screens */
+	}
+
+	.input-container {
+		padding: 10px;
+	}
+
+	.input-container input {
+		font-size: 12px;
+	}
+
+	.submit-button {
+		padding: 6px 12px;
+		font-size: 12px;
+	}
+
+	.google-sign-in img {
+		width: 90%;
+	}
+
+	.register-link {
+		font-size: 10px;
+	}
+}

@@ -7,7 +7,6 @@ import { auth } from "./helpers/firebase";
 import Login from "./Components/Login";
 import SignUpView from "./Pages/SignUpView.jsx";
 
-
 import FofPage from "./Pages/FofPage.jsx";
 
 import Test from "./Components/Test";
@@ -27,6 +26,10 @@ import Header from "./Components/NavBar.jsx";
 
 const URL = import.meta.env.VITE_BASE_URL;
 
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
+// import ProfilePage from "./Pages/ProfilePage.jsx";
+
 function App() {
   const [user, setUser] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
@@ -34,14 +37,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [countries, setCountries] = useState([]);
 
-
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setUser(user);
-    });
-    return () => unsubscribe();
-  }, []);
+	useEffect(() => {
+		const unsubscribe = auth.onAuthStateChanged((user) => {
+			setUser(user);
+		});
+		return () => unsubscribe();
+	}, []);
 
   useEffect(() => {
     const fetchUserProfileAndStats = async () => {
@@ -106,10 +107,6 @@ function App() {
           marginTop: 100,
         }}
       >
-        {/* <Route
-          path="/"
-          element={user ? <Navigate to="/profile" /> : <Login />}
-        /> */}
         <Route path="/" element={<HomePage />} />
         <Route path="/test" element={user ? <Test /> : <Login />} />
         <Route path="/login" element={<Login setUser={setUser} user={user}/> } />
