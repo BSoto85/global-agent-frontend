@@ -58,6 +58,10 @@ body {
   display: none;
 }
 
+.offcanvas {
+  max-width: 0;
+}
+
 @media (max-width: 917px) {
   .section1 {
     display: none;
@@ -69,21 +73,24 @@ body {
     justify-content: center !important;
   }
 
+  .offcanvas {
+    background-color: #253759;
+    max-width: 40%;
+  }
+
   .hamburger {
     display: flex;
     justify-content: end;
     align-items: center;
   }
 
-  /* .offcanvas {
-    width: 100px;
-  } */
-
   .offcanvas-header {
     background-color: #ffc121 !important;
     color: black !important;
     padding: 20px !important;
     text-align: center !important;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
   }
 
   .offcanvas-body {
