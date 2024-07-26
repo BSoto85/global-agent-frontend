@@ -9,9 +9,12 @@
 .developer-pro {
   list-style: none;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
+  /* align-items: center; */
 }
 
 .developer {
@@ -42,9 +45,9 @@
   margin-bottom: 30px;
 }
 
-/* .developer:hover {
+.developer:hover {
   transform: scale(1.05);
-} */
+}
 
 .about-us {
   font-size: 2.5em;
@@ -85,4 +88,10 @@
 
 .developer h2 {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+@media (min-width: 917px) {
+  .developer-pro {
+    grid-template-columns: 1fr 1fr;
+  }
 }

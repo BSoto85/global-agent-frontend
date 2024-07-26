@@ -3,7 +3,8 @@ body {
 }
 
 .navbar-container {
-  display: grid;
+  display: flex;
+  justify-content: space-between;
   grid-template-columns: 2fr 2fr;
   padding: 20px;
   /* padding-bottom: 120px; */
@@ -11,6 +12,8 @@ body {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   height: 100px;
+  position: sticky;
+  top: 0;
   /* margin-bottom: 30px; */
 }
 
@@ -21,6 +24,9 @@ body {
   align-items: center;
   background-color: #466273;
   font-size: 20px;
+}
+
+.section1 a {
   padding-right: 30px;
 }
 
@@ -90,7 +96,7 @@ body {
   }
 
   .offcanvas-body ul {
-    margin-bottom: 570px;
+    margin-bottom: 650px;
   }
 
   .nav-item {
