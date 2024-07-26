@@ -1,12 +1,17 @@
+body {
+  background-color: #c0d9d9;
+}
+
 .navbar-container {
   display: grid;
   grid-template-columns: 2fr 2fr;
   padding: 20px;
+  /* padding-bottom: 120px; */
   background-color: #466273;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   height: 100px;
-  margin-bottom: 0;
+  /* margin-bottom: 30px; */
 }
 
 .section1 {
@@ -17,13 +22,11 @@
   background-color: #466273;
   font-size: 20px;
   padding-right: 30px;
-  
 }
 
 .navbar-container a {
   text-decoration: none;
   color: white;
-
 }
 
 .navbar-container span {

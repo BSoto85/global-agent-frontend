@@ -34,7 +34,7 @@ function Home() {
               Welcome to Global Agent, where current events become your next big
               case! Join our elite team of young investigators to uncover the
               truth behind today's headlines! Are you ready to earn detective
-              badges and rise through the ranks from Rookie to Master Sleuth &
+              badges and rise through the ranks from Rookie to Master Sleuth and
               be a top-notch detective?
             </p>
           </div>

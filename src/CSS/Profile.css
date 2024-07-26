@@ -16,9 +16,9 @@
 
 .header-button {
   border: none;
-  background: none; 
-  cursor: pointer; 
-  margin-left: 10px; 
+  background: none;
+  cursor: pointer;
+  margin-left: 10px;
   color: #000000;
   font-weight: bold;
   margin-left: 85px;
@@ -28,15 +28,16 @@
 
 .header-button a {
   text-decoration: none;
-  color: inherit; 
+  color: inherit;
 }
 .profile-header {
   display: flex;
   padding: 20px 20px;
   align-items: center;
+  justify-content: center;
   margin-top: -10px;
   border: 2px solid #ffc107;
-  border-color: #253759; 
+  border-color: #253759;
   border-radius: 10px;
   background-color: #253759;
   color: #fff;
@@ -95,27 +96,31 @@
 
 .profile-badges {
   margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr); */
   gap: 10px;
   border: 2px solid #ffc107;
-  border-color: #253759; 
+  border-color: #253759;
   background-color: #253759;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 7px;
   text-align: center;
+  width: 100%;
 }
 
 .xp-progress {
+  /* display: flex; */
   font-size: 15px;
   text-align: center;
   margin-top: 10px;
+  /* align-items: center;
+  justify-content: center; */
 }
 
 .profile-badges h2 {
   font-size: 20px;
   text-align: center;
-  margin-left: 115px;
+  margin-top: 10px;
 }
 .profile-badges p {
   font-size: 12px;
@@ -126,8 +131,9 @@
   background-color: #e0e0e0;
   border-radius: 10px;
   overflow: hidden;
+  width: 80%;
   height: 20px;
-  margin: 10px 0;
+  margin: 10px 0 10px 10%;
   text-align: center;
 }
 
@@ -188,75 +194,69 @@
 }
 
 .new-investigation {
-  font-size: 11px;
+  font-size: 14px;
   background-color: #253759;
   box-shadow: 0 3px 0 #000000;
   text-align: center;
   margin-top: 25px;
   width: 200px;
+  color: #ffc121;
 }
 
 .button-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px; 
+  gap: 10px;
 }
 
-
-
 @media (min-width: 917px) {
-  .header-actions{
-    /* border: 5px solid green; */
-    margin-bottom: 5%
+  .header-actions {
+    margin-bottom: 5%;
   }
-  .profile-stats{
-    /* border: 5px solid blue; */
+  .profile-stats {
     width: 60%;
     height: 75px;
-   margin-top: 40px;
-   margin-bottom: 15px
   }
   .stat h3 {
     margin-top: 0%;
     font-size: 13px;
   }
-  .new-investigation{
-  font-size: 15px;
-  width: 200px;
+  .new-investigation {
+    font-size: 15px;
+    width: 200px;
+    margin-top: 20px;
   }
   .stat p {
     font-size: 15px;
   }
-  .profile-badges{
+  .profile-badges {
     width: 60%;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-
   }
-  .rank-container{
+  .rank-container {
     padding-top: 3%;
     padding-bottom: 3%;
-    
   }
-  .rank-container h2{
+  .rank-container h2 {
     margin-left: 0px;
     margin-bottom: 15px;
   }
-  .xp-progress-bar{
+  .xp-progress-bar {
     margin: 20px;
   }
-  .profile-header{
-    display:flex;
+  .profile-header {
+    margin-top: -95px;
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 60%;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
   }
 
   .header-actions {
-    margin-top: 2%
+    margin-top: 2%;
   }
 }
-

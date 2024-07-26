@@ -137,11 +137,11 @@ function App() {
           path="/countries"
           element={
             <CountriesPage
-            // isModalOpen={isModalOpen}
-            // setIsModalOpen={setIsModalOpen}
-            countries={countries}
-            // handleHowToPlayClick={handleHowToPlayClick}
-            // handleCloseModal={handleCloseModal}
+              // isModalOpen={isModalOpen}
+              // setIsModalOpen={setIsModalOpen}
+              countries={countries}
+              // handleHowToPlayClick={handleHowToPlayClick}
+              // handleCloseModal={handleCloseModal}
             />
           }
         />
