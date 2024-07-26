@@ -16,9 +16,9 @@
 
 .header-button {
   border: none;
-  background: none; 
-  cursor: pointer; 
-  margin-left: 10px; 
+  background: none;
+  cursor: pointer;
+  margin-left: 10px;
   color: #000000;
   font-weight: bold;
   margin-left: 85px;
@@ -28,7 +28,7 @@
 
 .header-button a {
   text-decoration: none;
-  color: inherit; 
+  color: inherit;
 }
 .profile-header {
   display: flex;
@@ -36,7 +36,7 @@
   align-items: center;
   margin-top: -10px;
   border: 2px solid #ffc107;
-  border-color: #253759; 
+  border-color: #253759;
   border-radius: 10px;
   background-color: #253759;
   color: #fff;
@@ -99,7 +99,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   border: 2px solid #ffc107;
-  border-color: #253759; 
+  border-color: #253759;
   background-color: #253759;
   color: #fff;
   border-radius: 5px;
@@ -194,61 +194,58 @@
   text-align: center;
   margin-top: 25px;
   width: 200px;
+  color: #ffc121;
 }
 
 .button-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px; 
+  gap: 10px;
 }
 
-
-
 @media (min-width: 917px) {
-  .header-actions{
+  .header-actions {
     /* border: 5px solid green; */
-    margin-bottom: 5%
+    margin-bottom: 5%;
   }
-  .profile-stats{
+  .profile-stats {
     /* border: 5px solid blue; */
     width: 60%;
     height: 75px;
-   margin-top: 40px;
-   margin-bottom: 15px
+    margin-top: 40px;
+    margin-bottom: 15px;
   }
   .stat h3 {
     margin-top: 0%;
     font-size: 13px;
   }
-  .new-investigation{
-  font-size: 15px;
-  width: 200px;
+  .new-investigation {
+    font-size: 15px;
+    width: 200px;
   }
   .stat p {
     font-size: 15px;
   }
-  .profile-badges{
+  .profile-badges {
     width: 60%;
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-
   }
-  .rank-container{
+  .rank-container {
     padding-top: 3%;
     padding-bottom: 3%;
-    
   }
-  .rank-container h2{
+  .rank-container h2 {
     margin-left: 0px;
     margin-bottom: 15px;
   }
-  .xp-progress-bar{
+  .xp-progress-bar {
     margin: 20px;
   }
-  .profile-header{
-    display:flex;
+  .profile-header {
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 60%;
@@ -256,7 +253,6 @@
   }
 
   .header-actions {
-    margin-top: 2%
+    margin-top: 2%;
   }
 }
-
