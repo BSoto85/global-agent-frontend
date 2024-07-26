@@ -1,32 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-// import Navbar from "../Components/NavBar";
-import shuffleAnswers from "../helpers/shuffleAnswers"; // Import the shuffleAnswers function
-import calculateAge from "../helpers/calculateAge"; // Import the calculateAge function
+import shuffleAnswers from "../helpers/shuffleAnswers";
+import calculateAge from "../helpers/calculateAge";
 import "../CSS/QuestionsPage.css";
 const URL = import.meta.env.VITE_BASE_URL;
 
 const QuestionsPage = ({ user }) => {
   const { countryId, caseFileId } = useParams();
   const navigate = useNavigate();
-  const location = useLocation(); // Access the current location object
+  const location = useLocation();
 
-  const [questions, setQuestions] = useState([]); // State to store questions
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // State to track current question index
-  const [score, setScore] = useState(0); // State to track score
-  const [selectedAnswer, setSelectedAnswer] = useState(""); // State to track selected answer
+  const [questions, setQuestions] = useState([]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [score, setScore] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState("");
 
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const age = calculateAge(user.dob); // Calculate user's age
-        const personAge = age >= 18 ? `older_questions` : `younger_questions`; // Determine question set based on age
+        console.log("Fetching questions for caseFileId:", caseFileId);
+        const age = user ? calculateAge(user.dob) : null;
+        const personAge = age >= 18 ? `older_questions` : `younger_questions`;
+        console.log("User age:", age);
         const response = await fetch(`${URL}/api/${personAge}/${caseFileId}`);
         if (!response.ok) {
           throw new Error("Failed to fetch questions");
         }
         const data = await response.json();
-        // Shuffle answers for each question
         const shuffledQuestions = data.map((question) => ({
           ...question,
           answers: shuffleAnswers([
@@ -36,52 +36,51 @@ const QuestionsPage = ({ user }) => {
             question.y_incorrect_answer3 || question.o_incorrect_answer3,
           ]),
         }));
-        setQuestions(shuffledQuestions); // Set shuffled questions
-        setCurrentQuestionIndex(0); // Reset current question index
-        setScore(0); // Reset score
+        setQuestions(shuffledQuestions);
+        setCurrentQuestionIndex(0);
+        setScore(0);
       } catch (error) {
-        console.error("Error fetching questions:", error); // Log any errors
+        console.error("Error fetching questions:", error);
       }
     };
 
     fetchQuestions();
-  }, [caseFileId, user.dob, location.state?.refresh]); // Run this effect whenever dependencies change
+  }, [caseFileId, user, location.state?.refresh]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const currentQuestion = questions[currentQuestionIndex]; // Get the current question
+    const currentQuestion = questions[currentQuestionIndex];
     const isCorrect =
       selectedAnswer ===
-      (currentQuestion.y_correct_answer || currentQuestion.o_correct_answer); // Check if the selected answer is correct
+      (currentQuestion.y_correct_answer || currentQuestion.o_correct_answer);
 
     if (isCorrect) {
-      setScore((prevScore) => prevScore + 1); // Increment score if the answer is correct
+      setScore((prevScore) => prevScore + 1);
     }
 
     if (currentQuestionIndex === questions.length - 1) {
-      // Navigate to results page with final score
       const finalScore = isCorrect ? score + 1 : score;
       navigate(
-        `/countries/${countryId}/case_files/${caseFileId}/questions/results`,
+        `/countries/${countryId}/case_files/${caseFileId}/results`,
         {
-          state: { score: finalScore, totalQuestions: questions.length }, // Pass final score and total questions to results page
+          state: { score: finalScore, totalQuestions: questions.length },
         }
       );
     } else {
-      setCurrentQuestionIndex((prevIndex) => prevIndex + 1); // Move to the next question
-      setSelectedAnswer(""); // Reset selected answer
+      setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+      setSelectedAnswer("");
     }
   };
 
   const calculateProgress = () => {
-    return ((currentQuestionIndex + 1) / questions.length) * 100; // Calculate progress percentage
+    return ((currentQuestionIndex + 1) / questions.length) * 100;
   };
 
   if (questions.length === 0) {
-    return <div>Loading...</div>; // Display loading message if questions are not loaded
+    return <div>Loading...</div>;
   }
 
-  const currentQuestion = questions[currentQuestionIndex]; // Get the current question
+  const currentQuestion = questions[currentQuestionIndex];
 
   return (
     <div> 
@@ -90,8 +89,7 @@ const QuestionsPage = ({ user }) => {
           <div
             className="progress"
             style={{ width: `${calculateProgress()}%` }}
-          ></div>{" "}
-          {/* Display progress bar */}
+          ></div>
         </div>
         <h2>{currentQuestion.y_question || currentQuestion.o_question}</h2>
         <form onSubmit={handleSubmit}>
@@ -107,15 +105,14 @@ const QuestionsPage = ({ user }) => {
                 name="answer"
                 value={answer}
                 checked={selectedAnswer === answer}
-                onChange={(e) => setSelectedAnswer(e.target.value)} // Update selected answer
+                onChange={(e) => setSelectedAnswer(e.target.value)}
               />
               {answer}
             </label>
           ))}
           <button type="submit" disabled={!selectedAnswer}>
             Submit
-          </button>{" "}
-          {/* Disable submit button if no answer is selected */}
+          </button>
         </form>
       </div>
     </div>
@@ -123,3 +120,5 @@ const QuestionsPage = ({ user }) => {
 };
 
 export default QuestionsPage;
+
+
