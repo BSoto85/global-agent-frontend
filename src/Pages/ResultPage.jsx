@@ -75,13 +75,13 @@ const ResultsPage = ({ userStats, user, userProfile }) => {
     }
   }, [currentStats, score, totalQuestions, hasUpdated, userProfile]);
 
-  if (!currentStats) {
-    return <p>Loading player stats...</p>;
-  }
+  // if (!currentStats) {
+  //   return <p>Loading player stats...</p>;
+  // }
 
   return (
     <div className="ResultsPage">
-      <h2>Case {caseFileId}</h2>
+      <h2>Case #{caseFileId}</h2>
       <div className="findings-border">
         <p>
           Findings: {score} / {totalQuestions}
