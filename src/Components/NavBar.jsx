@@ -13,13 +13,14 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../CSS/NavBar.css";
 
-const Header = ({ user }) => {
+const Header = ({ userProfile }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const sidebarRef = useRef();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+  
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -50,8 +51,8 @@ const Header = ({ user }) => {
             <span>About Us</span>
           </Link>
           <div>
-            {user !== null ? (
-              <Link to={`/profile/${user.uid}`}>
+            {userProfile !== null ? (
+              <Link to={`/profile/${userProfile.uid}`}>
                 <FontAwesomeIcon icon={faPortrait} size="2xl" />
               </Link>
             ) : (
@@ -134,13 +135,13 @@ const Header = ({ user }) => {
                 About Us
               </Link>
             </li>
-            {user !== null ? (
+            {userProfile !== null ? (
               <li
                 className="nav-item"
                 style={{ fontSize: "20px", margin: "20px 0" }}
               >
                 <Link
-                  to={`/profile/${user.uid}`}
+                  to={`/profile/${userProfile.uid}`}
                   className="nav-link"
                   onClick={toggleSidebar}
                 >

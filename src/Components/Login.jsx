@@ -7,7 +7,7 @@ import { getUserData} from "../helpers/getUserData"
 import SignInWithGoogle from "./SignInWithGoogle";
 import { auth } from "../helpers/firebase";
 
-function Login({setUser, user }) {
+function Login({setUser}) {
   const navigate = useNavigate();
 
   const [loginUser, setLoginNewUser] = useState({ password: "", email: "" });
@@ -42,7 +42,7 @@ function Login({setUser, user }) {
       // you do not have to create a login in the backend because firebase is handling it.
       // when you navigate to profile, you will see a fetch for the user.
       const userData = await getUserData()
-      setUser(userData)
+      await setUser(userData)
       navigate(`/profile/${userData.uid}`);
       
     } catch (error) {
@@ -53,9 +53,12 @@ function Login({setUser, user }) {
       });
     }
   };
-
+//   if (isLoading) {
+//     return <div>Loading...</div>;
+//   }
  	return (
 		<div className="form-container">
+
 			<h3 className="form-title">Login</h3>
 			<div>
 				New user{" "}

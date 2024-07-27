@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import EditProfileModal from "../Components/EditProfileModal";
 import { getRank, ranks } from "../helpers/Ranks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {auth} from "../helpers/firebase"
+import { auth } from "../helpers/firebase";
 import { toast } from "react-toastify";
 import {
   faUserPen,
@@ -13,36 +13,33 @@ import {
 import "../CSS/Profile.css";
 const URL = import.meta.env.VITE_BASE_URL;
 
-const ProfilePage = ({ stats, userProfile, setUserProfile, setUserStats, setUser }) => {
+const ProfilePage = ({ stats, userProfile, setUserProfile, setUserStats, user }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   async function handleLogout() {
     try {
       const logout = async () => {
         try {
-          //firebase logout
-          localStorage.removeItem('token')
-          await auth.signOut()
-          return true
+          // Firebase logout
+          await auth.signOut();
+          localStorage.removeItem('token');
+          return true;
         } catch (error) {
-          console.log(error)
-          
-          return false
+          console.log(error);
+          return false;
         }
-      }  
-      const loggedOut = await logout()
+      };
+      const loggedOut = await logout();
       if (loggedOut === true) {
-      setUserProfile(null)
-      setUserStats(null)
-      navigate('/');
-      toast.success('User logged out successfully!', {
-        position: 'top-center',
-      });
-    }
-      
-      // setUser(null)
-      console.log('User logged out successfully!');
+        setUserProfile(null);
+        setUserStats(null);
+        navigate('/');
+        toast.success('User logged out successfully!', {
+          position: 'top-center',
+        });
+      }
     } catch (error) {
       toast.error(error.message, {
         position: 'bottom-center',
@@ -74,30 +71,57 @@ const ProfilePage = ({ stats, userProfile, setUserProfile, setUserStats, setUser
     }
   };
 
-  // Get the current rank and next rank
-  
-  let userRank, nextRank, nextBadgeXP, previousRankXP, xpNeededForNextBadge;
-
-  if (stats) {
-  const userRank = getRank(stats.xp);
-
-  const currentRankIndex = ranks.findIndex((rank) => rank.name === userRank);
-    nextRank =
-    currentRankIndex + 1 < ranks.length
-      ? ranks[currentRankIndex + 1]
-      : ranks[currentRankIndex];
-      nextBadgeXP = nextRank.minXP;
-      previousRankXP = ranks[currentRankIndex]?.minXP || 0;
-      xpNeededForNextBadge = nextBadgeXP - stats.xp;
-  }
-
-  const calculateXPProgress = () => {
+  const calculateXPProgress = (stats) => {
+    if (!stats) return 0;
+    const userRank = getRank(stats.xp);
+    const currentRankIndex = ranks.findIndex((rank) => rank.name === userRank);
+    const nextRank = currentRankIndex + 1 < ranks.length ? ranks[currentRankIndex + 1] : ranks[currentRankIndex];
+    const nextBadgeXP = nextRank.minXP;
+    const previousRankXP = ranks[currentRankIndex]?.minXP || 0;
     return ((stats.xp - previousRankXP) / (nextBadgeXP - previousRankXP)) * 100;
   };
 
+  useEffect(() => {
+    const fetchUserProfileAndStats = async () => {
+      try {
+        const profileResponse = await fetch(`${URL}/api/profile/${user.uid}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        // console.log("profileResponse", profileResponse);
+        const profileData = await profileResponse.json();
+        // console.log("profileData", profileData);
+        setUserProfile(profileData);
 
-  // const xpNeededForNextBadge = nextBadgeXP - stats.xp;
-  console.log(userProfile)
+        const statsResponse = await fetch(`${URL}/api/stats/${profileData.id}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        const statsData = await statsResponse.json();
+        setUserStats(statsData);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch profile or stats:", error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchUserProfileAndStats();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  const userRank = getRank(stats.xp);
+  const currentRankIndex = ranks.findIndex((rank) => rank.name === userRank);
+  const nextRank = currentRankIndex + 1 < ranks.length ? ranks[currentRankIndex + 1] : ranks[currentRankIndex];
+  const nextBadgeXP = nextRank.minXP;
+  const previousRankXP = ranks[currentRankIndex]?.minXP || 0;
+  const xpNeededForNextBadge = nextBadgeXP - stats.xp;
+
   return (
     <div className="profile-page">
       <div className="header-actions">
@@ -134,7 +158,7 @@ const ProfilePage = ({ stats, userProfile, setUserProfile, setUserStats, setUser
         </div>
         <div className="profile-details">
           <h2>
-            {userProfile.first_name} {userProfile.last_name}Profile
+            {userProfile.first_name} {userProfile.last_name}
             <button
               className="edit-profile-icon-2"
               onClick={() => setIsModalOpen(true)}
@@ -159,9 +183,8 @@ const ProfilePage = ({ stats, userProfile, setUserProfile, setUserStats, setUser
           <div className="xp-progress-bar">
             <div
               className="xp-progress-fill"
-              style={{ width: `${calculateXPProgress()}%` }}
+              style={{ width: `${calculateXPProgress(stats)}%` }}
             ></div>
-
             <p>
               {stats.xp} / {nextBadgeXP} XP
             </p>
