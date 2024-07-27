@@ -83,32 +83,41 @@ const QuestionsPage = ({ user }) => {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div> 
+    <div>
       <div className="QuestionsPage">
         <div className="progress-bar">
           <div
             className="progress"
-            style={{ width: `${calculateProgress()}%` }}
+            style={{
+              width: `${calculateProgress()}%`,
+              backgroundColor: "#ffc121",
+            }}
           ></div>
         </div>
         <h2>{currentQuestion.y_question || currentQuestion.o_question}</h2>
         <form onSubmit={handleSubmit}>
           {currentQuestion.answers.map((answer, index) => (
-            <label
-              key={index}
-              className={`answer-label ${
-                selectedAnswer === answer ? "selected" : ""
-              }`}
-            >
-              <input
-                type="radio"
-                name="answer"
-                value={answer}
-                checked={selectedAnswer === answer}
-                onChange={(e) => setSelectedAnswer(e.target.value)}
-              />
-              {answer}
-            </label>
+            <div className="answer-container">
+              <section className="radio">
+                <input
+                  type="radio"
+                  name="answer"
+                  value={answer}
+                  checked={selectedAnswer === answer}
+                  onChange={(e) => setSelectedAnswer(e.target.value)}
+                />
+              </section>
+              <section className="label">
+                <label
+                  key={index}
+                  className={`answer-label ${
+                    selectedAnswer === answer ? "selected" : ""
+                  }`}
+                >
+                  {answer}
+                </label>
+              </section>
+            </div>
           ))}
           <button type="submit" disabled={!selectedAnswer}>
             Submit
@@ -120,5 +129,3 @@ const QuestionsPage = ({ user }) => {
 };
 
 export default QuestionsPage;
-
-
