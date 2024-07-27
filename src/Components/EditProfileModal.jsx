@@ -78,7 +78,7 @@ const EditProfileModal = ({ isOpen, onClose, user, updateUser }) => {
               required
             />
           </label>
-          <label>
+          <label className="last-label">
             Date of Birth:
             <input
               type="date"
@@ -87,7 +87,7 @@ const EditProfileModal = ({ isOpen, onClose, user, updateUser }) => {
               required
             />
           </label>
-          <label>
+          {/* <label>
             Photo URL:
             <input
               type="url"
@@ -95,8 +95,10 @@ const EditProfileModal = ({ isOpen, onClose, user, updateUser }) => {
               onChange={(e) => setPhoto(e.target.value)}
               required
             />
-          </label>
-          <button type="submit">Save</button>
+          </label> */}
+          <div className="submit-button-container">
+            <button type="submit">Save</button>
+          </div>
         </form>
       </div>
     </div>

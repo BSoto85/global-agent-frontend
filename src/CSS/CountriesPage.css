@@ -1,85 +1,84 @@
-.CountriesPage{
+.CountriesPage {
   background-color: #c0d9d9;
 }
 .country-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border: 2px solid #253759;
-    background-color: #b0babf;
-    cursor: pointer;
-    margin-bottom: 10px;
-    transition: background-color 0.3s ease;
-    border-radius: 10px;
-    margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 2px solid #253759;
+  background-color: #b0babf;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+  margin-top: 5px;
+}
 
-  }
-  
-  .country-container.selected {
-    background-color: white;
-    border-color: #253759;
-  }
-  
-  .flag-image {
-    height: 30px;
-    margin-left: 10px;
-  }
+.country-container.selected {
+  background-color: white;
+  border-color: #253759;
+}
 
-  .countries-list h1{
-    margin-bottom: 20px;
-    color: #fff;
-    font-size: 18px;
-  }
-  
-  .countries-list h2 {
-    font-size: 18px;
-    color: black;
-  }
-  
-  .countries-list {
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-  }
-  
-  .submit-button {
+.flag-image {
+  height: 30px;
+  margin-left: 10px;
+}
+
+.countries-list h1 {
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 18px;
+}
+
+.countries-list h2 {
+  font-size: 18px;
+  color: black;
+}
+
+.countries-list {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+.submit-button {
   background-color: #ffc121;
   box-shadow: 0 3px 0 #032564;
   font-size: 14px;
   width: 250px;
   margin-top: 40px;
+}
+
+.submit-button:active {
+  box-shadow: none;
+  transform: translateY(3px);
+}
+
+.countries-list {
+  background-color: #253759;
+  padding: 30px 30px;
+}
+
+.country-list h2.selected {
+  background-color: #466273;
+  border-color: #253759;
+}
+
+.login-container {
+  display: flex;
+  position: relative;
+  top: 0px;
+}
+
+@media (min-width: 917px) {
+  .main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  
-  .submit-button:active {
-    box-shadow: none;
-    transform: translateY(3px);
+  .CountriesPage section {
+    width: 60%;
+    margin: 20px;
   }
-  
-  .countries-list {
-    background-color: #253759;
-    padding: 30px 30px;
-  }
-
-  .country-list h2.selected {
-    background-color: #466273;
-    border-color: #253759;
-  }
-  
-
-
-  @media (min-width: 917px) {
-    .main-content{
-      display:flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .CountriesPage section{
-      width: 60%;
-      margin: 20px
-    }
-
-
-
-
-  }
+}

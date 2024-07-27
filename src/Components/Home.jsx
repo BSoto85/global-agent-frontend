@@ -1,9 +1,6 @@
 import React from "react";
-// import Navbar from "./NavBar";
 import { useNavigate, Link } from "react-router-dom";
-import "../App.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPortrait } from "@fortawesome/free-solid-svg-icons";
+import "../CSS/Home.css";
 import detectiveImage from "../assets/vecteezy_detective-looking-through-case-board_22129502.svg";
 
 function Home() {
@@ -14,13 +11,7 @@ function Home() {
   };
   return (
     <div className="App">
-      {/* <Navbar /> */}
       <main className="main-content">
-        <Link to="/login">
-          {/* <div className="profile-icon-container">
-          <FontAwesomeIcon icon={faPortrait} />
-        </div> */}
-        </Link>
         <section id="home" className="section">
           <div className="image-container">
             <img
@@ -38,7 +29,7 @@ function Home() {
               be a top-notch detective?
             </p>
           </div>
-          <div className="login-container" onClick={handleLoginClick}>
+          <div className="mission-button-container" onClick={handleLoginClick}>
             <div className="login-button">YOUR MISSION AWAITS!</div>
           </div>
         </section>

@@ -75,17 +75,19 @@ tbody tr:nth-child(odd) {
 .buttonest {
   margin-top: 10px;
   /* padding: 8px 16px; */
-  background-color: #253759;
-  color: white;
-  border: none;
-  border-radius: 12px;
+  background-color: #ffc121;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
   cursor: pointer;
   width: fit-content;
   white-space: nowrap;
   font-size: 16px;
+  box-shadow: 0 3px 0 #000000;
 }
 .buttonest:hover {
-  background-color: #263238;
+  background-color: #253759;
+  color: white;
 }
 
 @media (max-width: 768px) {
