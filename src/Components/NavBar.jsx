@@ -42,7 +42,7 @@ const Header = ({ userProfile }) => {
         </Link>
         <section className="section1">
           <Link to="/countries">
-            <span>Map</span>
+            <span>Investigate</span>
           </Link>
           <Link to="/leaderboard">
             <span>Leaderboard</span>
@@ -112,7 +112,7 @@ const Header = ({ userProfile }) => {
                 className="nav-link"
                 onClick={toggleSidebar}
               >
-                Map
+                Investigate
               </Link>
             </li>
             <li
