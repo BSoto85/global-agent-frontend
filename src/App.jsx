@@ -34,7 +34,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
   const [userStats, setUserStats] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [countries, setCountries] = useState([]);
 
 	useEffect(() => {
@@ -44,42 +43,42 @@ function App() {
 		return () => unsubscribe();
 	}, []);
 
-  useEffect(() => {
-    const fetchUserProfileAndStats = async () => {
-      if (user) {
-        try {
-          const profileResponse = await fetch(
-            `${URL}/api/profile/${user.uid}`,
-            {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            }
-          );
-          const profileData = await profileResponse.json();
-          console.log(profileData);
-          setUserProfile(profileData);
+  // useEffect(() => {
+  //   const fetchUserProfileAndStats = async () => {
+  //     if (user) {
+  //       try {
+  //         const profileResponse = await fetch(
+  //           `${URL}/api/profile/${user.uid}`,
+  //           {
+  //             headers: {
+  //               Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //             },
+  //           }
+  //         );
+  //         const profileData = await profileResponse.json();
+  //         console.log(profileData);
+  //         setUserProfile(profileData);
 
-          const statsResponse = await fetch(
-            `${URL}/api/stats/${profileData.id}`,
-            {
-              headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-            }
-          );
-          const statsData = await statsResponse.json();
-          setUserStats(statsData);
-          setIsLoading(false);
-        } catch (error) {
-          console.error("Failed to fetch profile or stats:", error);
-          setIsLoading(false);
-        }
-      }
-    };
+  //         const statsResponse = await fetch(
+  //           `${URL}/api/stats/${profileData.id}`,
+  //           {
+  //             headers: {
+  //               Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //             },
+  //           }
+  //         );
+  //         const statsData = await statsResponse.json();
+  //         setUserStats(statsData);
+  //         setIsLoading(false);
+  //       } catch (error) {
+  //         console.error("Failed to fetch profile or stats:", error);
+  //         setIsLoading(false);
+  //       }
+  //     }
+  //   };
 
-    fetchUserProfileAndStats();
-  }, [user]);
+  //   fetchUserProfileAndStats();
+  // }, [user]);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -97,7 +96,7 @@ function App() {
 
   return (
     <div>
-      <Header user={userProfile} />
+      <Header userProfile={userProfile} />
       <Routes
         style={{
           display: "flex",
@@ -109,18 +108,18 @@ function App() {
       >
         <Route path="/" element={<HomePage />} />
         <Route path="/test" element={user ? <Test /> : <Login />} />
-        <Route path="/login" element={<Login setUser={setUser} user={user}/> } />
+        <Route path="/login" element={<Login setUser={setUser} /> } />
         <Route path="/register" element={<SignUpView />} />
         <Route path="/leaderboard" element={<LeaderboardPage />} />
         <Route
-          path="/profile/:userUid"
+          path="/profile/:uid"
           element={
             <ProfilePage
               userProfile={userProfile}
-              isLoading={isLoading}
               stats={userStats}
               setUserProfile={setUserProfile}
               setUserStats={setUserStats}
+              user={user}
             />
           }
         />
