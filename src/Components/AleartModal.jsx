@@ -16,12 +16,14 @@ const AleartModal = ({ isOpen, onClose, countryId, caseFile }) => {
             You won't be able to go back once you start collecting evidence.
           </li>
         </ul>
-        <Link
-          to={`/countries/${countryId}/case_files/${caseFile.article_id}/questions`}
-          className="questions-link"
-        >
-          <button className="questions-button">Collect Evidence</button>
-        </Link>
+        <div className="evidence-button-container">
+          <Link
+            to={`/countries/${countryId}/case_files/${caseFile.article_id}/questions`}
+            className="questions-link"
+          >
+            <button className="questions-button">Collect Evidence</button>
+          </Link>
+        </div>
         <div className="alert-close-container">
           <button onClick={onClose} className="close-button-aleart">
             Close
