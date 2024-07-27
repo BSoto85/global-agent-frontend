@@ -37,6 +37,10 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
 
+  const handleHelpModal = () => {
+    setIsHelpModalOpen(!isHelpModalOpen);
+  };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user);
@@ -121,6 +125,9 @@ function App() {
               setUserProfile={setUserProfile}
               setUserStats={setUserStats}
               user={user}
+              isHelpModalOpen={isHelpModalOpen}
+              setIsHelpModalOpen={setIsHelpModalOpen}
+              handleHelpModal={handleHelpModal}
             />
           }
         />
@@ -130,9 +137,9 @@ function App() {
           path="/countries"
           element={
             <CountriesPage
-              isModalOpen={isHelpModalOpen}
               isHelpModalOpen={isHelpModalOpen}
               setIsHelpModalOpen={setIsHelpModalOpen}
+              handleHelpModal={handleHelpModal}
               countries={countries}
             />
           }

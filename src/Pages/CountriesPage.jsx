@@ -3,7 +3,12 @@ import { useNavigate } from "react-router-dom";
 import "../CSS/CountriesPage.css";
 import Help from "../Components/Help";
 
-const CountriesPage = ({ countries, isHelpModalOpen, setIsHelpModalOpen }) => {
+const CountriesPage = ({
+  countries,
+  isHelpModalOpen,
+  setIsHelpModalOpen,
+  handleHelpModal,
+}) => {
   // State to keep track of the selected country ID
   const [selectedCountryId, setSelectedCountryId] = useState("");
   const navigate = useNavigate(); // Hook to programmatically navigate
@@ -20,10 +25,6 @@ const CountriesPage = ({ countries, isHelpModalOpen, setIsHelpModalOpen }) => {
     } else {
       alert("Please select a country to investigate.");
     }
-  };
-
-  const handleHelpModal = () => {
-    setIsHelpModalOpen(!isHelpModalOpen);
   };
 
   console.log(countries);

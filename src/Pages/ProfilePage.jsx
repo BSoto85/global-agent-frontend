@@ -11,6 +11,7 @@ import {
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import "../CSS/Profile.css";
+import Help from "../Components/Help";
 const URL = import.meta.env.VITE_BASE_URL;
 
 const ProfilePage = ({
@@ -19,12 +20,15 @@ const ProfilePage = ({
   setUserProfile,
   setUserStats,
   user,
+  isHelpModalOpen,
+  setIsHelpModalOpen,
+  handleHelpModal,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
-  console.log("USER STATE ON PROFILE", user)
+  console.log("USER STATE ON PROFILE", user);
   async function handleLogout() {
     try {
       const logout = async () => {
@@ -143,7 +147,7 @@ const ProfilePage = ({
       <div className="header-actions">
         <button
           className="edit-profile-icon"
-          onClick={() => setIsModalOpen(true)}
+          onClick={handleHelpModal}
           style={{
             border: "none",
             background: "none",
@@ -154,6 +158,10 @@ const ProfilePage = ({
         >
           <FontAwesomeIcon icon={faCircleQuestion} size="xl" />
         </button>
+        <Help
+          isHelpModalOpen={isHelpModalOpen}
+          handleHelpModal={handleHelpModal}
+        />
         <button
           className="edit-profile-icon"
           onClick={handleLogout}
