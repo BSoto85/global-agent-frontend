@@ -195,12 +195,12 @@
 
 .new-investigation {
   font-size: 14px;
-  background-color: #253759;
+  background-color: #ffc121;
   box-shadow: 0 3px 0 #000000;
   text-align: center;
   margin-top: 25px;
   width: 200px;
-  color: #ffc121;
+  color: black;
 }
 
 .button-container {

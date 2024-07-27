@@ -74,7 +74,7 @@ const LeaderboardPage = () => {
           className="buttonest"
           onClick={() => console.log("Open an Investigation!")}
         >
-          OPEN AN INVESTIGATION
+          OPEN NEW INVESTIGATION
         </button>
       </div>
     </div>

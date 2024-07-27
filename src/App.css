@@ -4,125 +4,39 @@
 
 body,
 html {
-	margin: 0;
-	padding: 0;
-	font-family: Marcellus;
-	background-color: #c0d9d9;
-}
-
-.App {
-  display: flex;
+  margin: 0;
+  padding: 0;
+  font-family: Marcellus;
   background-color: #c0d9d9;
 }
 
 h1,
 h2,
 p,
-.login-button, * {
-	font-family: Marcellus;
-}
-
-main {
-	padding: 2rem;
-	padding-bottom: 4rem;
-	text-align: center;
-}
-
-section {
-	margin-bottom: 2rem;
-	/* box-shadow: 8px 8px 8px 8px rgba(1, 1, 22, 0.1); Elevation */
-	border-radius: 60px;
+button,
+* {
+  font-family: Marcellus;
 }
 
 h1,
 h2 {
-
   color: white;
-}
-.border-container {
-  background-color: #253759;
-  height: 150px;
-  margin-top: 12px;
-  border-radius: 5px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-}
-.border-container p {
-  color: white;
-  text-align: center;
-  font-size: 18px;
-  margin-top: 15px;
-  box-shadow: 18px 18px 18px 18px rgba(1, 1, 22, 0.1);
-  padding: 5px;
-}
-
-.image-container {
-  text-align: center;
-  margin-bottom: 5px;
-  margin-top: 45px;
-}
-
-.detective-image {
-	width: 100%;
-	height: auto;
-	border-radius: 16px;
-	margin-top: -15px;
-	box-shadow: 28px 28px 28px 28px rgba(1, 1, 22, 0.1);
-}
-
-.login-container {
-	margin-top: 1rem;
-	text-decoration: none;
-}
-
-.login-button {
-	padding: 10px 20px;
-	font-size: 1rem;
-	background-color: #253759;
-	color: #ffc121;
-	border: none;
-	border-radius: 5px;
-	width: 250px;
-	margin: auto;
-	text-decoration: none;
-	cursor: pointer;
-	box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.1); /* Elevation */
-	transition: background-color 0.3s, transform 0.3s;
-	background-color: #253759;
-	box-shadow: 0 3px 0 #000000;
-	margin-top: 20px;
-}
-
-.login-button:active {
-	box-shadow: none;
-	transform: translateY(3px);
 }
 
 .profile-icon-container {
-	position: fixed;
-	top: 20px;
-	right: 35px;
-	cursor: pointer;
-	color: #253759;
-	font-size: 1.5rem;
-	box-shadow: 8px 8px 8px 8px rgba(1, 1, 22, 0.1);
+  position: fixed;
+  top: 20px;
+  right: 35px;
+  cursor: pointer;
+  color: #253759;
+  font-size: 1.5rem;
+  box-shadow: 8px 8px 8px 8px rgba(1, 1, 22, 0.1);
 }
 .profile-icon-container a {
-	color: inherit;
-	text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 .profile-icon-container a:hover {
-	color: #ffc121;
-}
-
-@media (max-width: 917px) {
-  .detective-image {
-    max-width: 100%;
-    height: auto;
-  }
-  .border-container p {
-    font-size: 13px;
-  }
+  color: #ffc121;
 }

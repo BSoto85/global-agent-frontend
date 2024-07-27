@@ -1,0 +1,111 @@
+/* html {
+  background: url("./assets/Shiny\ Overlay.svg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} */
+
+/* .App {
+  display: flex;
+} */
+
+main {
+  padding: 2rem;
+  padding-bottom: 4rem;
+  text-align: center;
+}
+
+section {
+  margin-bottom: 2rem;
+  /* box-shadow: 8px 8px 8px 8px rgba(1, 1, 22, 0.1); Elevation */
+  border-radius: 60px;
+}
+
+.border-container {
+  background-color: #253759;
+  height: 150px;
+  margin-top: 12px;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+.border-container p {
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 15px;
+  box-shadow: 18px 18px 18px 18px rgba(1, 1, 22, 0.1);
+  padding: 5px;
+}
+
+/* .image-container {
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: 45px;
+}*/
+
+.detective-image {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  margin-top: -15px;
+  box-shadow: 28px 28px 28px 28px rgba(1, 1, 22, 0.1);
+}
+
+.border-container {
+  display: flex;
+  position: relative;
+  bottom: 300px;
+}
+
+.mission-button-container {
+  margin-top: 1rem;
+  text-decoration: none;
+  display: flex;
+  position: relative;
+  bottom: 300px;
+}
+
+.login-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #253759;
+  color: #ffc121;
+  border: none;
+  border-radius: 5px;
+  width: 250px;
+  margin: auto;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.1); /* Elevation */
+  transition: background-color 0.3s, transform 0.3s;
+  background-color: #253759;
+  box-shadow: 0 3px 0 #000000;
+  margin-top: 20px;
+}
+
+.login-button:active {
+  box-shadow: none;
+  transform: translateY(3px);
+}
+
+@media (max-width: 917px) {
+  /* .detective-image {
+    max-width: 100%;
+    height: auto;
+  } */
+
+  .border-container {
+    bottom: -10px;
+  }
+
+  .mission-button-container {
+    bottom: 5px;
+  }
+
+  .border-container p {
+    font-size: 13px;
+  }
+}
