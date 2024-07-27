@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: #c0d9d9;
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,8 +15,8 @@
   background: #253759;
   padding: 20px 30px;
   border-radius: 5px;
-  max-width: 600px;
   width: 100%;
+  max-width: 60%;
   text-align: left;
   position: relative;
   margin: 20px;
@@ -67,4 +67,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* background-color: #253759; */
+}
+
+.evidence-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
