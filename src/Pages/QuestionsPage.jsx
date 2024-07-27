@@ -61,7 +61,7 @@ const QuestionsPage = ({ user }) => {
     if (currentQuestionIndex === questions.length - 1) {
       const finalScore = isCorrect ? score + 1 : score;
       navigate(
-        `/countries/${countryId}/case_files/${caseFileId}/results`,
+        `/countries/${countryId}/case_files/${caseFileId}/questions/results`,
         {
           state: { score: finalScore, totalQuestions: questions.length },
         }
