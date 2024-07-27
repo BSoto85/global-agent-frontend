@@ -35,13 +35,18 @@ function App() {
   const [userProfile, setUserProfile] = useState(null);
   const [userStats, setUserStats] = useState(null);
   const [countries, setCountries] = useState([]);
+  const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
 
-	useEffect(() => {
-		const unsubscribe = auth.onAuthStateChanged((user) => {
-			setUser(user);
-		});
-		return () => unsubscribe();
-	}, []);
+  const handleHelpModal = () => {
+    setIsHelpModalOpen(!isHelpModalOpen);
+  };
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   // useEffect(() => {
   //   const fetchUserProfileAndStats = async () => {
@@ -108,7 +113,7 @@ function App() {
       >
         <Route path="/" element={<HomePage />} />
         <Route path="/test" element={user ? <Test /> : <Login />} />
-        <Route path="/login" element={<Login setUser={setUser} /> } />
+        <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<SignUpView />} />
         <Route path="/leaderboard" element={<LeaderboardPage />} />
         <Route
@@ -120,6 +125,9 @@ function App() {
               setUserProfile={setUserProfile}
               setUserStats={setUserStats}
               user={user}
+              isHelpModalOpen={isHelpModalOpen}
+              setIsHelpModalOpen={setIsHelpModalOpen}
+              handleHelpModal={handleHelpModal}
             />
           }
         />
@@ -129,11 +137,10 @@ function App() {
           path="/countries"
           element={
             <CountriesPage
-              // isModalOpen={isModalOpen}
-              // setIsModalOpen={setIsModalOpen}
+              isHelpModalOpen={isHelpModalOpen}
+              setIsHelpModalOpen={setIsHelpModalOpen}
+              handleHelpModal={handleHelpModal}
               countries={countries}
-              // handleHowToPlayClick={handleHowToPlayClick}
-              // handleCloseModal={handleCloseModal}
             />
           }
         />

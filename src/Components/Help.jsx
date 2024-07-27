@@ -1,7 +1,7 @@
 import React from "react";
 
-const Help = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
+const Help = ({ isHelpModalOpen, handleHelpModal }) => {
+  if (!isHelpModalOpen) return null;
 
   return (
     <div className="modal-overlay">
@@ -22,7 +22,7 @@ const Help = ({ isOpen, onClose }) => {
             'em, detective!
           </li>
         </ul>
-        <button onClick={onClose} className="close-button">
+        <button onClick={handleHelpModal} className="close-button">
           X
         </button>
       </div>
