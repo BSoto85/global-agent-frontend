@@ -16,7 +16,7 @@
   padding: 20px 30px;
   border-radius: 5px;
   width: 100%;
-  max-width: 60%;
+  max-width: 40%;
   text-align: left;
   position: relative;
   margin: 20px;
@@ -32,6 +32,7 @@
   padding: 10px;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
+  font-size: 20px;
 }
 .modal-content ul {
   background-color: #253759;
@@ -42,17 +43,18 @@
   border-bottom-right-radius: 7px;
 }
 
-.close-button {
+.how-close-button {
   position: absolute;
   top: 20px;
-  right: 40px;
+  right: 30px;
   background: none;
   border: none;
-  font-size: 1rem;
+  font-size: 16px;
   cursor: pointer;
   color: #ffc121;
   background-color: #253759;
   width: fit-content;
+  height: fit-content;
 }
 
 .close-button-aleart {
@@ -75,3 +77,9 @@
   align-items: center;
   justify-content: center;
 }
+
+/* @media (min-width: 917px) {
+  .modal-content h2 {
+    font-size: 16px;
+  }
+} */
