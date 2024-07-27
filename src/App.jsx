@@ -35,13 +35,14 @@ function App() {
   const [userProfile, setUserProfile] = useState(null);
   const [userStats, setUserStats] = useState(null);
   const [countries, setCountries] = useState([]);
+  const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
 
-	useEffect(() => {
-		const unsubscribe = auth.onAuthStateChanged((user) => {
-			setUser(user);
-		});
-		return () => unsubscribe();
-	}, []);
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   // useEffect(() => {
   //   const fetchUserProfileAndStats = async () => {
@@ -108,7 +109,7 @@ function App() {
       >
         <Route path="/" element={<HomePage />} />
         <Route path="/test" element={user ? <Test /> : <Login />} />
-        <Route path="/login" element={<Login setUser={setUser} /> } />
+        <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<SignUpView />} />
         <Route path="/leaderboard" element={<LeaderboardPage />} />
         <Route
@@ -129,11 +130,10 @@ function App() {
           path="/countries"
           element={
             <CountriesPage
-              // isModalOpen={isModalOpen}
-              // setIsModalOpen={setIsModalOpen}
+              isModalOpen={isHelpModalOpen}
+              isHelpModalOpen={isHelpModalOpen}
+              setIsHelpModalOpen={setIsHelpModalOpen}
               countries={countries}
-              // handleHowToPlayClick={handleHowToPlayClick}
-              // handleCloseModal={handleCloseModal}
             />
           }
         />
