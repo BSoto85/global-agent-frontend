@@ -34,7 +34,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
   const [userStats, setUserStats] = useState(null);
-  // const [isLoading, setIsLoading] = useState(true);
   const [countries, setCountries] = useState([]);
 
 	useEffect(() => {
