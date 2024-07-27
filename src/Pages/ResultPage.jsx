@@ -30,7 +30,7 @@ const ResultsPage = ({ userStats, user, userProfile }) => {
     }
 
     try {
-      const response = await fetch(`${URL}/api/stats/${userProfile.uid}`, {
+      const response = await fetch(`${URL}/api/stats/${userProfile.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
