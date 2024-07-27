@@ -22,7 +22,7 @@ const Help = ({ isHelpModalOpen, handleHelpModal }) => {
             'em, detective!
           </li>
         </ul>
-        <button onClick={handleHelpModal} className="close-button">
+        <button onClick={handleHelpModal} className="how-close-button">
           X
         </button>
       </div>
