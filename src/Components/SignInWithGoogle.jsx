@@ -8,7 +8,7 @@ import { fetchUser } from "../helpers/fetchUser";
 
 import googleBadge from "../assets/google.png";
 
-async function handleGoogleSignIn() {
+async function handleGoogleSignIn(setUser) {
   const provider = new GoogleAuthProvider()
   try {
     //sign into Firebase
@@ -18,13 +18,15 @@ async function handleGoogleSignIn() {
     localStorage.setItem('token', token)
 
     // Check if user exists in your backend
+    console.log(user)
     const foundUser = await fetchUser(user, token)
     if (!foundUser.uid) {
+      let photoURL = ""
       // User does not exist in backend, create the user
-      const { photoURL, uid } = user
-      await register(user, photoURL, uid)
+      const newUser = await register(user, photoURL)
+      // console.log(newUser)
+      await setUser({ uid: newUser.uid });
     }
-
     // return key/value to use for the navigate in the googleLogin function below
     return { navigateTo: `/profile/${user.uid}}` }
   } catch (error) {
@@ -33,12 +35,12 @@ async function handleGoogleSignIn() {
   }
 }
 
-function SignInWithGoogle() {
+function SignInWithGoogle({setUser}) {
 	const navigate = useNavigate();
 
 	const googleLogin = async () => {
 		try {
-			const result = await handleGoogleSignIn();
+			const result = await handleGoogleSignIn(setUser);
 			navigate(result.navigateTo);
 		} catch (error) {
 			toast.error(error.message, {

@@ -1,6 +1,6 @@
 const URL = import.meta.env.VITE_BASE_URL
 
-export const register = async (user, photoURL, uid) => {
+export const register = async (user, photoURL) => {
   const options = {
     method: 'POST',
     headers: {
@@ -8,7 +8,7 @@ export const register = async (user, photoURL, uid) => {
     },
     // every field that is in the backend query should be here as well
     body: JSON.stringify({
-      uid: uid,
+      uid: user.uid,
       first_name: user.displayName || user.first_name,
       last_name: user.last_name || '',
       email: user.email,

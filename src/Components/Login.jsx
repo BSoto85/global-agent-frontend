@@ -43,6 +43,7 @@ function Login({setUser}) {
       // when you navigate to profile, you will see a fetch for the user.
       const userData = await getUserData()
       await setUser(userData)
+	  console.log(userData)
       navigate(`/profile/${userData.uid}`);
       
     } catch (error) {
@@ -99,7 +100,7 @@ function Login({setUser}) {
 				</div>
 			</form>
 
-			<SignInWithGoogle />
+			<SignInWithGoogle setUser={setUser}/>
 		</div>
 	);
 }

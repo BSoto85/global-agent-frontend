@@ -18,6 +18,7 @@ const ProfilePage = ({ stats, userProfile, setUserProfile, setUserStats, user })
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
+  console.log("USER STATE ON PROFILE", user)
   async function handleLogout() {
     try {
       const logout = async () => {
