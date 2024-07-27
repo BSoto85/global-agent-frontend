@@ -13,7 +13,13 @@ import {
 import "../CSS/Profile.css";
 const URL = import.meta.env.VITE_BASE_URL;
 
-const ProfilePage = ({ stats, userProfile, setUserProfile, setUserStats, user }) => {
+const ProfilePage = ({
+  stats,
+  userProfile,
+  setUserProfile,
+  setUserStats,
+  user,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
@@ -24,7 +30,7 @@ const ProfilePage = ({ stats, userProfile, setUserProfile, setUserStats, user })
         try {
           // Firebase logout
           await auth.signOut();
-          localStorage.removeItem('token');
+          localStorage.removeItem("token");
           return true;
         } catch (error) {
           console.log(error);
@@ -35,16 +41,16 @@ const ProfilePage = ({ stats, userProfile, setUserProfile, setUserStats, user })
       if (loggedOut === true) {
         setUserProfile(null);
         setUserStats(null);
-        navigate('/');
-        toast.success('User logged out successfully!', {
-          position: 'top-center',
+        navigate("/");
+        toast.success("User logged out successfully!", {
+          position: "top-center",
         });
       }
     } catch (error) {
       toast.error(error.message, {
-        position: 'bottom-center',
+        position: "bottom-center",
       });
-      console.error('Error logging out:', error.message);
+      console.error("Error logging out:", error.message);
     }
   }
 
@@ -75,7 +81,10 @@ const ProfilePage = ({ stats, userProfile, setUserProfile, setUserStats, user })
     if (!stats) return 0;
     const userRank = getRank(stats.xp);
     const currentRankIndex = ranks.findIndex((rank) => rank.name === userRank);
-    const nextRank = currentRankIndex + 1 < ranks.length ? ranks[currentRankIndex + 1] : ranks[currentRankIndex];
+    const nextRank =
+      currentRankIndex + 1 < ranks.length
+        ? ranks[currentRankIndex + 1]
+        : ranks[currentRankIndex];
     const nextBadgeXP = nextRank.minXP;
     const previousRankXP = ranks[currentRankIndex]?.minXP || 0;
     return ((stats.xp - previousRankXP) / (nextBadgeXP - previousRankXP)) * 100;
@@ -94,11 +103,14 @@ const ProfilePage = ({ stats, userProfile, setUserProfile, setUserStats, user })
         // console.log("profileData", profileData);
         setUserProfile(profileData);
 
-        const statsResponse = await fetch(`${URL}/api/stats/${profileData.id}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        const statsResponse = await fetch(
+          `${URL}/api/stats/${profileData.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         const statsData = await statsResponse.json();
         setUserStats(statsData);
         setIsLoading(false);
@@ -117,7 +129,10 @@ const ProfilePage = ({ stats, userProfile, setUserProfile, setUserStats, user })
 
   const userRank = getRank(stats.xp);
   const currentRankIndex = ranks.findIndex((rank) => rank.name === userRank);
-  const nextRank = currentRankIndex + 1 < ranks.length ? ranks[currentRankIndex + 1] : ranks[currentRankIndex];
+  const nextRank =
+    currentRankIndex + 1 < ranks.length
+      ? ranks[currentRankIndex + 1]
+      : ranks[currentRankIndex];
   const nextBadgeXP = nextRank.minXP;
   const previousRankXP = ranks[currentRankIndex]?.minXP || 0;
   const xpNeededForNextBadge = nextBadgeXP - stats.xp;
@@ -154,7 +169,14 @@ const ProfilePage = ({ stats, userProfile, setUserProfile, setUserStats, user })
       </div>
       <div className="profile-header">
         <div className="profile-picture">
-          <img src={userProfile.photo} alt="Profile" />
+          <img
+            src={
+              userProfile.photo
+                ? userProfile.photo
+                : "https://res.cloudinary.com/dnqfg86zq/image/upload/t_Fill300x300/v1722043800/jfqgd8tngquhcbkphbf2.jpg"
+            }
+            alt="Profile"
+          />
         </div>
         <div className="profile-details">
           <h2>
