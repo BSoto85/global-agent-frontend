@@ -220,7 +220,7 @@ const ProfilePage = ({
               {stats.xp} / {nextBadgeXP} XP
             </p>
           </div>
-          <p className="stat">
+          <p className="points-away">
             You are only {xpNeededForNextBadge} points away from earning your
             next badge!
           </p>

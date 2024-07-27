@@ -210,7 +210,19 @@
   gap: 10px;
 }
 
+.rank-container h2 {
+  color: #ffc121;
+}
+
 @media (min-width: 917px) {
+  .profile-details h2 {
+    font-size: 20px;
+  }
+
+  .profile-details p {
+    font-size: 16px;
+  }
+
   .header-actions {
     margin-bottom: 5%;
   }
@@ -220,7 +232,7 @@
   }
   .stat h3 {
     margin-top: 0%;
-    font-size: 13px;
+    font-size: 15px;
   }
   .new-investigation {
     font-size: 15px;
@@ -240,6 +252,10 @@
     padding-top: 3%;
     padding-bottom: 3%;
   }
+
+  .rank-container p {
+    font-size: 16px;
+  }
   .rank-container h2 {
     margin-left: 0px;
     margin-bottom: 15px;
@@ -258,5 +274,9 @@
 
   .header-actions {
     margin-top: 2%;
+  }
+
+  .points-away {
+    font-size: 16px;
   }
 }
