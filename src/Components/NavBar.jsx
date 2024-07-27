@@ -41,7 +41,7 @@ const Header = ({ user }) => {
         </Link>
         <section className="section1">
           <Link to="/countries">
-            <span>Map</span>
+            <span>Investigate</span>
           </Link>
           <Link to="/leaderboard">
             <span>Leaderboard</span>
@@ -111,7 +111,7 @@ const Header = ({ user }) => {
                 className="nav-link"
                 onClick={toggleSidebar}
               >
-                Map
+                Investigate
               </Link>
             </li>
             <li
