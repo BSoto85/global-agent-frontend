@@ -72,6 +72,19 @@
   /* background-color: #253759; */
 }
 
+.alert-modal-content {
+  background: #253759;
+  padding: 20px 30px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 40%;
+  text-align: left;
+  position: relative;
+  margin: 20px;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
 .evidence-button-container {
   display: flex;
   align-items: center;

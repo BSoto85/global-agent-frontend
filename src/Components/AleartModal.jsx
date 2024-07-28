@@ -8,8 +8,8 @@ const AleartModal = ({ isOpen, onClose, countryId, caseFile }) => {
 
   return (
     <div className="modal-overlay">
-      <div className="modal-content">
-        <h2>Read the Article?</h2>
+      <div className="alert-modal-content">
+        <h2>Read the Case File?</h2>
         <ul>
           <li>Have you reviewed the details of the case?</li>
           <li>
