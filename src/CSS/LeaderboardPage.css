@@ -22,7 +22,7 @@
 
 .underlinenames {
   text-decoration: underline;
-  color: #c0d9d9;
+  color: white;
 }
 
 table {
@@ -45,7 +45,7 @@ table {
 th,
 td {
   padding: 8px;
-  text-align: left;
+  text-align: center;
   font-size: 18px;
 }
 
