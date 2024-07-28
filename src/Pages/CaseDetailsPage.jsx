@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import "../CSS/CaseDetails.css";
-// import Navbar from "../Components/NavBar";
 import AleartModal from "../Components/AleartModal";
 const URL = import.meta.env.VITE_BASE_URL;
 
@@ -81,7 +80,6 @@ const CaseDetailsPage = ({ translation }) => {
           </button>
         </div>
       </div>
-      {/* <Navbar /> */}
       <AleartModal
         isOpen={isAleartModalOpen}
         onClose={handleCloseAleartModal}

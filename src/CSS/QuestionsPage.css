@@ -48,10 +48,11 @@
 }
 
 .answer-container {
-  display: grid;
-  grid-template-columns: 1fr 5fr;
+  display: flex;
+  grid-template-columns: 1fr 1fr;
   height: fit-content;
   margin-bottom: 10px;
+  /* border: 4px solid green; */
 }
 
 .answer-container section {
@@ -62,6 +63,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* border: 4px solid red; */
+  max-width: 100px;
+  margin-right: 10px;
 }
 
 .QuestionsPage button {
@@ -103,5 +107,13 @@ button:hover {
 @media (min-width: 917px) {
   .QuestionsPage {
     margin-top: 2%;
+  }
+
+  .answer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: fit-content;
+    margin-bottom: 10px;
+    /* border: 4px solid green; */
   }
 }

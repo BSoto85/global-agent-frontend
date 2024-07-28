@@ -98,15 +98,6 @@ const QuestionsPage = ({ user }) => {
         <form onSubmit={handleSubmit}>
           {currentQuestion.answers.map((answer, index) => (
             <div className="answer-container">
-              <section className="radio">
-                <input
-                  type="radio"
-                  name="answer"
-                  value={answer}
-                  checked={selectedAnswer === answer}
-                  onChange={(e) => setSelectedAnswer(e.target.value)}
-                />
-              </section>
               <section className="label">
                 <label
                   key={index}
@@ -114,6 +105,16 @@ const QuestionsPage = ({ user }) => {
                     selectedAnswer === answer ? "selected" : ""
                   }`}
                 >
+                  <section className="radio">
+                    <input
+                      type="radio"
+                      name="answer"
+                      id=""
+                      value={answer}
+                      checked={selectedAnswer === answer}
+                      onChange={(e) => setSelectedAnswer(e.target.value)}
+                    />
+                  </section>
                   {answer}
                 </label>
               </section>
