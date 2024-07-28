@@ -83,11 +83,11 @@ const ResultsPage = ({ userStats, user, userProfile }) => {
     <div className="ResultsPage">
       <h2>Case #{caseFileId}</h2>
       <div className="findings-border">
+        <h3>Questions Summary:</h3>
         <p>
           Findings: {score} / {totalQuestions}
         </p>
         <p>XP Earned: {calculateXPEarned()}</p>
-        <h3>Questions Summary:</h3>
         <div className="result-buttons">
           <Link
             to={`/countries/${countryId}/case_files/${caseFileId}/questions`}
@@ -97,20 +97,20 @@ const ResultsPage = ({ userStats, user, userProfile }) => {
             <button className="retry-button">Retry Quiz</button>
           </Link>
           <Link to="/countries">
-            <button>Start New Game</button>
+            <button className="retry-button">Start New Game</button>
           </Link>
         </div>
       </div>
       {userProfile !== null ? (
         <ProgressReport currentStats={currentStats} />
       ) : (
-        <div className="register-save">
+        <div className="findings-border">
           <p>Want to save your progress?</p>
           <Link to="/login">
-            <button>Login to Save Progress</button>
+            <button className="retry-button">Login and Save</button>
           </Link>
           <Link to="/register">
-            <button>Register and Save</button>
+            <button className="retry-button">Register and Save</button>
           </Link>
         </div>
       )}

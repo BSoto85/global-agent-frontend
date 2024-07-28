@@ -2,12 +2,12 @@
     text-align: center;
     padding: 10px;
     background-color: #c0d9d9;
-    min-height: 100vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-bottom: 100px;
+    padding-bottom: 120px;
   }
   .ResultsPage h2 {
     color: #253759;
@@ -15,14 +15,14 @@
   .findings-border {
     border: 2px solid #253759;
     border-radius: 10px;
-    padding: 20px;
-    background-color: #ffffff;
+    padding: 30px;
+    background-color: #b0babf;
     margin-bottom: 20px;
-    width: 80%;
+    width: 90%;
   }
   
   .findings-border p {
-    font-size: 18px;
+    font-size: 22px;
     margin: 10px 0;
   }
   
@@ -36,35 +36,42 @@
     text-decoration: none;
   }
   
-  /* .retry-button,
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #007BFF;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  } */
+  .retry-button {
+  padding: 10px 20px;
+	font-size: 1rem;
+	background-color: #253759;
+	color: #ffc121;
+	border: none;
+	border-radius: 5px;
+	width: 250px;
+	margin: 10px;
+	text-decoration: none;
+	cursor: pointer;
+	box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.1); /* Elevation */
+	transition: background-color 0.3s, transform 0.3s;
+	background-color: #253759;
+	box-shadow: 0 3px 0 #000000;
+	margin-top: 20px;
+  }
   
   .retry-button:hover,
   button:hover {
-    background-color: #0056b3;
+    background-color: #c0d9d9;
+    font-size: 10px;
   }
   
   .player-stats {
     border: 2px solid #253759;
     border-radius: 10px;
     padding: 20px;
-    background-color: #ffffff;
-    width: 80%;
+    background-color: #b0babf;
+    width: 90%;
   }
   
   .player-stats h2 {
     font-size: 22px;
     margin-bottom: 15px;
-    color: #b78c38;
+    color: #ffc121;
   }
   
   .player-stats h3 {
