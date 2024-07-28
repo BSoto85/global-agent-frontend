@@ -4,7 +4,7 @@
   text-align: center;
   padding-top: 30px;
   padding-bottom: 50px; /* Add padding at the bottom to accommodate the navbar */
-  background-color: #c0d9d9
+  background-color: #c0d9d9;
 }
 
 .CaseFilesPage h1 {
@@ -81,12 +81,27 @@
   margin-top: 5px;
 }
 
+.case-files-list a {
+  height: 350px;
+  width: 300px;
+  padding-top: 20px;
+}
+
 @media (min-width: 917px) {
   .case-files-list {
     flex-direction: row;
     justify-content: space-between;
     margin: 100px 60px;
-    
+  }
+
+  .CaseFilesPage {
+    margin: 0 auto;
+    max-width: 80%;
+  }
+
+  .case-files-list a {
+    height: 330px;
+    /* width: 300px; */
   }
 
   .CaseFilesPage h1 {
@@ -107,5 +122,4 @@
     margin-bottom: 10px;
     margin-top: 5px;
   }
-
 }
