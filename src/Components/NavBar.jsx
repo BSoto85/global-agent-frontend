@@ -13,7 +13,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../CSS/NavBar.css";
 
-const Header = ({ userProfile }) => {
+const Header = ({ user }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const sidebarRef = useRef();
 
@@ -51,8 +51,8 @@ const Header = ({ userProfile }) => {
             <span>About Us</span>
           </Link>
           <div>
-            {userProfile !== null ? (
-              <Link to={`/profile/${userProfile.uid}`}>
+            {user !== null ? (
+              <Link to={`/profile/${user.uid}`}>
                 <FontAwesomeIcon icon={faPortrait} size="2xl" />
               </Link>
             ) : (
@@ -135,13 +135,13 @@ const Header = ({ userProfile }) => {
                 About Us
               </Link>
             </li>
-            {userProfile !== null ? (
+            {user !== null ? (
               <li
                 className="nav-item"
                 style={{ fontSize: "20px", margin: "20px 0" }}
               >
                 <Link
-                  to={`/profile/${userProfile.uid}`}
+                  to={`/profile/${user.uid}`}
                   className="nav-link"
                   onClick={toggleSidebar}
                 >
