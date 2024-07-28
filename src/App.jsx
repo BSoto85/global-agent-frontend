@@ -101,7 +101,7 @@ function App() {
 
   return (
     <div>
-      <Header userProfile={userProfile} />
+      <Header user={user} />
       <Routes
         style={{
           display: "flex",
