@@ -4,7 +4,7 @@ import ProgressReport from "../Components/ProgessReport";
 import "../CSS/ResultPage.css";
 const URL = import.meta.env.VITE_BASE_URL;
 
-const ResultsPage = ({ userStats, user, userProfile }) => {
+const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
   const { countryId, caseFileId } = useParams();
   const location = useLocation();
   const [currentStats, setCurrentStats] = useState(userStats);
@@ -24,17 +24,17 @@ const ResultsPage = ({ userStats, user, userProfile }) => {
   };
 
   const updatePlayerStats = async (updatedStats) => {
-    if (!userProfile || !userProfile.uid) {
-      console.error("User profile UID is missing.");
-      return;
-    }
+    // if (!userProfile || !userProfile.uid) {
+    //   console.error("User profile UID is missing.");
+    //   return;
+    // }
 
     try {
       const response = await fetch(`${URL}/api/stats/${userProfile.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${await user?.getIdToken()}`,
+          // Authorization: `Bearer ${await user?.getIdToken()}`,
         },
         body: JSON.stringify(updatedStats),
       });
@@ -45,7 +45,9 @@ const ResultsPage = ({ userStats, user, userProfile }) => {
       }
 
       const data = await response.json();
-      console.log("Updated stats:", data);
+      // console.log("USER STATS FROM RESULTS", userStats)
+      await setUserStats(data)
+      // console.log("USER STATS FROM RESULTS after SETTING STATE", userStats)
     } catch (error) {
       console.error("Error updating player stats:", error);
     }
@@ -58,7 +60,7 @@ const ResultsPage = ({ userStats, user, userProfile }) => {
       const newCurrentStats = {
         ...currentStats,
         xp: currentStats.xp + xpEarned,
-        games_played: currentStats.games_played + 1,
+        games_played: 1,
         questions_correct: currentStats.questions_correct + score,
         questions_wrong: currentStats.questions_wrong + (totalQuestions - score),
       };

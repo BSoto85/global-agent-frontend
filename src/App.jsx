@@ -48,43 +48,6 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  // useEffect(() => {
-  //   const fetchUserProfileAndStats = async () => {
-  //     if (user) {
-  //       try {
-  //         const profileResponse = await fetch(
-  //           `${URL}/api/profile/${user.uid}`,
-  //           {
-  //             headers: {
-  //               Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //             },
-  //           }
-  //         );
-  //         const profileData = await profileResponse.json();
-  //         console.log(profileData);
-  //         setUserProfile(profileData);
-
-  //         const statsResponse = await fetch(
-  //           `${URL}/api/stats/${profileData.id}`,
-  //           {
-  //             headers: {
-  //               Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //             },
-  //           }
-  //         );
-  //         const statsData = await statsResponse.json();
-  //         setUserStats(statsData);
-  //         setIsLoading(false);
-  //       } catch (error) {
-  //         console.error("Failed to fetch profile or stats:", error);
-  //         setIsLoading(false);
-  //       }
-  //     }
-  //   };
-
-  //   fetchUserProfileAndStats();
-  // }, [user]);
-
   useEffect(() => {
     const fetchCountries = async () => {
       try {
@@ -95,7 +58,6 @@ function App() {
         console.error("Error fetching countries:", error);
       }
     };
-
     fetchCountries();
   }, []);
 
@@ -162,6 +124,7 @@ function App() {
           element={
             <ResultsPage
               user={user}
+              setUserStats={setUserStats}
               userProfile={userProfile}
               userStats={userStats}
             />
