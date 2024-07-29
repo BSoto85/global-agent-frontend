@@ -110,7 +110,7 @@ body {
     margin: 20px 0 !important;
     font-size: 18px !important; /* Reduced font size */
   }
-  .navbar-container {
-    margin-bottom: 30px;
-  }
+  /* .navbar-container {
+    margin-bottom: 10px;
+  } */
 }
