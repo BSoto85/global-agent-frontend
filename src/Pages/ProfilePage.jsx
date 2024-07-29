@@ -216,9 +216,9 @@ const ProfilePage = ({
               className="xp-progress-fill"
               style={{ width: `${calculateXPProgress(stats)}%` }}
             ></div>
-            <p>
+            {/* <p>
               {stats.xp} / {nextBadgeXP} XP
-            </p>
+            </p> */}
           </div>
           <p className="points-away">
             You are only {xpNeededForNextBadge} points away from earning your

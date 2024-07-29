@@ -19,7 +19,7 @@
   align-items: center;
   gap: 10px;
   max-height: calc(140vh - 200px); /* Adjust the height */
-  overflow-y: auto; /* Allow vertical scrolling */
+  /* overflow-y: auto; Allow vertical scrolling */
   margin-bottom: 40px;
 }
 

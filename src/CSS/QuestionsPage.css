@@ -105,6 +105,7 @@ button:hover {
 @media (min-width: 917px) {
   .QuestionsPage {
     margin-top: 2%;
+    max-width: 40%;
   }
 
   .answer-container {
