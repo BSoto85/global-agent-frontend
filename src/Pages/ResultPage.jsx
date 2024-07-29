@@ -24,17 +24,13 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
   };
 
   const updatePlayerStats = async (updatedStats) => {
-    // if (!userProfile || !userProfile.uid) {
-    //   console.error("User profile UID is missing.");
-    //   return;
-    // }
-
     try {
+      const token = localStorage.getItem('token')
       const response = await fetch(`${URL}/api/stats/${userProfile.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          // Authorization: `Bearer ${await user?.getIdToken()}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(updatedStats),
       });
@@ -103,19 +99,7 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
           </Link>
         </div>
       </div>
-      {userProfile !== null ? (
-        <ProgressReport currentStats={currentStats} />
-      ) : (
-        <div className="findings-border">
-          <p>Want to save your progress?</p>
-          <Link to="/login">
-            <button className="retry-button">Login and Save</button>
-          </Link>
-          <Link to="/register">
-            <button className="retry-button">Register and Save</button>
-          </Link>
-        </div>
-      )}
+      {userProfile !== null && <ProgressReport currentStats={currentStats} user={user}/>}
     </div>
   );
 };

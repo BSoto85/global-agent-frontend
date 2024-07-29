@@ -73,7 +73,7 @@ function App() {
           marginTop: 100,
         }}
       >
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage user={user}/>} />
         <Route path="/test" element={user ? <Test /> : <Login />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<SignUpView />} />

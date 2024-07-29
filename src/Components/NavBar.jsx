@@ -41,9 +41,18 @@ const Header = ({ user }) => {
           <img className="logo" src={globalAgent} alt="Global Agent Logo" />
         </Link>
         <section className="section1">
-          <Link to="/countries">
+          {/* <Link to="/countries">
             <span>Investigate</span>
-          </Link>
+          </Link> */}
+          {user !== null ? (
+              <Link to={`/countries`}>
+                <span>Investigate</span>
+              </Link>
+            ) : (
+              <Link to={`/login`}>
+                <span>Investigate</span>
+              </Link>
+            )}
           <Link to="/leaderboard">
             <span>Leaderboard</span>
           </Link>
@@ -103,7 +112,7 @@ const Header = ({ user }) => {
                 Home
               </Link>
             </li>
-            <li
+            {/* <li
               className="nav-item"
               style={{ fontSize: "20px", margin: "20px 0" }}
             >
@@ -114,7 +123,37 @@ const Header = ({ user }) => {
               >
                 Investigate
               </Link>
-            </li>
+            </li> */}
+
+            {user !== null ? (
+              <li
+                className="nav-item"
+                style={{ fontSize: "20px", margin: "20px 0" }}
+              >
+                <Link
+                  to={`/countries`}
+                  className="nav-link"
+                  onClick={toggleSidebar}
+                >
+                  Investigate
+                </Link>
+              </li>
+            ) : (
+              <li
+                className="nav-item"
+                style={{ fontSize: "20px", margin: "20px 0" }}
+              >
+                <Link
+                  to={`/login`}
+                  className="nav-link"
+                  onClick={toggleSidebar}
+                >
+                  Investigate
+                </Link>
+              </li>
+            )}
+
+
             <li
               className="nav-item"
               style={{ fontSize: "20px", margin: "20px 0" }}
