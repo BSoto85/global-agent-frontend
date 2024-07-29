@@ -1,10 +1,10 @@
 import React from "react";
 import Home from "../Components/Home";
 
-const HomePage = () => {
+const HomePage = ({user}) => {
   return (
     <div>
-      <Home />
+      <Home user={user}/>
     </div>
   );
 };

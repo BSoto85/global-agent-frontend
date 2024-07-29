@@ -3,11 +3,15 @@ import { useNavigate, Link } from "react-router-dom";
 import "../CSS/Home.css";
 import detectiveImage from "../assets/vecteezy_detective-looking-through-case-board_22129502.svg";
 
-function Home() {
+function Home({user}) {
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
-    navigate("/countries");
+    if(user !== null){
+      navigate("/countries")
+    } else {
+      navigate("/login")
+    }
   };
   return (
     <div className="App">
