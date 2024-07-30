@@ -20,7 +20,11 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
   }, [userStats]);
 
   const calculateXPEarned = () => {
-    return score * 25;
+    if(score === 4){
+      return 125
+    } else {
+      return score * 24
+    }
   };
 
   const updatePlayerStats = async (updatedStats) => {
@@ -81,11 +85,17 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
     <div className="ResultsPage">
       <h2>Case #{caseFileId}</h2>
       <div className="findings-border">
-        <h3>Questions Summary:</h3>
+        <h3>Results:</h3>
         <p>
-          Findings: {score} / {totalQuestions}
+          You got {score} out of 4 questions!
         </p>
-        <p>XP Earned: {calculateXPEarned()}</p>
+        {score === 4 && (
+        <>
+          <p>Wow you got them all correct!</p>
+          <p>Bonus XP: 25</p>
+        </>
+      )}
+        <p>Total XP Earned: {calculateXPEarned()}</p>
         <div className="result-buttons">
           <Link
             to={`/countries/${countryId}/case_files/${caseFileId}/questions`}
