@@ -5,7 +5,7 @@ import calculateAge from "../helpers/calculateAge";
 import "../CSS/QuestionsPage.css";
 const URL = import.meta.env.VITE_BASE_URL;
 
-const QuestionsPage = ({ user }) => {
+const QuestionsPage = ({ user, userAge }) => {
   const { countryId, caseFileId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,8 +19,9 @@ const QuestionsPage = ({ user }) => {
     const fetchQuestions = async () => {
       try {
         console.log("Fetching questions for caseFileId:", caseFileId);
-        const age = user ? calculateAge(user.dob) : null;
-        const personAge = age >= 18 ? `older_questions` : `younger_questions`;
+        // const age = user ? calculateAge(user.dob) : null;
+        const personAge =
+          userAge >= 15 ? `older_questions` : `younger_questions`;
         console.log("User age:", age);
         const response = await fetch(`${URL}/api/${personAge}/${caseFileId}`);
         if (!response.ok) {
@@ -83,7 +84,7 @@ const QuestionsPage = ({ user }) => {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div>
+    <div className="page-container">
       <div className="QuestionsPage">
         <div className="progress-bar">
           <div

@@ -33,6 +33,7 @@ import "./App.css";
 function App() {
   const [user, setUser] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
+  const [userAge, setUserAge] = useState(null);
   const [userStats, setUserStats] = useState(null);
   const [countries, setCountries] = useState([]);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
@@ -48,6 +49,43 @@ function App() {
     return () => unsubscribe();
   }, []);
 
+  // useEffect(() => {
+  //   const fetchUserProfileAndStats = async () => {
+  //     if (user) {
+  //       try {
+  //         const profileResponse = await fetch(
+  //           `${URL}/api/profile/${user.uid}`,
+  //           {
+  //             headers: {
+  //               Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //             },
+  //           }
+  //         );
+  //         const profileData = await profileResponse.json();
+  //         console.log(profileData);
+  //         setUserProfile(profileData);
+
+  //         const statsResponse = await fetch(
+  //           `${URL}/api/stats/${profileData.id}`,
+  //           {
+  //             headers: {
+  //               Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //             },
+  //           }
+  //         );
+  //         const statsData = await statsResponse.json();
+  //         setUserStats(statsData);
+  //         setIsLoading(false);
+  //       } catch (error) {
+  //         console.error("Failed to fetch profile or stats:", error);
+  //         setIsLoading(false);
+  //       }
+  //     }
+  //   };
+
+  //   fetchUserProfileAndStats();
+  // }, [user]);
+
   useEffect(() => {
     const fetchCountries = async () => {
       try {
@@ -58,6 +96,7 @@ function App() {
         console.error("Error fetching countries:", error);
       }
     };
+
     fetchCountries();
   }, []);
 
@@ -73,7 +112,7 @@ function App() {
           marginTop: 100,
         }}
       >
-        <Route path="/" element={<HomePage user={user}/>} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/test" element={user ? <Test /> : <Login />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<SignUpView />} />
@@ -113,18 +152,23 @@ function App() {
 
         <Route
           path="/countries/:countryId/case_files/:caseFileId"
-          element={<CaseDetailsPage />}
+          element={
+            <CaseDetailsPage
+              user={user}
+              userAge={userAge}
+              setUserAge={setUserAge}
+            />
+          }
         />
         <Route
           path="/countries/:countryId/case_files/:caseFileId/questions"
-          element={<QuestionsPage user={user} />}
+          element={<QuestionsPage user={user} userAge={userAge} />}
         />
         <Route
           path="/countries/:countryId/case_files/:caseFileId/questions/results"
           element={
             <ResultsPage
               user={user}
-              setUserStats={setUserStats}
               userProfile={userProfile}
               userStats={userStats}
             />
