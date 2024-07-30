@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import "../CSS/CaseDetails.css";
 import AleartModal from "../Components/AleartModal";
+import calculateAge from "../helpers/calculateAge";
 const URL = import.meta.env.VITE_BASE_URL;
 
-const CaseDetailsPage = ({ translation }) => {
+const CaseDetailsPage = ({ translation, user, userAge, setUserAge }) => {
   const { userUid, countryId, caseFileId } = useParams();
   const [caseFile, setCaseFile] = useState(null);
   const [error, setError] = useState(null);
@@ -25,6 +26,8 @@ const CaseDetailsPage = ({ translation }) => {
         );
         if (caseFileData) {
           setCaseFile(caseFileData);
+          const age = user ? calculateAge(user.dob) : null;
+          setUserAge(age);
         } else {
           throw new Error("Case file not found");
         }
@@ -59,21 +62,53 @@ const CaseDetailsPage = ({ translation }) => {
     return <div>Loading...</div>;
   }
 
+  const {
+    article_content,
+    article_title,
+    photo_url,
+    summary_young,
+    summary_old,
+  } = caseFile;
+  const parsedYoungSummary = JSON.parse(summary_young);
+  const parsedOldSummary = JSON.parse(summary_old);
+  console.log("summary young", parsedYoungSummary.younger_summary[0]);
+  console.log("Age", userAge);
+
   return (
     <div>
       <div className="CaseDetailsPage">
         <div className="content">
           <section>
-            <h1>{caseFile.article_title}</h1>
+            <h1>{article_title}</h1>
             <div className="image-container">
-              <img src={caseFile.photo_url} alt="Case" className="case-image" />
+              <img src={photo_url} alt="Case" className="case-image" />
             </div>
             <p>
-              {showFullCase ? caseFile.article_content : caseFile.summary_young}
+              {showFullCase ? (
+                article_content
+              ) : userAge >= 15 ? (
+                <ul className="summary-list">
+                  {parsedOldSummary.older_summary.map(
+                    (sentence, i) =>
+                      parsedOldSummary.older_summary.length - 1 !== i && (
+                        <li>{sentence}</li>
+                      )
+                  )}
+                </ul>
+              ) : (
+                <ul className="summary-list">
+                  {parsedYoungSummary.younger_summary.map(
+                    (sentence, i) =>
+                      parsedYoungSummary.younger_summary.length - 1 !== i && (
+                        <li>{sentence}</li>
+                      )
+                  )}
+                </ul>
+              )}
             </p>
           </section>
           <button onClick={toggleView} className="toggle-button">
-            {showFullCase ? "View Summary" : "View Full Case File"}
+            {showFullCase ? "View Case Brief" : "View Full Case File"}
           </button>
           <button onClick={handleCollectEvidence} className="questions-button">
             Collect the Evidence
