@@ -4,7 +4,7 @@ import "../CSS/LeaderboardPage.css";
 import { useNavigate } from "react-router-dom";
 const URL = import.meta.env.VITE_BASE_URL;
 
-const LeaderboardPage = ({userProfile}) => {
+const LeaderboardPage = ({ userProfile }) => {
   const [usersXP, setUsersXP] = useState([]);
   const [xpToBeatNext, setXpToBeatNext] = useState(0);
   const [nextUser, setNextUser] = useState("");
@@ -19,26 +19,30 @@ const LeaderboardPage = ({userProfile}) => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
+        console.log("**DATA**", data);
 
-          // Sort users by XP in descending order
-          const sortedData = data.sort((a, b) => b.xp - a.xp);
+        // Sort users by XP in descending order
+        const sortedData = data.sort((a, b) => b.xp - a.xp);
 
-          setUsersXP(sortedData);
+        setUsersXP(sortedData);
 
-        if (userProfile !== null ){
-          console.log(userProfile, "*****")
+        if (userProfile !== null) {
+          console.log(userProfile, "*****");
 
-        const currentUserIndex = sortedData.findIndex(
-          (user) => user.id === userProfile.id
-        );
-
-        if (currentUserIndex !== -1) {
-          setXpToBeatNext(
-            data[currentUserIndex - 1].points - data[currentUserIndex].points
+          const currentUserIndex = sortedData.findIndex(
+            (user) =>
+              user.first_name === userProfile.first_name &&
+              user.last_name === userProfile.last_name
           );
-          setNextUser(data[currentUserIndex - 1].username);
+
+          if (currentUserIndex >= 0) {
+            setXpToBeatNext(
+              sortedData[currentUserIndex - 1].xp -
+                sortedData[currentUserIndex].xp
+            );
+            setNextUser(sortedData[currentUserIndex - 1].first_name);
+          }
         }
-      }
       } catch (error) {
         console.error("Error fetching users and XP:", error);
       }
@@ -47,8 +51,8 @@ const LeaderboardPage = ({userProfile}) => {
   }, [userProfile]);
 
   const handleClick = () => {
-    navigate("/login")
-  }
+    navigate("/login");
+  };
 
   return (
     <div className="leaderboard-container">
@@ -66,8 +70,14 @@ const LeaderboardPage = ({userProfile}) => {
           <tbody>
             {usersXP.map((user, index) => (
               <tr
-                key={user.id}
-                className={user.id === userProfile.id ? "current-user" : ""}
+                key={index}
+                className={
+                  userProfile !== null &&
+                  user.first_name === userProfile.first_name &&
+                  user.last_name === userProfile.last_name
+                    ? "current-user"
+                    : ""
+                }
               >
                 <td className="rankholder">{index + 1}</td>
                 <td className="nameholder">
@@ -80,13 +90,15 @@ const LeaderboardPage = ({userProfile}) => {
         </table>
       </div>
       <div className="investigation-info">
-        <p>
-          You're only {xpToBeatNext} XP away from beating @{nextUser}!
-        </p>
-        <button
-          className="buttonest"
-          onClick={handleClick} 
-        >
+        {userProfile && (
+          <p>
+            <span className="leaderboard-span">{userProfile.first_name}</span>,
+            you are only{" "}
+            <span className="leaderboard-span">{xpToBeatNext}</span> XP away
+            from beating <span className="leaderboard-span">{nextUser}</span>!
+          </p>
+        )}
+        <button className="buttonest" onClick={handleClick}>
           OPEN NEW INVESTIGATION
         </button>
       </div>

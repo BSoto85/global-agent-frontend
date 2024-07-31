@@ -62,13 +62,18 @@ tbody tr:nth-child(odd) {
 }
 
 .current-user {
-  background-color: #ee0c0c !important;
+  background-color: #ffc121 !important;
+}
+
+.current-user td {
+  color: black;
 }
 
 .investigation-info {
   margin-top: 16px;
   padding: 14px;
   background-color: #b0babf;
+  border: 2px solid black;
   border-radius: 18px;
   display: flex;
   flex-direction: column;
