@@ -21,8 +21,8 @@ const QuestionsPage = ({ user, userAge }) => {
         console.log("Fetching questions for caseFileId:", caseFileId);
         // const age = user ? calculateAge(user.dob) : null;
         const personAge =
-          userAge >= 15 ? `older_questions` : `younger_questions`;
-        console.log("User age:", age);
+          userAge >= 15 && userAge !== null ? `older_questions` : `younger_questions`;
+        // console.log("User age:", age);
         const response = await fetch(`${URL}/api/${personAge}/${caseFileId}`);
         if (!response.ok) {
           throw new Error("Failed to fetch questions");

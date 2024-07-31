@@ -23,7 +23,7 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
     if(score === 4){
       return 125
     } else {
-      return score * 24
+      return score * 25
     }
   };
 
@@ -47,7 +47,7 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
       const data = await response.json();
       // console.log("USER STATS FROM RESULTS", userStats)
       await setUserStats(data)
-      // console.log("USER STATS FROM RESULTS after SETTING STATE", userStats)
+      console.log("USER STATS FROM RESULTS after SETTING STATE", userStats)
     } catch (error) {
       console.error("Error updating player stats:", error);
     }
@@ -60,7 +60,7 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
       const newCurrentStats = {
         ...currentStats,
         xp: currentStats.xp + xpEarned,
-        games_played: 1,
+        games_played: currentStats.games_played + 1,
         questions_correct: currentStats.questions_correct + score,
         questions_wrong: currentStats.questions_wrong + (totalQuestions - score),
       };
