@@ -4,11 +4,11 @@ import "../CSS/LeaderboardPage.css";
 import { useNavigate } from "react-router-dom";
 const URL = import.meta.env.VITE_BASE_URL;
 
-const LeaderboardPage = () => {
+const LeaderboardPage = ({userProfile}) => {
   const [usersXP, setUsersXP] = useState([]);
   const [xpToBeatNext, setXpToBeatNext] = useState(0);
   const [nextUser, setNextUser] = useState("");
-  const currentUser = "";
+  // let currentUser = "";
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,23 +19,36 @@ const LeaderboardPage = () => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setUsersXP(data);
 
-        const currentUserIndex = data.findIndex(
-          (user) => user.username === currentUser
+          // Sort users by XP in descending order
+          const sortedData = data.sort((a, b) => b.xp - a.xp);
+
+          setUsersXP(sortedData);
+
+        if (userProfile !== null ){
+          console.log(userProfile, "*****")
+
+        const currentUserIndex = sortedData.findIndex(
+          (user) => user.id === userProfile.id
         );
-        if (currentUserIndex > 0) {
+
+        if (currentUserIndex !== -1) {
           setXpToBeatNext(
             data[currentUserIndex - 1].points - data[currentUserIndex].points
           );
           setNextUser(data[currentUserIndex - 1].username);
         }
+      }
       } catch (error) {
         console.error("Error fetching users and XP:", error);
       }
     };
     fetchUsersXP();
-  }, [currentUser]);
+  }, [userProfile]);
+
+  const handleClick = () => {
+    navigate("/login")
+  }
 
   return (
     <div className="leaderboard-container">
@@ -54,7 +67,7 @@ const LeaderboardPage = () => {
             {usersXP.map((user, index) => (
               <tr
                 key={user.id}
-                className={user.username === currentUser ? "current-user" : ""}
+                className={user.id === userProfile.id ? "current-user" : ""}
               >
                 <td className="rankholder">{index + 1}</td>
                 <td className="nameholder">
@@ -72,7 +85,7 @@ const LeaderboardPage = () => {
         </p>
         <button
           className="buttonest"
-          onClick={() => console.log("Open an Investigation!")}
+          onClick={handleClick} 
         >
           OPEN NEW INVESTIGATION
         </button>

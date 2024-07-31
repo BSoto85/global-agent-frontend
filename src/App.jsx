@@ -79,7 +79,7 @@ function App() {
         <Route path="/test" element={user ? <Test /> : <Login />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/register" element={<SignUpView />} />
-        <Route path="/leaderboard" element={<LeaderboardPage />} />
+        <Route path="/leaderboard" element={<LeaderboardPage userProfile={userProfile} />} />
         <Route
           path="/profile/:uid"
           element={

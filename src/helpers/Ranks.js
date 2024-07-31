@@ -14,5 +14,14 @@ const ranks = [
     }
     return 'Unranked';
   };
+
+  const getNextRankXP = (xp) => {
+    for (let i = 0; i < ranks.length; i++) {
+      if (xp < ranks[i].minXP) {
+        return ranks[i].minXP;
+      }
+    }
+    return ranks[ranks.length - 1].minXP; 
+  };
   
-  export { ranks, getRank };
+  export { ranks, getRank, getNextRankXP };
