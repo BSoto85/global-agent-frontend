@@ -40,3 +40,10 @@ h2 {
 .profile-icon-container a:hover {
   color: #ffc121;
 }
+
+@media (min-width: 917px) {
+  p,
+  button {
+    font-size: 20px;
+  }
+}

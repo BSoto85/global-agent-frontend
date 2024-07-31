@@ -52,10 +52,14 @@ const CountriesPage = ({
                 />
               </div>
             ))}
+            <button
+              onClick={handleSubmit}
+              className="submit-button country-select"
+            >
+              Investigate
+            </button>
           </div>
-          <button onClick={handleSubmit} className="submit-button">
-            OPEN NEW INVESTIGATION
-          </button>
+
           <div className="login-container" onClick={handleHelpModal}>
             <div className="login-button">How to Play</div>
           </div>
