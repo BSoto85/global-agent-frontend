@@ -12,6 +12,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../CSS/Profile.css";
 import Help from "../Components/Help";
+import { calculateXPProgress } from "../helpers/calculateXPProgress";
+
 const URL = import.meta.env.VITE_BASE_URL;
 
 const ProfilePage = ({
@@ -36,7 +38,9 @@ const formatDate = (dateString) => {
 };
 
   console.log("USER STATE ON PROFILE", user);
+
   console.log("USERPROFILE STATE ON PROFILE", userProfile)
+
   async function handleLogout() {
     try {
       const logout = async () => {
@@ -67,17 +71,29 @@ const formatDate = (dateString) => {
     }
   }
 
-  const calculateXPProgress = (stats) => {
-    if (!stats) return 0;
-    const userRank = getRank(stats.xp);
-    const currentRankIndex = ranks.findIndex((rank) => rank.name === userRank);
-    const nextRank =
-      currentRankIndex + 1 < ranks.length
-        ? ranks[currentRankIndex + 1]
-        : ranks[currentRankIndex];
-    const nextBadgeXP = nextRank.minXP;
-    const previousRankXP = ranks[currentRankIndex]?.minXP || 0;
-    return ((stats.xp - previousRankXP) / (nextBadgeXP - previousRankXP)) * 100;
+
+  const handleEditProfile = async (updatedUser) => {
+    try {
+      const response = await fetch(`${URL}/api/profile/${user.uid}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(updatedUser),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update profile");
+      }
+
+      const updatedProfile = await response.json();
+      setUserProfile(updatedProfile);
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("Failed to update profile:", error);
+    }
+
   };
 
   useEffect(() => {
@@ -199,9 +215,6 @@ const formatDate = (dateString) => {
               className="xp-progress-fill"
               style={{ width: `${calculateXPProgress(stats)}%` }}
             ></div>
-            {/* <p>
-              {stats.xp} / {nextBadgeXP} XP
-            </p> */}
           </div>
           <p className="points-away">
             You are only {xpNeededForNextBadge} points away from earning your
