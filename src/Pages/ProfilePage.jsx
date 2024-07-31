@@ -12,6 +12,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../CSS/Profile.css";
 import Help from "../Components/Help";
+import { calculateXPProgress } from "../helpers/calculateXPProgress";
+
 const URL = import.meta.env.VITE_BASE_URL;
 
 const ProfilePage = ({
@@ -29,6 +31,7 @@ const ProfilePage = ({
   const navigate = useNavigate();
 
   console.log("USER STATE ON PROFILE", user);
+
   async function handleLogout() {
     try {
       const logout = async () => {
@@ -82,19 +85,6 @@ const ProfilePage = ({
     }
   };
 
-  const calculateXPProgress = (stats) => {
-    if (!stats) return 0;
-    const userRank = getRank(stats.xp);
-    const currentRankIndex = ranks.findIndex((rank) => rank.name === userRank);
-    const nextRank =
-      currentRankIndex + 1 < ranks.length
-        ? ranks[currentRankIndex + 1]
-        : ranks[currentRankIndex];
-    const nextBadgeXP = nextRank.minXP;
-    const previousRankXP = ranks[currentRankIndex]?.minXP || 0;
-    return ((stats.xp - previousRankXP) / (nextBadgeXP - previousRankXP)) * 100;
-  };
-
   useEffect(() => {
     const fetchUserProfileAndStats = async () => {
       try {
@@ -103,9 +93,7 @@ const ProfilePage = ({
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         });
-        // console.log("profileResponse", profileResponse);
         const profileData = await profileResponse.json();
-        // console.log("profileData", profileData);
         setUserProfile(profileData);
 
         const statsResponse = await fetch(
@@ -216,9 +204,6 @@ const ProfilePage = ({
               className="xp-progress-fill"
               style={{ width: `${calculateXPProgress(stats)}%` }}
             ></div>
-            {/* <p>
-              {stats.xp} / {nextBadgeXP} XP
-            </p> */}
           </div>
           <p className="points-away">
             You are only {xpNeededForNextBadge} points away from earning your
