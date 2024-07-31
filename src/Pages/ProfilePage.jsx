@@ -217,8 +217,7 @@ const formatDate = (dateString) => {
             ></div>
           </div>
           <p className="points-away">
-            You are only {xpNeededForNextBadge} points away from earning your
-            next badge!
+            Earn {xpNeededForNextBadge} more xp to level up!
           </p>
         </div>
       </div>
