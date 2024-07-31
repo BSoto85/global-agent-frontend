@@ -209,13 +209,13 @@ const formatDate = (dateString) => {
       <div className="profile-badges">
         <div className="rank-container">
           <h2>{userRank}</h2>
-          <p className="user-xp">{stats.xp} XP</p>
           <div className="xp-progress-bar">
             <div
               className="xp-progress-fill"
               style={{ width: `${calculateXPProgress(stats)}%` }}
             ></div>
           </div>
+          <p className="user-xp">{stats.xp}/{nextBadgeXP} XP</p>
           <p className="points-away">
             You are only {xpNeededForNextBadge} points away from earning your
             next badge!
