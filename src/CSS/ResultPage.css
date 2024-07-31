@@ -64,8 +64,9 @@
   border: 2px solid #253759;
   border-radius: 10px;
   padding: 20px;
-  background-color: #b0babf;
+  background-color: #253759;
   width: 90%;
+  color: #fff;
 }
 
 .player-stats h2 {
@@ -82,4 +83,9 @@
 .player-stats p {
   font-size: 16px;
   margin: 5px 0;
+}
+
+.gray {
+  background-color: #b0babf;
+  color: black;
 }
