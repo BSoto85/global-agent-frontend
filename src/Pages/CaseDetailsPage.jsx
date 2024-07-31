@@ -83,6 +83,9 @@ const CaseDetailsPage = ({ translation, user, userAge, setUserAge }) => {
             <div className="image-container">
               <img src={photo_url} alt="Case" className="case-image" />
             </div>
+            <h2 className="read-case">
+              {showFullCase ? "Read Full Case File:" : "Read Case Brief:"}
+            </h2>
             <p>
               {showFullCase ? (
                 article_content

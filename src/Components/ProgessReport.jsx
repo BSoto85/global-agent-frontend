@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { calculateXPProgress } from "../helpers/calculateXPProgress";
-import {  getRank } from '../helpers/Ranks';
+import { getRank } from "../helpers/Ranks";
 
 const ProgressReport = ({ currentStats, user }) => {
   const navigate = useNavigate();
 
   const goToProfile = () => {
-    navigate(`/profile/${user.uid}`)
+    navigate(`/profile/${user.uid}`);
   };
 
   const userRank = getRank(currentStats.xp);
@@ -21,15 +21,18 @@ const ProgressReport = ({ currentStats, user }) => {
           style={{ width: `${calculateXPProgress(currentStats)}%` }}
         ></div>
       </div>
-      <h3>Rank: {userRank}</h3>
+      <h3>
+        Rank: <span className="rank">{userRank}</span>
+      </h3>
       <p>XP: {currentStats.xp}</p>
       <p>Games Played: {currentStats.games_played}</p>
       <p>Questions Correct: {currentStats.questions_correct}</p>
       <p>Questions Wrong: {currentStats.questions_wrong}</p>
-      <button className="retry-button gray" onClick={goToProfile}>Go To Profile</button>
+      <button className="retry-button gray" onClick={goToProfile}>
+        Go To Profile
+      </button>
     </div>
   );
 };
 
 export default ProgressReport;
-
