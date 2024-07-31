@@ -19,15 +19,9 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
     }
   }, [userStats]);
 
-  const calculateXPEarned = () => {
-    if(score === 4){
-      return 125
-    } else {
-      return score * 25
-    }
-  };
+  const calculateXPEarned = () => (score === 4 ? 125 : score * 25)
 
-  const updatePlayerStats = async (updatedStats) => {
+  const updatePlayerStats = async (stats) => {
     try {
       const token = localStorage.getItem('token')
       const response = await fetch(`${URL}/api/stats/${userProfile.id}`, {
@@ -36,8 +30,9 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(updatedStats),
+        body: JSON.stringify(stats),
       });
+      console.log("response from UPDATE PLAYER STATS", response)
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -45,7 +40,8 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
       }
 
       const data = await response.json();
-      // console.log("USER STATS FROM RESULTS", userStats)
+      console.log("data", data)
+      console.log("USER STATS FROM RESULTS", userStats)
       await setUserStats(data)
       console.log("USER STATS FROM RESULTS after SETTING STATE", userStats)
     } catch (error) {
@@ -109,7 +105,7 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
           </Link>
         </div>
       </div>
-      {userProfile !== null && <ProgressReport currentStats={currentStats} user={user}/>}
+      {<ProgressReport currentStats={currentStats} user={user}/>}
     </div>
   );
 };
