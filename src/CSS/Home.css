@@ -106,4 +106,7 @@ section {
   .border-container p {
     font-size: 13px;
   }
+  .main-content{
+    margin-left: 100px;
+  }
 }

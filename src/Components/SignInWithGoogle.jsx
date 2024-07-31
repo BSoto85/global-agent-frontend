@@ -21,9 +21,9 @@ async function handleGoogleSignIn(setUser) {
     console.log(user)
     const foundUser = await fetchUser(user, token)
     if (!foundUser.uid) {
-      let photoURL = ""
+      // let photoURL = ""
       // User does not exist in backend, create the user
-      const newUser = await register(user, photoURL)
+      const newUser = await register(user)
       // console.log(newUser)
       await setUser({ uid: newUser.uid });
     }
