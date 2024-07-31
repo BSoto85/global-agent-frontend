@@ -23,14 +23,23 @@ const ProfilePage = ({
   setUserStats,
   user,
   isHelpModalOpen,
-  setIsHelpModalOpen,
   handleHelpModal,
 }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
+  // Utility function to format date
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const dateWithoutTime = date.toISOString().split('T')[0];
+  const [year, month, day] = dateWithoutTime.split("-")
+  return `${month}/${day}/${year}`
+};
+
   console.log("USER STATE ON PROFILE", user);
+
+  console.log("USERPROFILE STATE ON PROFILE", userProfile)
 
   async function handleLogout() {
     try {
@@ -62,6 +71,7 @@ const ProfilePage = ({
     }
   }
 
+
   const handleEditProfile = async (updatedUser) => {
     try {
       const response = await fetch(`${URL}/api/profile/${user.uid}`, {
@@ -83,6 +93,7 @@ const ProfilePage = ({
     } catch (error) {
       console.error("Failed to update profile:", error);
     }
+
   };
 
   useEffect(() => {
@@ -180,7 +191,7 @@ const ProfilePage = ({
             {userProfile.first_name} {userProfile.last_name}
             <button
               className="edit-profile-icon-2"
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => setIsProfileModalOpen(true)}
               style={{
                 border: "none",
                 background: "none",
@@ -192,7 +203,7 @@ const ProfilePage = ({
             </button>
           </h2>
           <p>{userProfile.email}</p>
-          <p>DOB: {new Date(userProfile.dob).toLocaleDateString()}</p>
+          <p>DOB: {formatDate(userProfile.dob)}</p>
         </div>
       </div>
       <div className="profile-badges">
@@ -229,10 +240,11 @@ const ProfilePage = ({
         <button className="new-investigation">Open New Investigation</button>
       </Link>
       <EditProfileModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        user={userProfile}
-        updateUser={handleEditProfile}
+      user={user}
+        setUserProfile={setUserProfile}
+        userProfile={userProfile}
+        isProfileModalOpen={isProfileModalOpen}
+        setIsProfileModalOpen={setIsProfileModalOpen}
       />
     </div>
   );
