@@ -159,7 +159,7 @@ function Register() {
           </button>
         </div>
       </form>
-      <SignInWithGoogle />
+      {/* <SignInWithGoogle setUser={setUser} /> */}
     </div>
   );
 }
