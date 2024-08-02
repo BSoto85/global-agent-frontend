@@ -201,11 +201,15 @@
   gap: 10px;
 }
 
-.rank-container h2 {
+/* .rank-container h2 {
   color: #ffc121;
-}
+} */
 
 @media (min-width: 917px) {
+  .profile-page {
+    padding-top: 0;
+  }
+
   .rank-container {
     width: 100%;
     display: flex;
@@ -246,6 +250,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 200px;
   }
   .rank-container {
     padding-top: 3%;
@@ -260,7 +265,7 @@
     margin-bottom: 15px;
   }
   .xp-progress-bar {
-    margin: 20px;
+    /* margin: 20px; */
     width: 80%;
   }
   .profile-header {
@@ -278,5 +283,23 @@
 
   .points-away {
     font-size: 16px;
+    margin-top: 0;
+  }
+
+  .xp-bar-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .user-xp-container {
+    display: flex;
+    justify-content: end;
+    width: 90%;
+  }
+
+  .user-xp-container p {
+    font-size: 14px;
+    color: #ffc121;
   }
 }

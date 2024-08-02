@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import Navbar from "../Components/NavBar";
 import "../CSS/LeaderboardPage.css";
 import { useNavigate } from "react-router-dom";
 const URL = import.meta.env.VITE_BASE_URL;
@@ -51,7 +50,7 @@ const LeaderboardPage = ({ userProfile }) => {
   }, [userProfile]);
 
   const handleClick = () => {
-    userProfile === null ? navigate("/login") : navigate("/countries")
+    userProfile === null ? navigate("/login") : navigate("/countries");
   };
 
   return (
@@ -82,7 +81,8 @@ const LeaderboardPage = ({ userProfile }) => {
               >
                 <td className="rankholder">{index + 1}</td>
                 <td className="nameholder">
-                  {user.first_name} {user.last_name ? user.last_name[0] + "." : ""}
+                  {user.first_name}{" "}
+                  {user.last_name ? user.last_name[0] + "." : ""}
                 </td>
                 <td className="xpholder">{user.xp}</td>
               </tr>
