@@ -16,24 +16,15 @@ const CountriesPage = ({
   // Function to handle click event on a country
   const handleCountryClick = (countryId) => {
     setSelectedCountryId(countryId);
+    navigate(`/countries/${countryId}/casefiles`);
   };
 
-  // Function to handle submit button click
-  const handleSubmit = () => {
-    if (selectedCountryId) {
-      navigate(`/countries/${selectedCountryId}/casefiles`);
-    } else {
-      alert("Please select a country to investigate.");
-    }
-  };
-
-  console.log(countries);
   return (
     <div className="CountriesPage">
       <main className="main-content">
         <section>
           <div className="countries-list">
-            <h1>Select A Country To Investigate</h1>
+            <h1>Where Should We Investigate Today?</h1>
             {countries.map((country, index) => (
               <div
                 key={index}
@@ -52,12 +43,6 @@ const CountriesPage = ({
                 />
               </div>
             ))}
-            <button
-              onClick={handleSubmit}
-              className="submit-button country-select"
-            >
-              Investigate
-            </button>
           </div>
 
           <div className="login-container" onClick={handleHelpModal}>

@@ -13,6 +13,7 @@
   transition: background-color 0.3s ease;
   border-radius: 10px;
   margin-top: 5px;
+  width: 90%;
 }
 
 .country-container.selected {
@@ -46,8 +47,8 @@
 
 .submit-button {
   background-color: #ffc121;
-  box-shadow: 0 3px 0 #032564;
-  font-size: 14px;
+  box-shadow: 0 3px 3px black;
+  font-size: 18px;
   width: 250px;
   margin-top: 40px;
 }
@@ -71,6 +72,15 @@
   display: flex;
   position: relative;
   top: 0px;
+}
+
+.login-button {
+  font-size: 18px;
+  background-color: #b0babf;
+  color: black;
+  border: 1px solid black;
+  width: 150px;
+  padding: 5px;
 }
 
 @media (min-width: 917px) {
