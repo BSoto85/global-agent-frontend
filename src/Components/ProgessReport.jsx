@@ -4,6 +4,7 @@ import { calculateXPProgress } from "../helpers/calculateXPProgress";
 import { getRank } from "../helpers/Ranks";
 
 const ProgressReport = ({ currentStats, user }) => {
+  console.log(currentStats)
   const navigate = useNavigate();
 
   const goToProfile = () => {

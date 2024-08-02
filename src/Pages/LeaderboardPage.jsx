@@ -51,13 +51,14 @@ const LeaderboardPage = ({ userProfile }) => {
   }, [userProfile]);
 
   const handleClick = () => {
-    navigate("/login");
+    userProfile === null ? navigate("/login") : navigate("/countries")
   };
 
   return (
     <div className="leaderboard-container">
       {/* <Navbar /> */}
-      <h1>LEADERBOARD</h1>
+      {/* 🥇🥈🥉 */}
+      <h1>🏆 LEADERBOARD 🏆</h1>
       <div className="leaderboard">
         <table>
           <thead>
@@ -81,7 +82,7 @@ const LeaderboardPage = ({ userProfile }) => {
               >
                 <td className="rankholder">{index + 1}</td>
                 <td className="nameholder">
-                  {user.first_name} {user.last_name[0]}
+                  {user.first_name} {user.last_name ? user.last_name[0] + "." : ""}
                 </td>
                 <td className="xpholder">{user.xp}</td>
               </tr>

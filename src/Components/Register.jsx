@@ -9,7 +9,7 @@ import {
 import { auth } from "../helpers/firebase";
 import { register } from "../helpers/register";
 import "../CSS/Register.css";
-import SignInWithGoogle from "./SignInWithGoogle";
+// import SignInWithGoogle from "./SignInWithGoogle";
 
 function Register() {
   const [newUser, setNewUser] = useState({
