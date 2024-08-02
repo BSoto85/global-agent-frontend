@@ -30,16 +30,16 @@ const ProfilePage = ({
   const navigate = useNavigate();
 
   // Utility function to format date
-const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  const dateWithoutTime = date.toISOString().split('T')[0];
-  const [year, month, day] = dateWithoutTime.split("-")
-  return `${month}/${day}/${year}`
-};
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const dateWithoutTime = date.toISOString().split("T")[0];
+    const [year, month, day] = dateWithoutTime.split("-");
+    return `${month}/${day}/${year}`;
+  };
 
   console.log("USER STATE ON PROFILE", user);
 
-  console.log("USERPROFILE STATE ON PROFILE", userProfile)
+  console.log("USERPROFILE STATE ON PROFILE", userProfile);
 
   async function handleLogout() {
     try {
@@ -71,7 +71,6 @@ const formatDate = (dateString) => {
     }
   }
 
-
   const handleEditProfile = async (updatedUser) => {
     try {
       const response = await fetch(`${URL}/api/profile/${user.uid}`, {
@@ -93,7 +92,6 @@ const formatDate = (dateString) => {
     } catch (error) {
       console.error("Failed to update profile:", error);
     }
-
   };
 
   useEffect(() => {
@@ -208,14 +206,22 @@ const formatDate = (dateString) => {
       </div>
       <div className="profile-badges">
         <div className="rank-container">
-          <h2>{userRank}</h2>
-          <div className="xp-progress-bar">
-            <div
-              className="xp-progress-fill"
-              style={{ width: `${calculateXPProgress(stats)}%` }}
-            ></div>
+          <h2>
+            Rank: <span className="rank">{userRank}</span>
+          </h2>
+          <div className="xp-bar-container">
+            <div className="xp-progress-bar">
+              <div
+                className="xp-progress-fill"
+                style={{ width: `${calculateXPProgress(stats)}%` }}
+              ></div>
+            </div>
+            <div className="user-xp-container">
+              <p className="user-xp">
+                {stats.xp}/{nextBadgeXP} XP
+              </p>
+            </div>
           </div>
-          <p className="user-xp">{stats.xp}/{nextBadgeXP} XP</p>
           <p className="points-away">
             Earn {xpNeededForNextBadge} more xp to level up!
           </p>
@@ -239,7 +245,7 @@ const formatDate = (dateString) => {
         <button className="new-investigation">Open New Investigation</button>
       </Link>
       <EditProfileModal
-      user={user}
+        user={user}
         setUserProfile={setUserProfile}
         userProfile={userProfile}
         isProfileModalOpen={isProfileModalOpen}
