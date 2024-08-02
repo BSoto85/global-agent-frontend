@@ -3,7 +3,7 @@
 .CaseFilesPage {
   text-align: center;
   padding-top: 30px;
-  padding-bottom: 50px; /* Add padding at the bottom to accommodate the navbar */
+  padding-bottom: 50px; 
   background-color: #c0d9d9;
 }
 
@@ -38,8 +38,8 @@
   border-radius: 10px;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   background-color: #253759;
-  height: 280px; /* Adjust the height */
-  width: 260px; /* Ensure a consistent width */
+  height: 280px; 
+  width: 260px; 
 }
 
 .case-file-item:hover {
