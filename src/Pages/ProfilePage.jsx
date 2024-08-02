@@ -31,7 +31,7 @@ const ProfilePage = ({
 
   // Utility function to format date
   const formatDate = (dateString) => {
-    const date = new Date(dateString);
+    const date = dateString === null ? new Date() : new Date(dateString);
     const dateWithoutTime = date.toISOString().split("T")[0];
     const [year, month, day] = dateWithoutTime.split("-");
     return `${month}/${day}/${year}`;

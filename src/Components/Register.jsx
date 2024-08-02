@@ -113,6 +113,7 @@ function Register() {
               placeholder="Last name"
               value={newUser.last_name}
               onChange={handleChange}
+              required
             />
           </label>
 
