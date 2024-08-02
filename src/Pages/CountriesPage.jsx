@@ -55,7 +55,7 @@ const CountriesPage = ({
             ))}
           </div>
           <div className="login-container" onClick={handleHelpModal}>
-            <div className="login-button">How to Play</div>
+            <div className="login-button how-to-play">How to Play</div>
           </div>
         </section>
       </main>

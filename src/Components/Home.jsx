@@ -27,7 +27,7 @@ function Home({ user }) {
             </p>
           </div>
           <div className="mission-button-container" onClick={handleLoginClick}>
-            <div className="login-button">YOUR MISSION AWAITS!</div>
+            <div className="login-button">START INVESTIGATING!</div>
           </div>
           <div className="image-container">
             <img
