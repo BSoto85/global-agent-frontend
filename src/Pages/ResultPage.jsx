@@ -80,12 +80,12 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
         {score === 4 && (
           <>
         <p>Wow you got them all correct!</p>
-        
         <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif" alt="" />
         <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif" alt="" />
         <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif" alt="" />
         <img className="confetti-image" src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif" alt="" />
         <img  className="confetti-image" src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif" alt="" />
+          <p>Great detective work!</p>
           <p>Bonus XP: 25</p>
         </>
       )}
