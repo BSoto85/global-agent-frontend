@@ -80,6 +80,7 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
         {score === 4 && (
           <>
         <p>Wow you got them all correct!</p>
+        
         <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif" alt="" />
         <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif" alt="" />
         <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif" alt="" />
@@ -90,13 +91,13 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
       )}
         <p>Total XP Earned: {calculateXPEarned()}</p>
         <div className="result-buttons">
-          <Link
+          {/* <Link
             to={`/countries/${countryId}/case_files/${caseFileId}/questions`}
             className="retry-link"
             state={{ refresh: true }}
           >
             <button className="retry-button">Retry Quiz</button>
-          </Link>
+          </Link> */}
           <Link to="/countries">
             <button className="retry-button">Start New Game</button>
           </Link>
