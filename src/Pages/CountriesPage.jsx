@@ -21,9 +21,19 @@ const CountriesPage = ({
 
   return (
     <div className="CountriesPage">
+      <div className="character-container">
+          <img
+            src="https://res.cloudinary.com/dhexjuuzd/image/upload/v1722612674/GlobalAgent-CropGirlAgentBack_1_sw5bpj.png"
+            alt="Detective"
+            className="character-image"
+          />
+          <div className="speech-bubble">
+            <p>Select a country and start your investigation!</p>
+          </div>
+        </div>
       <main className="main-content">
         <section>
-          <div className="countries-list">
+          <div className="countries-list">    
             <h1>Where Should We Investigate Today?</h1>
             {countries.map((country, index) => (
               <div
@@ -44,7 +54,6 @@ const CountriesPage = ({
               </div>
             ))}
           </div>
-
           <div className="login-container" onClick={handleHelpModal}>
             <div className="login-button">How to Play</div>
           </div>
