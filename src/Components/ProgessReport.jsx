@@ -1,18 +1,8 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
 import { calculateXPProgress } from "../helpers/calculateXPProgress";
 import { getRank } from "../helpers/Ranks";
 
 const ProgressReport = ({ currentStats, user }) => {
-  console.log(currentStats)
-  const navigate = useNavigate();
-
-  const goToProfile = () => {
-    navigate(`/profile/${user.uid}`);
-  };
-
   const userRank = getRank(currentStats.xp);
-
   return (
     <div className="player-stats">
       <h2>Progress Report</h2>
@@ -29,9 +19,6 @@ const ProgressReport = ({ currentStats, user }) => {
       <p>Games Played: {currentStats.games_played}</p>
       <p>Questions Correct: {currentStats.questions_correct}</p>
       <p>Questions Wrong: {currentStats.questions_wrong}</p>
-      <button className="retry-button gray" onClick={goToProfile}>
-        Go To Profile
-      </button>
     </div>
   );
 };
