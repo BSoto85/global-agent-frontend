@@ -24,12 +24,16 @@ section {
 
 .border-container {
   background-color: #253759;
-  height: 150px;
-  margin-top: 12px;
-  border-radius: 5px;
+  height: 180px;
+  /* margin-top: 12px; */
+  margin-right: 32px;
+  border-radius: 10px;
   padding: 10px;
   display: flex;
-  align-items: center;
+  align-items: start;
+  position: absolute;
+  top: 150px;
+  opacity: 0.9;
 }
 .border-container p {
   color: white;
@@ -40,37 +44,37 @@ section {
   padding: 5px;
 }
 
-.image-container {
+/* .image-container {
   margin-top: 30px;
-}
+} */
 
 .detective-image {
   width: 100%;
   height: auto;
-  border-radius: 16px;
-  margin-top: -43px;
+  border-radius: 10px;
+  margin-top: -100px;
   box-shadow: 28px 28px 28px 28px rgba(1, 1, 22, 0.1);
 }
 
-.border-container {
+/* .border-container {
   display: flex;
   position: relative;
   bottom: 300px;
-}
+} */
 
 .mission-button-container {
-  margin-top: 1rem;
-  text-decoration: none;
+  /* margin-top: 1rem; */
+  /* text-decoration: none; */
   display: flex;
   position: relative;
-  bottom: 300px;
+  top: 100px;
 }
 
 .login-button {
   padding: 10px 20px;
   font-size: 1rem;
-  background-color: #253759;
-  color: #ffc121;
+  background-color: #ffc121;
+  color: #253759;
   border: none;
   border-radius: 5px;
   width: 250px;
@@ -79,7 +83,7 @@ section {
   cursor: pointer;
   box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.1); /* Elevation */
   transition: background-color 0.3s, transform 0.3s;
-  background-color: #253759;
+  /* background-color: #253759; */
   box-shadow: 0 3px 0 #000000;
   margin-top: 20px;
 }
@@ -90,23 +94,35 @@ section {
 }
 
 @media (max-width: 917px) {
-  /* .detective-image {
-    max-width: 100%;
-    height: auto;
-  } */
-
   .border-container {
-    bottom: -10px;
+    top: 130px;
+    height: 230px;
   }
 
   .mission-button-container {
-    bottom: 5px;
+    top: 150px;
   }
 
   .border-container p {
     font-size: 13px;
+    margin-top: 0;
   }
-  .main-content{
-    margin-left: 100px;
+
+  .image-container {
+    display: flex;
+    position: fixed;
+    top: 480px;
   }
+
+  .detective-image {
+    width: 91%;
+  }
+
+  /* .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0;
+  } */
 }
