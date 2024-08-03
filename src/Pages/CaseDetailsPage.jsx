@@ -78,15 +78,15 @@ const CaseDetailsPage = ({ translation, user, userAge, setUserAge }) => {
     <div>
       <div className="CaseDetailsPage">
         <div className="content">
+          <h1>{article_title}</h1>
           <section>
-            <h1>{article_title}</h1>
-            <div className="image-container">
-              <img src={photo_url} alt="Case" className="case-image" />
+            <div className="case-image-container">
+              <img src={photo_url} alt="Case Image" className="case-image" />
             </div>
             <h2 className="read-case">
-              {showFullCase ? "Read Full Case File:" : "Read Case Brief:"}
+              {showFullCase ? "Full Case File:" : "Case Brief:"}
             </h2>
-            <p>
+            <div className="summary-list-container">
               {showFullCase ? (
                 article_content
               ) : userAge >= 15 ? (
@@ -108,14 +108,19 @@ const CaseDetailsPage = ({ translation, user, userAge, setUserAge }) => {
                   )}
                 </ul>
               )}
-            </p>
+            </div>
           </section>
-          <button onClick={toggleView} className="toggle-button">
-            {showFullCase ? "View Case Brief" : "View Full Case File"}
-          </button>
-          <button onClick={handleCollectEvidence} className="questions-button">
-            Collect the Evidence
-          </button>
+          <div className="buttons-container">
+            <button onClick={toggleView} className="toggle-button">
+              {showFullCase ? "View Case Brief" : "View Full Case File"}
+            </button>
+            <button
+              onClick={handleCollectEvidence}
+              className="questions-button"
+            >
+              Collect the Evidence
+            </button>
+          </div>
         </div>
       </div>
       <AleartModal
