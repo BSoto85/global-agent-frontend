@@ -91,12 +91,20 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
               alt=""
             />
             <img
-              className="confetti-image"
               src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
               alt=""
             />
             <img
-              className="confetti-image"
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
+              alt=""
+            />
+            <img
+              className="confetti-none"
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
+              alt=""
+            />
+            <img
+              className="confetti-none"
               src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
               alt=""
             />
@@ -114,10 +122,10 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
             <button className="retry-button">Retry Quiz</button>
           </Link> */}
           <Link to="/countries">
-            <button className="retry-button">Start New Game</button>
+            <button className="retry-button">New Game</button>
           </Link>
           <button className="retry-button" onClick={goToProfile}>
-            Go To Profile
+            Profile
           </button>
         </div>
       </div>

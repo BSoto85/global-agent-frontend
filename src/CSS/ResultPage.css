@@ -15,23 +15,24 @@
 .findings-border {
   border: 2px solid #253759;
   border-radius: 10px;
-  padding: 30px;
+  padding: 10px;
   background-color: #b0babf;
   margin-bottom: 20px;
   width: 90%;
+  height: 300px;
 }
 .findings-border p {
   font-size: 22px;
-  margin: 10px 0;
+  margin: 0px 0;
 }
-.findings-border img {
+/* .findings-border img {
   height: 100px;
   width: 100px;
-}
+} */
 .buttons {
   display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
+  /* justify-content: space-around; */
+  margin-top: 10px;
 }
 .retry-link {
   text-decoration: none;
@@ -51,7 +52,7 @@
   transition: background-color 0.3s, transform 0.3s;
   background-color: #253759;
   box-shadow: 0 3px 0 #000000;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 /* .retry-button:hover,
   button:hover {
@@ -96,8 +97,23 @@
   width: 60%;
 }
 
+.confetti {
+  width: 50px;
+  height: 50px;
+}
+
+.findings-border img {
+  width: 50px;
+  height: 50px;
+  margin: 0;
+}
+
 @media (max-width: 917px) {
-  .confetti-image {
+  .retry-button {
+    width: 125px;
+  }
+
+  .confetti-none {
     display: none;
   }
 
@@ -109,6 +125,8 @@
 
   .findings-border {
     padding: 10px;
+    height: 260px;
+    margin-bottom: 10px;
   }
 
   .retry-button {
