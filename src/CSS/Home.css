@@ -1,11 +1,3 @@
-/* html {
-  background: url("./assets/Shiny\ Overlay.svg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-} */
-
 main {
   padding: 2rem;
   padding-bottom: 4rem;
@@ -14,21 +6,19 @@ main {
 
 section {
   margin-bottom: 2rem;
-  /* box-shadow: 8px 8px 8px 8px rgba(1, 1, 22, 0.1); Elevation */
   border-radius: 60px;
 }
 
 .border-container {
   background-color: #253759;
-  height: 180px;
-  /* margin-top: 12px; */
+  height: 170px;
   margin-right: 32px;
   border-radius: 10px;
   padding: 10px;
   display: flex;
   align-items: start;
-  position: absolute;
-  top: 150px;
+  position: fixed;
+  top: 530px;
   opacity: 0.85;
 }
 .border-container p {
@@ -40,30 +30,19 @@ section {
   padding: 5px;
 }
 
-/* .image-container {
-  margin-top: 30px;
-} */
-
 .detective-image {
   width: 100%;
   height: auto;
   border-radius: 10px;
-  margin-top: -150px;
+  margin-top: -70px;
   box-shadow: 28px 28px 28px 28px rgba(1, 1, 22, 0.1);
 }
 
-/* .border-container {
-  display: flex;
-  position: relative;
-  bottom: 300px;
-} */
-
 .mission-button-container {
-  /* margin-top: 1rem; */
-  /* text-decoration: none; */
   display: flex;
-  position: relative;
-  top: 50px;
+  position: fixed;
+  top: 605px;
+  right: 40%;
 }
 
 .login-button {
@@ -79,7 +58,6 @@ section {
   cursor: pointer;
   box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.1); /* Elevation */
   transition: background-color 0.3s, transform 0.3s;
-  /* background-color: #253759; */
   box-shadow: 0 3px 0 #000000;
   margin-top: 20px;
 }
@@ -91,13 +69,17 @@ section {
 
 @media (max-width: 917px) {
   .border-container {
-    margin-left: -30px;
+    margin-left: -170px;
     top: 120px;
     height: 300px;
+    position: fixed;
+    width: 90%;
   }
 
   .mission-button-container {
-    top: 180px;
+    width: 250px;
+    top: 330px;
+    left: 60px;
   }
 
   .border-container p {
@@ -106,10 +88,12 @@ section {
   }
 
   .image-container {
+    width: 90%;
     display: flex;
     position: fixed;
-    top: 580px;
-    margin-top: 10px;
+    top: 500px;
+    /* margin-top: 10px; */
+    right: -10px;
   }
 
   .detective-image {
