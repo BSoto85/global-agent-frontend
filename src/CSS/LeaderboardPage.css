@@ -19,6 +19,7 @@
   border-radius: 10px;
   padding: 10px;
   overflow-y: auto;
+  height: 330px;
 }
 
 .underlinenames {
@@ -101,6 +102,7 @@ tbody tr:nth-child(odd) {
   .leaderboard {
     width: 100%;
     margin: 6px;
+    height: 320px;
   }
 }
 
