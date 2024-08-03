@@ -55,7 +55,7 @@ function Register() {
 
       if (uid) {
         //register first
-        const retrievedUser = await register(newUser, photoURL, uid);
+        const retrievedUser = await register({...newUser, photo: photoURL, uid});
         // no sign in the new user with signInWithEmailAndPassword
         if (retrievedUser.uid) {
           await signInWithEmailAndPassword(auth, email, password);

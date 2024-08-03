@@ -18,7 +18,7 @@ async function handleGoogleSignIn(setUser) {
     localStorage.setItem('token', token)
 
     // Check if user exists in your backend
-    console.log(user)
+    console.log("USER from signinto firebase", user)
     const foundUser = await fetchUser(user, token)
     if (!foundUser.uid) {
       // let photoURL = ""

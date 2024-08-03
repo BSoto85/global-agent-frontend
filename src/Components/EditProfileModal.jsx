@@ -7,6 +7,9 @@ import UploadWidget from "./UploadWidget";
 
 // Utility function to format date
 const formatDate = (dateString) => {
+  if(!dateString){
+    return '00/00/0000'
+  }
   const date = new Date(dateString);
   return date.toISOString().split('T')[0];
 };
@@ -67,7 +70,6 @@ const EditProfileModal = ({ setUserProfile, onClose, userProfile, isProfileModal
       if(updatedProfile.id){
         await setUserProfile(updatedProfile)
         setIsProfileModalOpen(false)
-        // navigate(`/profile/${user.uid}`)
       } else {
         console.error("Error: Profile update failed")
       }
