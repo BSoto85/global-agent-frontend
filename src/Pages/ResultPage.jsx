@@ -16,10 +16,10 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
       setCurrentStats(userStats);
     }
   }, [userStats]);
-  const calculateXPEarned = () => (score === 4 ? 125 : score * 25)
+  const calculateXPEarned = () => (score === 4 ? 125 : score * 25);
   const updatePlayerStats = async (stats) => {
     try {
-      const token = localStorage.getItem('token')
+      const token = localStorage.getItem("token");
       const response = await fetch(`${URL}/api/stats/${userProfile.id}`, {
         method: "PUT",
         headers: {
@@ -28,16 +28,16 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
         },
         body: JSON.stringify(stats),
       });
-      console.log("response from UPDATE PLAYER STATS", response)
+      console.log("response from UPDATE PLAYER STATS", response);
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Failed to update player stats: ${errorText}`);
       }
       const data = await response.json();
-      console.log("data", data)
-      console.log("USER STATS FROM RESULTS", userStats)
-      await setUserStats(data)
-      console.log("USER STATS FROM RESULTS after SETTING STATE", userStats)
+      console.log("data", data);
+      console.log("USER STATS FROM RESULTS", userStats);
+      await setUserStats(data);
+      console.log("USER STATS FROM RESULTS after SETTING STATE", userStats);
     } catch (error) {
       console.error("Error updating player stats:", error);
     }
@@ -50,7 +50,8 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
         xp: currentStats.xp + xpEarned,
         games_played: currentStats.games_played + 1,
         questions_correct: currentStats.questions_correct + score,
-        questions_wrong: currentStats.questions_wrong + (totalQuestions - score),
+        questions_wrong:
+          currentStats.questions_wrong + (totalQuestions - score),
       };
       setCurrentStats(newCurrentStats);
       const smallIncrement = {
@@ -73,22 +74,44 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
     <div className="ResultsPage">
       <h2>Case #{caseFileId}</h2>
       <div className="findings-border">
-        <p>
-          You got {score} out of 4 questions!
-        </p>
-        {/* <h3>Results:</h3> */}
+        <p>You got {score} out of 4 questions!</p>
         {score === 4 && (
           <>
-        <p>Wow you got them all correct!</p>
-        <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif" alt="" />
-        <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif" alt="" />
-        <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif" alt="" />
-        <img className="confetti-image" src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif" alt="" />
-        <img  className="confetti-image" src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif" alt="" />
-          <p>Great detective work!</p>
-          <p>Bonus XP: 25</p>
-        </>
-      )}
+            <p>Wow you got them all correct!</p>
+            <img
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
+              alt=""
+            />
+            <img
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
+              alt=""
+            />
+            <img
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
+              alt=""
+            />
+            <img
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
+              alt=""
+            />
+            <img
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
+              alt=""
+            />
+            <img
+              className="confetti-none"
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
+              alt=""
+            />
+            <img
+              className="confetti-none"
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
+              alt=""
+            />
+            <p>Great detective work!</p>
+            <p>Bonus XP: 25</p>
+          </>
+        )}
         <p>Total XP Earned: {calculateXPEarned()}</p>
         <div className="result-buttons">
           {/* <Link
@@ -99,14 +122,14 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
             <button className="retry-button">Retry Quiz</button>
           </Link> */}
           <Link to="/countries">
-            <button className="retry-button">Start New Game</button>
+            <button className="retry-button">New Game</button>
           </Link>
           <button className="retry-button" onClick={goToProfile}>
-        Go To Profile
-      </button>
+            Profile
+          </button>
         </div>
       </div>
-      {<ProgressReport currentStats={currentStats} user={user}/>}
+      {<ProgressReport currentStats={currentStats} user={user} />}
     </div>
   );
 };

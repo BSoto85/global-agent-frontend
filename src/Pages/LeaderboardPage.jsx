@@ -29,9 +29,7 @@ const LeaderboardPage = ({ userProfile }) => {
           console.log(userProfile, "*****");
 
           const currentUserIndex = sortedData.findIndex(
-            (user) =>
-              user.first_name === userProfile.first_name &&
-              user.last_name === userProfile.last_name
+            (user) => user.id === userProfile.id
           );
 
           if (currentUserIndex >= 0) {
@@ -55,7 +53,6 @@ const LeaderboardPage = ({ userProfile }) => {
 
   return (
     <div className="leaderboard-container">
-      {/* <Navbar /> */}
       {/* 🥇🥈🥉 */}
       <h1>🏆 LEADERBOARD 🏆</h1>
       <div className="leaderboard">
@@ -72,9 +69,7 @@ const LeaderboardPage = ({ userProfile }) => {
               <tr
                 key={index}
                 className={
-                  userProfile !== null &&
-                  user.first_name === userProfile.first_name &&
-                  user.last_name === userProfile.last_name
+                  userProfile !== null && user.id === userProfile.id
                     ? "current-user"
                     : ""
                 }

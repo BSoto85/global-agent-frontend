@@ -1,7 +1,7 @@
 .ResultsPage {
   text-align: center;
   padding: 10px;
-  background-color: #C0D9D9;
+  background-color: #c0d9d9;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -15,23 +15,24 @@
 .findings-border {
   border: 2px solid #253759;
   border-radius: 10px;
-  padding: 30px;
-  background-color: #B0BABF;
+  padding: 10px;
+  background-color: #b0babf;
   margin-bottom: 20px;
   width: 90%;
+  height: 300px;
 }
 .findings-border p {
   font-size: 22px;
-  margin: 10px 0;
+  margin: 0px 0;
 }
-.findings-border img {
+/* .findings-border img {
   height: 100px;
   width: 100px;
-}
+} */
 .buttons {
   display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
+  /* justify-content: space-around; */
+  margin-top: 10px;
 }
 .retry-link {
   text-decoration: none;
@@ -40,7 +41,7 @@
   padding: 10px 20px;
   font-size: 1rem;
   background-color: #253759;
-  color: #FFC121;
+  color: #ffc121;
   border: none;
   border-radius: 5px;
   width: 250px;
@@ -51,7 +52,7 @@
   transition: background-color 0.3s, transform 0.3s;
   background-color: #253759;
   box-shadow: 0 3px 0 #000000;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 /* .retry-button:hover,
   button:hover {
@@ -65,11 +66,13 @@
   background-color: #253759;
   width: 90%;
   color: #fff;
+  display: flex;
+  flex-direction: column;
 }
 .player-stats h2 {
   font-size: 22px;
   margin-bottom: 15px;
-  color: #FFC121;
+  color: #ffc121;
 }
 .player-stats h3 {
   font-size: 18px;
@@ -80,14 +83,57 @@
   margin: 5px 0;
 }
 .gray {
-  background-color: #B0BABF;
+  background-color: #b0babf;
   color: black;
 }
 .rank {
-  color: #FFC121;
+  color: #ffc121;
 }
+
+.current-stats-container {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  width: 60%;
+}
+
+.confetti {
+  width: 50px;
+  height: 50px;
+}
+
+.findings-border img {
+  width: 50px;
+  height: 50px;
+  margin: 0;
+}
+
 @media (max-width: 917px) {
-  .confetti-image{
-    display:none
+  .retry-button {
+    width: 125px;
+  }
+
+  .confetti-none {
+    display: none;
+  }
+
+  .findings-border p {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .findings-border {
+    padding: 10px;
+    height: 260px;
+    margin-bottom: 10px;
+  }
+
+  .retry-button {
+    margin-top: 10px;
+  }
+
+  .current-stats-container {
+    width: 100%;
   }
 }
