@@ -31,8 +31,13 @@ const ProfilePage = ({
 
   // Utility function to format date
   const formatDate = (dateString) => {
-    const date = dateString === null ? new Date() : new Date(dateString);
-    const dateWithoutTime = date.toISOString().split("T")[0];
+    console.log("dateString",dateString)
+    // const date = new Date(dateString);
+    if(!dateString){
+      return '00/00/0000'
+    }
+    const dateObject = new Date(dateString)
+    const dateWithoutTime = dateObject.toISOString().split("T")[0];
     const [year, month, day] = dateWithoutTime.split("-");
     return `${month}/${day}/${year}`;
   };
@@ -71,29 +76,6 @@ const ProfilePage = ({
     }
   }
 
-  const handleEditProfile = async (updatedUser) => {
-    try {
-      const response = await fetch(`${URL}/api/profile/${user.uid}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify(updatedUser),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to update profile");
-      }
-
-      const updatedProfile = await response.json();
-      setUserProfile(updatedProfile);
-      setIsModalOpen(false);
-    } catch (error) {
-      console.error("Failed to update profile:", error);
-    }
-  };
-
   useEffect(() => {
     const fetchUserProfileAndStats = async () => {
       try {
@@ -103,6 +85,7 @@ const ProfilePage = ({
           },
         });
         const profileData = await profileResponse.json();
+        console.log("PROFILE Data from fetch", profileData)
         setUserProfile(profileData);
 
         const statsResponse = await fetch(
@@ -114,6 +97,7 @@ const ProfilePage = ({
           }
         );
         const statsData = await statsResponse.json();
+        console.log("STATS Data from fetch", statsData)
         setUserStats(statsData);
         setIsLoading(false);
       } catch (error) {
