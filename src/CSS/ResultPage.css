@@ -1,7 +1,7 @@
 .ResultsPage {
   text-align: center;
   padding: 10px;
-  background-color: #C0D9D9;
+  background-color: #c0d9d9;
   min-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
   border: 2px solid #253759;
   border-radius: 10px;
   padding: 30px;
-  background-color: #B0BABF;
+  background-color: #b0babf;
   margin-bottom: 20px;
   width: 90%;
 }
@@ -40,7 +40,7 @@
   padding: 10px 20px;
   font-size: 1rem;
   background-color: #253759;
-  color: #FFC121;
+  color: #ffc121;
   border: none;
   border-radius: 5px;
   width: 250px;
@@ -65,11 +65,13 @@
   background-color: #253759;
   width: 90%;
   color: #fff;
+  display: flex;
+  flex-direction: column;
 }
 .player-stats h2 {
   font-size: 22px;
   margin-bottom: 15px;
-  color: #FFC121;
+  color: #ffc121;
 }
 .player-stats h3 {
   font-size: 18px;
@@ -80,14 +82,40 @@
   margin: 5px 0;
 }
 .gray {
-  background-color: #B0BABF;
+  background-color: #b0babf;
   color: black;
 }
 .rank {
-  color: #FFC121;
+  color: #ffc121;
 }
+
+.current-stats-container {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  width: 60%;
+}
+
 @media (max-width: 917px) {
-  .confetti-image{
-    display:none
+  .confetti-image {
+    display: none;
+  }
+
+  .findings-border p {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .findings-border {
+    padding: 10px;
+  }
+
+  .retry-button {
+    margin-top: 10px;
+  }
+
+  .current-stats-container {
+    width: 100%;
   }
 }

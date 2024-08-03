@@ -16,9 +16,11 @@ const ProgressReport = ({ currentStats, user }) => {
         Rank: <span className="rank">{userRank}</span>
       </h3>
       <p>XP: {currentStats.xp}</p>
-      <p>Games Played: {currentStats.games_played}</p>
-      <p>Questions Correct: {currentStats.questions_correct}</p>
-      <p>Questions Wrong: {currentStats.questions_wrong}</p>
+      <div className="current-stats-container">
+        <p>Games Played: {currentStats.games_played}</p>
+        <p>Questions Correct: {currentStats.questions_correct}</p>
+        <p>Questions Wrong: {currentStats.questions_wrong}</p>
+      </div>
     </div>
   );
 };
