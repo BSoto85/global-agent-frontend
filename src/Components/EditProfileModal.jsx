@@ -7,30 +7,36 @@ import UploadWidget from "./UploadWidget";
 
 // Utility function to format date
 const formatDate = (dateString) => {
-  if(!dateString){
-    return '00/00/0000'
+  if (!dateString) {
+    return "00/00/0000";
   }
   const date = new Date(dateString);
-  return date.toISOString().split('T')[0];
+  return date.toISOString().split("T")[0];
 };
 
-
-const EditProfileModal = ({ setUserProfile, onClose, userProfile, isProfileModalOpen, setIsProfileModalOpen, user }) => {
+const EditProfileModal = ({
+  setUserProfile,
+  onClose,
+  userProfile,
+  isProfileModalOpen,
+  setIsProfileModalOpen,
+  user,
+}) => {
   // const navigate = useNavigate();
-  const [ uploadedImage, setUploadedImage ] = useState(false)
-  const [ profile, setProfile ] = useState({
-    first_name: userProfile.first_name, 
-    last_name: userProfile.last_name, 
+  const [uploadedImage, setUploadedImage] = useState(false);
+  const [profile, setProfile] = useState({
+    first_name: userProfile.first_name,
+    last_name: userProfile.last_name,
     dob: formatDate(userProfile.dob),
     photo: userProfile.photo,
-  })
+  });
 
-  function setImageURL(uploadedURL){
+  function setImageURL(uploadedURL) {
     setProfile({
       ...profile,
-      photo: uploadedURL
-    })
-    setUploadedImage(true)
+      photo: uploadedURL,
+    });
+    setUploadedImage(true);
   }
 
   const handleEditProfile = async (profile) => {
@@ -60,18 +66,17 @@ const EditProfileModal = ({ setUserProfile, onClose, userProfile, isProfileModal
     });
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(profile.dob)
-      const updatedProfile = await handleEditProfile(profile)
+      console.log(profile.dob);
+      const updatedProfile = await handleEditProfile(profile);
       // console.log("PUT profile modal RESPONSE", updatedProfile)
-      if(updatedProfile.id){
-        await setUserProfile(updatedProfile)
-        setIsProfileModalOpen(false)
+      if (updatedProfile.id) {
+        await setUserProfile(updatedProfile);
+        setIsProfileModalOpen(false);
       } else {
-        console.error("Error: Profile update failed")
+        console.error("Error: Profile update failed");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -83,23 +88,31 @@ const EditProfileModal = ({ setUserProfile, onClose, userProfile, isProfileModal
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <button className="close-button" onClick={() => setIsProfileModalOpen(false)}>
+        <button
+          className="close-button"
+          onClick={() => setIsProfileModalOpen(false)}
+        >
           X
         </button>
         <h2>Edit Profile</h2>
         <form onSubmit={handleSubmit}>
+          <div className="upload-image-button">
+            <UploadWidget
+              setImageURL={setImageURL}
+              setUploadedImage={setUploadedImage}
+            />
 
-          <UploadWidget setImageURL={setImageURL} setUploadedImage={setUploadedImage}/>
-          {uploadedImage ? (
-          <div className="image-indicator-green">
-            <div>{uploadedImage}</div>
-            Image added successfully!
+            {uploadedImage ? (
+              <div className="image-indicator-green">
+                <div>{uploadedImage}</div>
+                Image added successfully!
+              </div>
+            ) : (
+              <div className="image-indicator-red">
+                Select an image to upload.
+              </div>
+            )}
           </div>
-        ) : (
-          <div className="image-indicator-red">
-            Select an image to upload.
-          </div>
-        )}
           <label>
             First Name:
             <input
