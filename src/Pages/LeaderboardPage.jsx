@@ -7,7 +7,6 @@ const LeaderboardPage = ({ userProfile }) => {
   const [usersXP, setUsersXP] = useState([]);
   const [xpToBeatNext, setXpToBeatNext] = useState(0);
   const [nextUser, setNextUser] = useState("");
-  // let currentUser = "";
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -53,7 +52,6 @@ const LeaderboardPage = ({ userProfile }) => {
 
   return (
     <div className="leaderboard-container">
-      {/* 🥇🥈🥉 */}
       <h1>🏆 LEADERBOARD 🏆</h1>
       <div className="leaderboard">
         <table>
@@ -74,7 +72,10 @@ const LeaderboardPage = ({ userProfile }) => {
                     : ""
                 }
               >
-                <td className="rankholder">{index + 1}</td>
+                <td className="rankholder">{index === 0 ? "🥇" 
+            : index === 1 ? "🥈"
+            : index === 2 ? "🥉"
+            : index + 1}</td>
                 <td className="nameholder">
                   {user.first_name}{" "}
                   {user.last_name ? user.last_name[0] + "." : ""}
@@ -86,12 +87,16 @@ const LeaderboardPage = ({ userProfile }) => {
         </table>
       </div>
       <div className="investigation-info">
-        {userProfile && (
+        {userProfile && nextUser === "" ? (
           <p>
-            <span className="leaderboard-span">{userProfile.first_name}</span>,
-            you are only{" "}
-            <span className="leaderboard-span">{xpToBeatNext}</span> XP away
-            from beating <span className="leaderboard-span">{nextUser}</span>!
+          <span className="leaderboard-span" >You're #1! Let's keep it that way!</span>
+          </p>
+        ) : (
+          <p>
+          <span className="leaderboard-span">{userProfile.first_name}</span>,
+          you are only{" "}
+          <span className="leaderboard-span">{xpToBeatNext}</span> XP away
+          from beating <span className="leaderboard-span">{nextUser}</span>!
           </p>
         )}
         <button className="buttonest" onClick={handleClick}>

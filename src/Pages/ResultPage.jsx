@@ -34,10 +34,10 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
         throw new Error(`Failed to update player stats: ${errorText}`);
       }
       const data = await response.json();
-      console.log("data", data);
-      console.log("USER STATS FROM RESULTS", userStats);
+      // console.log("data", data);
+      // console.log("USER STATS FROM RESULTS", userStats);
       await setUserStats(data);
-      console.log("USER STATS FROM RESULTS after SETTING STATE", userStats);
+      // console.log("USER STATS FROM RESULTS after SETTING STATE", userStats);
     } catch (error) {
       console.error("Error updating player stats:", error);
     }
@@ -75,38 +75,59 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
       <h2>Case #{caseFileId}</h2>
       <div className="findings-border">
         <p>You got {score} out of 4 questions!</p>
+        {score === 0 && (
+          <>
+          <p>Failing forward!</p>
+          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif" alt="cheering cat" />
+          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif" alt="cheering cat" />
+          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif" alt="cheering cat" />
+          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif" alt="cheering cat" />
+          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif" alt="cheering cat" />
+          <img className="confetti-none" src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif" alt="cheering cat" />
+          <img className="confetti-none" src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif" alt="cheering cat" />
+          <p>You got this!</p>
+          </>  
+        )}
+        {score > 0 && score < 4 && (
+          <>
+          <p>You're doing great!</p>
+          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif" alt="confetti cat" />
+          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif" alt="confetti cat" />
+          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif" alt="confetti cat" />
+          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif" alt="confetti cat" />
+          <img className="confetti-none" src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif" alt="confetti cat" />
+          <img className="confetti-none" src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif" alt="confetti cat" />
+          <p>No bonus this time!</p>
+          </>  
+        )}
         {score === 4 && (
           <>
             <p>Wow you got them all correct!</p>
             <img
               src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
-              alt=""
+              alt="confetti"
             />
             <img
               src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
-              alt=""
+              alt="confetti"
             />
             <img
               src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
-              alt=""
+              alt="confetti"
             />
             <img
               src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
-              alt=""
-            />
-            <img
-              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
-              alt=""
+              alt="confetti"
             />
             <img
               className="confetti-none"
               src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
-              alt=""
+              alt="confetti"
             />
             <img
               className="confetti-none"
               src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620587/GlobalAgent-ConfettiOnlyNB_elnjhf.gif"
-              alt=""
+              alt="confetti"
             />
             <p>Great detective work!</p>
             <p>Bonus XP: 25</p>
