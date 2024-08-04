@@ -71,7 +71,7 @@ const EditProfileModal = ({
     try {
       console.log(profile.dob);
       const updatedProfile = await handleEditProfile(profile);
-      console.log("PUT profile modal RESPONSE", updatedProfile);
+      // console.log("PUT profile modal RESPONSE", updatedProfile)
       if (updatedProfile.id) {
         await setUserProfile(updatedProfile);
         setIsProfileModalOpen(false);
