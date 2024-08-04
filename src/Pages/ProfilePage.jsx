@@ -4,6 +4,7 @@ import EditProfileModal from "../Components/EditProfileModal";
 import { getRank, ranks } from "../helpers/Ranks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { auth } from "../helpers/firebase";
+import ProgressReport from "../Components/ProgessReport";
 import { toast } from "react-toastify";
 import {
   faUserPen,
@@ -188,7 +189,8 @@ const ProfilePage = ({
           <p>DOB: {formatDate(userProfile.dob)}</p>
         </div>
       </div>
-      <div className="profile-badges">
+      <ProgressReport currentStats={stats}/>
+      {/* <div className="profile-badges">
         <div className="rank-container">
           <h2>
             Rank: <span className="rank">{userRank}</span>
@@ -224,7 +226,7 @@ const ProfilePage = ({
           <h3>Questions Wrong</h3>
           <p>{stats.questions_wrong}</p>
         </div>
-      </div>
+      </div> */}
       <Link to="/countries">
         <button className="new-investigation">Open New Investigation</button>
       </Link>
