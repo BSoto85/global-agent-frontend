@@ -4,7 +4,10 @@
   text-align: center;
   padding-top: 30px;
   padding-bottom: 50px; 
-  background-color: #c0d9d9;
+  background-color: rgba(192, 217, 217, 0.5); 
+  background-image: url('https://res.cloudinary.com/dgifdj6nx/image/upload/v1722616136/GlobalAgent-NewspaperBack1_rwgamy.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat; 
 }
 
 .CaseFilesPage h1 {
@@ -18,13 +21,12 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  max-height: calc(140vh - 200px); /* Adjust the height */
-  /* overflow-y: auto; Allow vertical scrolling */
+  max-height: calc(140vh - 200px); 
   margin-bottom: 20px;
 }
 
 .case-files-list img {
-  height: 80px; /* Adjust the height to make the images smaller */
+  height: 80px;
 }
 
 .case-file-item {
