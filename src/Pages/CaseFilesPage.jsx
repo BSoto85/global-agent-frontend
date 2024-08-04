@@ -49,6 +49,16 @@ const CaseFilesPage = ({ countries }) => {
   return (
     <div className="CaseFilesPage">
       <h1>Case Files: {countryName}</h1>
+      <div className="character-container-casefile">
+          <img
+            src="https://res.cloudinary.com/dhexjuuzd/image/upload/v1722612674/GlobalAgent-CropGirlAgentBack_1_sw5bpj.png"
+            alt="Detective"
+            className="character-image-casefile"
+          />
+          <div className="speech-bubble-casefile">
+            <p>Select a case and start your investigation!</p>
+          </div>
+        </div>
       <div className="case-files-list">
         {caseFiles.map((caseFile, index) => (
           <Link
