@@ -10,7 +10,6 @@ const CaseFilesPage = ({ countries }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Find the specific country by countryId from the passed prop
     const country = countries.find(
       (country) => country.id.toString() === countryId
     );
@@ -21,7 +20,6 @@ const CaseFilesPage = ({ countries }) => {
       return;
     }
 
-    // Fetch case files for the specific country
     const fetchCaseFiles = async () => {
       try {
         const response = await fetch(`${URL}/api/case_files/${countryId}`);
@@ -38,26 +36,39 @@ const CaseFilesPage = ({ countries }) => {
     fetchCaseFiles();
   }, [countryId, countries]);
 
+  const getBackgroundImage = () => {
+    switch (countryId) {
+      case "1": // ID for France
+        return 'url("https://res.cloudinary.com/dhexjuuzd/image/upload/v1722797606/HD-wallpaper-french-flag-lines-flag-of-france-flags-france-flag_ukxoox.jpg")';
+      case "2": // ID for Mexico
+        return 'url("https://res.cloudinary.com/dhexjuuzd/image/upload/v1722797241/HD-wallpaper-mexican-flag-silk-flag-of-mexico-flags-mexico-flag_or0zkq.jpg")';
+      case "3": // ID for Germany
+        return 'url("https://res.cloudinary.com/dhexjuuzd/image/upload/v1722797732/HD-wallpaper-flag-of-germany-german-flag-german-flag-germany_nael9v.jpg")';
+      default:
+        return "none";
+    }
+  };
+
   if (error) {
     return <div>Error: {error}</div>;
   }
-  // Image URL for the case file items
+
   const imageUrl =
     "https://res.cloudinary.com/dhexjuuzd/image/upload/v1720022191/images_8_nwnyck.jpg";
 
   return (
-    <div className="CaseFilesPage">
+    <div className="CaseFilesPage" style={{ backgroundImage: getBackgroundImage() }}>
       <h1>Case Files: {countryName}</h1>
       <div className="character-container-casefile">
-          <img
-            src="https://res.cloudinary.com/dhexjuuzd/image/upload/v1722612674/GlobalAgent-CropGirlAgentBack_1_sw5bpj.png"
-            alt="Detective"
-            className="character-image-casefile"
-          />
-          <div className="speech-bubble-casefile">
-            <p>Select a case and start your investigation!</p>
-          </div>
+        <img
+          src="https://res.cloudinary.com/dhexjuuzd/image/upload/v1722612674/GlobalAgent-CropGirlAgentBack_1_sw5bpj.png"
+          alt="Detective"
+          className="character-image-casefile"
+        />
+        <div className="speech-bubble-casefile">
+          <p>Select a case and start your investigation!</p>
         </div>
+      </div>
       <div className="case-files-list">
         {caseFiles.map((caseFile, index) => (
           <Link
