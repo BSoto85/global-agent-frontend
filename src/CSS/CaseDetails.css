@@ -15,7 +15,7 @@
 }
 .content section {
   width: 95%;
-  height: 270px;
+  height: 230px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -86,7 +86,7 @@
   align-items: center;
   padding-left: 20px;
   position: fixed;
-  top: 520px;
+  top: 530px;
 }
 
 .questions-button {
@@ -111,8 +111,8 @@
   }
 
   .content {
-    max-width: 800px;
-    height: 580px;
+    max-width: 90%;
+    height: 550px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -122,8 +122,10 @@
 
   .content section {
     margin-top: 30px;
-    max-height: 400px;
+    max-height: 430px;
     line-height: 2;
+    flex-direction: row;
+    overflow: hidden;
   }
 
   .summary-list {
@@ -133,6 +135,7 @@
   .content h1 {
     font-size: 32px;
     margin-bottom: 0;
+    margin-top: 0;
   }
 
   .case-image-container {
@@ -145,7 +148,7 @@
 
   .case-image {
     margin-top: 0;
-    max-width: 350px;
+    max-width: 380px;
   }
 
   .content button {
@@ -163,6 +166,18 @@
   }
 
   .buttons-container {
-    top: 580px;
+    flex-direction: row;
+    top: 570px;
+  }
+
+  .toggle-button,
+  .questions-button {
+    margin: 10px;
+  }
+
+  .summary-list-container {
+    overflow-y: auto;
+    height: 220px;
+    margin-left: 20px;
   }
 }
