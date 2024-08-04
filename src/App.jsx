@@ -134,6 +134,7 @@ function App() {
               user={user}
               userProfile={userProfile}
               userStats={userStats}
+              setUserStats={setUserStats}
             />
           }
         />
