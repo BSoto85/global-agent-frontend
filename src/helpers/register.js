@@ -17,6 +17,6 @@ export const register = async (user) => {
     }),
   }
   const response = await fetch(`${URL}/api/auth/register`, options)
-  console.log("response from register helper", response)
+  // console.log("response from register helper", response)
   return response.json()
 }
