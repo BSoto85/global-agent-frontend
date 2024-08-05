@@ -17,8 +17,8 @@
   border-radius: 10px;
   padding: 10px;
   background-color: #b0babf;
-  margin-bottom: 20px;
-  width: 90%;
+  margin-bottom: 0px;
+  width: 60%;
   height: 300px;
 }
 .findings-border p {
@@ -64,15 +64,17 @@
   border-radius: 10px;
   padding: 20px;
   background-color: #253759;
-  width: 90%;
+  width: 60%;
   color: #fff;
   display: flex;
   flex-direction: column;
+  margin-top: 40px;
 }
 .player-stats h2 {
   font-size: 22px;
   margin-bottom: 15px;
-  color: #ffc121;
+  color: white;
+  text-align: center;
 }
 .player-stats h3 {
   font-size: 18px;
@@ -108,6 +110,14 @@
   margin: 0;
 }
 
+.points-away {
+  text-align: center;
+}
+
+.user-xp {
+  color: #ffc121;
+}
+
 @media (max-width: 917px) {
   .retry-button {
     width: 125px;
@@ -127,6 +137,7 @@
     padding: 10px;
     height: 260px;
     margin-bottom: 10px;
+    width: 90%;
   }
 
   .retry-button {
@@ -135,5 +146,13 @@
 
   .current-stats-container {
     width: 100%;
+    text-align: center;
+  }
+  .player-stats {
+    width: 90%;
+    margin-top: 0;
+  }
+  .user-xp {
+    text-align: end;
   }
 }

@@ -32,12 +32,12 @@ const ProfilePage = ({
 
   // Utility function to format date
   const formatDate = (dateString) => {
-    console.log("dateString",dateString)
+    console.log("dateString", dateString);
     // const date = new Date(dateString);
-    if(!dateString){
-      return '00/00/0000'
+    if (!dateString) {
+      return "00/00/0000";
     }
-    const dateObject = new Date(dateString)
+    const dateObject = new Date(dateString);
     const dateWithoutTime = dateObject.toISOString().split("T")[0];
     const [year, month, day] = dateWithoutTime.split("-");
     return `${month}/${day}/${year}`;
@@ -86,7 +86,7 @@ const ProfilePage = ({
           },
         });
         const profileData = await profileResponse.json();
-        console.log("PROFILE Data from fetch", profileData)
+        console.log("PROFILE Data from fetch", profileData);
         setUserProfile(profileData);
 
         const statsResponse = await fetch(
@@ -98,7 +98,7 @@ const ProfilePage = ({
           }
         );
         const statsData = await statsResponse.json();
-        console.log("STATS Data from fetch", statsData)
+        console.log("STATS Data from fetch", statsData);
         setUserStats(statsData);
         setIsLoading(false);
       } catch (error) {
@@ -182,14 +182,14 @@ const ProfilePage = ({
                 marginLeft: "10px",
               }}
             >
-              <FontAwesomeIcon icon={faUserPen} />
+              <FontAwesomeIcon icon={faUserPen} color="black" />
             </button>
           </h2>
           <p>{userProfile.email}</p>
           <p>DOB: {formatDate(userProfile.dob)}</p>
         </div>
       </div>
-      <ProgressReport currentStats={stats}/>
+      <ProgressReport currentStats={stats} />
       {/* <div className="profile-badges">
         <div className="rank-container">
           <h2>
