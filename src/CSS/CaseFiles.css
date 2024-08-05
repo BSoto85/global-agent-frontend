@@ -160,6 +160,8 @@
   .CaseFilesPage h1 {
     font-size: 36px;
     margin-top: 50px;
+    /* -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: black; */
     color: white;
   }
 
