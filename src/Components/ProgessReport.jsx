@@ -19,21 +19,21 @@ const ProgressReport = ({ currentStats, user }) => {
         </h2>
       </div>
       <div className="xp-bar-container">
-            <div className="xp-progress-bar">
-              <div
-                className="xp-progress-fill"
-                style={{ width: `${calculateXPProgress(currentStats)}%` }}
-              ></div>
-            </div>
-            <div className="user-xp-container">
-              <p className="user-xp">
-                {currentStats.xp}/{nextBadgeXP} XP
-              </p>
-            </div>
-          </div>
-      <p className="points-away">
-            Earn {xpNeededForNextBadge} more xp to level up!
+        <div className="xp-progress-bar">
+          <div
+            className="xp-progress-fill"
+            style={{ width: `${calculateXPProgress(currentStats)}%` }}
+          ></div>
+        </div>
+        <div className="user-xp-container">
+          <p className="user-xp">
+            {currentStats.xp}/{nextBadgeXP} XP
           </p>
+        </div>
+      </div>
+      <p className="points-away">
+        Earn {xpNeededForNextBadge} more xp to level up!
+      </p>
       <div className="current-stats-container">
         <p>Games Played: {currentStats.games_played}</p>
         <p>Questions Correct: {currentStats.questions_correct}</p>
