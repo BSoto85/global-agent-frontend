@@ -69,17 +69,22 @@ section {
 
 @media (max-width: 917px) {
   .border-container {
-    margin-left: -170px;
-    top: 110px;
+    /* margin-left: -170px; */
+    margin: 0 auto;
+    top: -50px;
     height: 300px;
-    position: fixed;
+    justify-content: center;
+    position: relative;
     width: 90%;
+    /* bottom: ; */
   }
 
   .mission-button-container {
     width: 250px;
-    top: 320px;
-    left: 60px;
+    top: -150px;
+    left: 20%;
+    justify-content: center;
+    position: relative;
   }
 
   .border-container p {
@@ -116,4 +121,10 @@ section {
     align-items: center;
     justify-content: center;
   }
+  /* 
+  section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
 }
