@@ -1,6 +1,6 @@
 # Portfolio Project - `TEAM 1`
 ## PROJECT APP - FULLSTACK 
-### (w/ Firebase)
+### (w/ Firebase, Digital Ocean)
 
 
 <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1720808364/GlobalAgent-logo-background_lylute.png" alt="Global Agent Logo!" width="300" height="300">
@@ -49,8 +49,18 @@ We also had some incredible `global mentors` from both design and technical team
    - Rapid fact-checking
    - Guess what country the case file images is from
 
+9. **Social Media Connect**:
+   -Allow users to create, share & feature new cases
+   -Integrate badges, achievements & cases
+   -Influencer partnerships
 
-Our efforts to build this app utilized the following below **Project Tools & Skills**:
+10. **All Countries & Ages**:
+   -Expanded age demographics
+   -Language preference customization
+   -Translation possibilities
+
+
+Our efforts to build this app utilized the following **Project Tools & Skills** below:
 - React Hooks
 - React Router 6.2.1
 - Forms
@@ -60,7 +70,7 @@ Our efforts to build this app utilized the following below **Project Tools & Ski
 - Middleware
 - Controlled Inputs
 - Event Handlers
-- Fetch API
+- APIs: "World News API", "CLAUDE" by Anthropic
 - Promises
 - Error Components (included)
 - Data Manipulation & Parsing
@@ -72,22 +82,27 @@ Our efforts to build this app utilized the following below **Project Tools & Ski
 - wireframes (figma)
 - HTML, CSS, JS
 - CSS Grid 
-- Render.com backend deployment
-- Netlify.com frontend deployment
+- DATABASE (Digital Ocean)
 - DATABASE (ElephantSQL & Postico)
 - Self learning
 - Several APIs (including World News API)
 - ChatGPT
-- AI
-
-**Access**: `Global Agent` is a mobile app, go to (netlify link: ?) to access our `Global Agent` app.
+- Claude AI
+- Google Translate
 
 
 ## ROUTES
-Many routes were used for the following files below:
+Many routes, or pages were used in the `App.jsx` file, some of which include:
 
--?
-
+- HomePage
+- CountriesPage
+- LeaderboardPage
+- CaseFilesPage
+- CaseDetailsPage
+- QuestionsPage
+- ResultsPage
+- AboutPage
+- ProfilePage
 
 <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1720199090/GlobalAgent-top_secret_nox0i7.png" alt="top secret!" width="600" height="400">
 
@@ -113,7 +128,7 @@ Many routes were used for the following files below:
 
 ## USER PERSONAS:
 
-<img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1720465536/GlobalAgent-Sarah_wdlnqn.webp" alt="Sarah!" width="300" height="300">
+<img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722868571/GlobalAgent-MomTeacher.jpeg_tdn6qq.png" alt="Sarah!" width="300" height="300">
 
 1. Meet `Sarah Thompson`, **Sarah** is a 42-year-old mother of two, including 15-year-old Max, a high school sophomore. Sarah, a marketing executive, values education and staying informed about world events. She's increasingly concerned about Max's lack of interest in current affairs and his tendency to spend hours on social media and video games. Max finds traditional news sources boring and overwhelming. Sarah reaches out to Max's Social Studies teacher for advice on making current events more appealing to teenagers. She's looking for interactive, engaging tools that can compete with Max's favorite apps while sneaking in educational content. When the teacher recommends the `Global Agent` mobile app, Sarah immediately sees a blend of Max's love for gaming with her desire for him to learn about the world. Sarah hopes Max will enjoy using this app, sparking his curiosity about global issues and improving his critical thinking skills.
 
@@ -183,19 +198,24 @@ The following are examples of the `Global Agent` app being built at different st
 <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1720446179/Screenshot_2024-07-08_at_9.41.54_AM_bd51nt.png" alt="Global Agent" width="600" height="400">
 
 
-# DEPLOYMENT (& SLIDE) LINKS
+# DEPLOYMENT (w/TRELLO & SLIDE) LINKS
 
-### Frontend Deployment: https://github.com/BSoto85/global-agent-frontend
-**netlify.com link**: ?
+### We are LIVE! 
+**Global Agent**: https://www.globalagentgame.com/
 
-### Backend Deployment: https://github.com/BSoto85/global-agent-backend
-**render.com link**: ?
+### Frontend Repo: https://github.com/BSoto85/global-agent-frontend
+
+
+### Backend Repo: https://github.com/BSoto85/global-agent-backend
+
+**digital ocean**: https://global-agent-jwxj4.ondigitalocean.app
 
 **ERD**: <button><a href="https://dbdiagram.io/d/GLOBAL-AGENT-667b0cd79939893dae3ecffd">PRESS!</a></button>
 
 
 **Wireframe** & **Workflow**: <button><a href="https://www.figma.com/board/uXvEwPA6D7COhDQfPEOi4g/Game-Wireframes?node-id=0-1&t=smUWPUZvSoTq0Hw9-0">CLICK!</a></button>
  
+**TRELLO**: <button><a href="https://trello.com/b/GYEUXvML/team-1-global-agent">CLICK!</a></button>
 
-**SLIDE**: <button><a href="?">PLAY!</a></button>
+**SLIDE**: <button><a href="https://docs.google.com/presentation/d/1F9470-SofbGxbyYypaedeN2jcAKpEvrS4pJsUvC7JnE/edit#slide=id.g1e171d5b465_0_399">PLAY!</a></button>
 
