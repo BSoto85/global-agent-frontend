@@ -6,6 +6,7 @@ const URL = import.meta.env.VITE_BASE_URL;
 const CaseFilesPage = ({ countries }) => {
   const { countryId } = useParams();
   const [countryName, setCountryName] = useState("");
+  const [countryFlag, setCountryFlag] = useState("");
   const [caseFiles, setCaseFiles] = useState([]);
   const [error, setError] = useState(null);
 
@@ -15,6 +16,7 @@ const CaseFilesPage = ({ countries }) => {
     );
     if (country) {
       setCountryName(country.name);
+      setCountryFlag(country.flag);
     } else {
       setError("Country not found");
       return;
@@ -57,8 +59,14 @@ const CaseFilesPage = ({ countries }) => {
     "https://res.cloudinary.com/dhexjuuzd/image/upload/v1720022191/images_8_nwnyck.jpg";
 
   return (
-    <div className="CaseFilesPage" style={{ backgroundImage: getBackgroundImage() }}>
-      <h1>Case Files: {countryName}</h1>
+    <div
+      className="CaseFilesPage"
+      style={{ backgroundImage: getBackgroundImage() }}
+    >
+      <div className="country-and-flag-container">
+        <h1>Case Files: {countryName}</h1>
+        <img src={countryFlag} alt={`${countryName} flag`} />
+      </div>
       <div className="character-container-casefile">
         <img
           src="https://res.cloudinary.com/dhexjuuzd/image/upload/v1722612674/GlobalAgent-CropGirlAgentBack_1_sw5bpj.png"
