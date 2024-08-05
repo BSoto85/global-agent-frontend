@@ -151,8 +151,15 @@
   .player-stats {
     width: 90%;
     margin-top: 0;
+    height: 240px;
   }
-  .user-xp {
-    text-align: end;
+  .user-xp-container {
+    display: flex;
+    justify-content: end;
+    width: 90%;
+  }
+
+  .user-xp-container p {
+    font-size: 14px;
   }
 }
