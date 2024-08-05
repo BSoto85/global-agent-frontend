@@ -100,6 +100,7 @@ body {
     align-items: center !important;
     padding: 20px 0 !important;
     color: white;
+    overflow: hidden;
   }
 
   .offcanvas-body ul {
