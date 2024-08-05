@@ -67,9 +67,9 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
   // if (!currentStats) {
   //   return <p>Loading player stats...</p>;
   // }
-  const goToProfile = () => {
-    navigate(`/profile/${user.uid}`);
-  };
+  // const goToProfile = () => {
+  //   navigate(`/profile/${user.uid}`);
+  // };
   return (
     <div className="ResultsPage">
       <h2>Case #{caseFileId}</h2>
@@ -77,28 +77,71 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
         <p>You got {score} out of 4 questions!</p>
         {score === 0 && (
           <>
-          <p>Failing forward!</p>
-          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif" alt="cheering cat" />
-          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif" alt="cheering cat" />
-          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif" alt="cheering cat" />
-          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif" alt="cheering cat" />
-          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif" alt="cheering cat" />
-          <img className="confetti-none" src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif" alt="cheering cat" />
-          <img className="confetti-none" src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif" alt="cheering cat" />
-          <p>You got this!</p>
-          </>  
+            <p>Failing forward!</p>
+            <img
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif"
+              alt="cheering cat"
+            />
+            <img
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif"
+              alt="cheering cat"
+            />
+            <img
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif"
+              alt="cheering cat"
+            />
+            <img
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif"
+              alt="cheering cat"
+            />
+            <img
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif"
+              alt="cheering cat"
+            />
+            <img
+              className="confetti-none"
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif"
+              alt="cheering cat"
+            />
+            <img
+              className="confetti-none"
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722797489/GlobalAgent-CatLevelsNB1_zbxlfs.gif"
+              alt="cheering cat"
+            />
+            <p>You got this!</p>
+          </>
         )}
         {score > 0 && score < 4 && (
           <>
-          <p>You're doing great!</p>
-          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif" alt="confetti cat" />
-          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif" alt="confetti cat" />
-          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif" alt="confetti cat" />
-          <img src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif" alt="confetti cat" />
-          <img className="confetti-none" src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif" alt="confetti cat" />
-          <img className="confetti-none" src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif" alt="confetti cat" />
-          <p>No bonus this time!</p>
-          </>  
+            <p>You're doing great!</p>
+            <img
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif"
+              alt="confetti cat"
+            />
+            <img
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif"
+              alt="confetti cat"
+            />
+            <img
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif"
+              alt="confetti cat"
+            />
+            <img
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif"
+              alt="confetti cat"
+            />
+            <img
+              className="confetti-none"
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif"
+              alt="confetti cat"
+            />
+            <img
+              className="confetti-none"
+              src="https://res.cloudinary.com/dgifdj6nx/image/upload/v1722620043/GlobalAgent-ConfettiCat_teulkc.gif"
+              alt="confetti cat"
+            />
+            <p>No bonus this time!</p>
+          </>
         )}
         {score === 4 && (
           <>
@@ -145,9 +188,9 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
           <Link to="/countries">
             <button className="retry-button">New Game</button>
           </Link>
-          <button className="retry-button" onClick={goToProfile}>
+          {/* <button className="retry-button" onClick={goToProfile}>
             Profile
-          </button>
+          </button> */}
         </div>
       </div>
       {<ProgressReport currentStats={currentStats} user={user} />}
