@@ -72,10 +72,15 @@ const LeaderboardPage = ({ userProfile }) => {
                     : ""
                 }
               >
-                <td className="rankholder">{index === 0 ? "🥇" 
-            : index === 1 ? "🥈"
-            : index === 2 ? "🥉"
-            : index + 1}</td>
+                <td className="rankholder">
+                  {index === 0
+                    ? "🥇"
+                    : index === 1
+                    ? "🥈"
+                    : index === 2
+                    ? "🥉"
+                    : index + 1}
+                </td>
                 <td className="nameholder">
                   {user.first_name}{" "}
                   {user.last_name ? user.last_name[0] + "." : ""}
@@ -89,18 +94,21 @@ const LeaderboardPage = ({ userProfile }) => {
       <div className="investigation-info">
         {userProfile && nextUser === "" ? (
           <p>
-          <span className="leaderboard-span" >You're #1! Let's keep it that way!</span>
+            <span className="leaderboard-span">
+              You're #1! Let's keep it that way!
+            </span>
           </p>
         ) : userProfile && nextUser !== "" ? (
           <p>
-          <span className="leaderboard-span">{userProfile.first_name}</span>,
-          you are only{" "}
-          <span className="leaderboard-span">{xpToBeatNext}</span> XP away
-          from beating <span className="leaderboard-span">{nextUser}</span>!
+            <span className="leaderboard-span">{userProfile.first_name}</span>,
+            you are only{" "}
+            <span className="leaderboard-span">{xpToBeatNext + 25}</span> XP
+            away from beating{" "}
+            <span className="leaderboard-span">{nextUser}</span>!
           </p>
         ) : (
           <p>
-          <span className="leaderboard-span" >Let's solve some cases!</span>
+            <span className="leaderboard-span">Let's solve some cases!</span>
           </p>
         )}
         <button className="buttonest" onClick={handleClick}>

@@ -117,8 +117,17 @@ td {
   font-size: 14px;
 }
 
+.investigation-info {
+  width: 80%;
+}
+
 .investigation-info p {
   font-size: 16px;
+}
+
+.leaderboard-container {
+  padding: 0;
+  padding-top: 10px;
 }
 
 /* @media (max-width: 480px) {
