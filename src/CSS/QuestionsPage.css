@@ -8,9 +8,9 @@
 }
 
 .QuestionsPage {
-  height: 400px;
+  height: 450px;
   margin: 0 auto;
-  margin-top: 20%;
+  margin-top: 10%;
   width: 90%;
   padding: 10px;
   background-color: #253759;
@@ -124,7 +124,7 @@ button:hover {
     width: 520px;
     padding: 120px;
     margin-top: 50px;
-    height: 500px;
+    height: 570px;
     padding-top: 30px;
   }
 
