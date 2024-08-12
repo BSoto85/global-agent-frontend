@@ -75,7 +75,7 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
       <h2>Case #{caseFileId}</h2>
       <div className="findings-border">
         <p>You got {score} out of 4 questions!</p>
-        {score === 0 && (
+        {score <= 1 && (
           <>
             <p>Failing forward!</p>
             <img
