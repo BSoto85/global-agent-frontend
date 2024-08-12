@@ -40,8 +40,8 @@ const CaseFilesPage = ({ countries }) => {
 
   const getBackgroundImage = () => {
     switch (countryId) {
-      case "1": // ID for France
-        return 'url("https://res.cloudinary.com/dhexjuuzd/image/upload/v1722797606/HD-wallpaper-french-flag-lines-flag-of-france-flags-france-flag_ukxoox.jpg")';
+      case "1": // ID for Canada
+        return 'url("https://res.cloudinary.com/dnqfg86zq/image/upload/v1723474354/bhs4wnqt42myqxsl1tui.jpg")';
       case "2": // ID for Mexico
         return 'url("https://res.cloudinary.com/dhexjuuzd/image/upload/v1722797241/HD-wallpaper-mexican-flag-silk-flag-of-mexico-flags-mexico-flag_or0zkq.jpg")';
       case "3": // ID for Germany
