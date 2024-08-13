@@ -111,7 +111,7 @@ const ResultsPage = ({ userStats, user, userProfile, setUserStats }) => {
             <p>You got this!</p>
           </>
         )}
-        {score > 0 && score < 4 && (
+        {score > 1 && score < 4 && (
           <>
             <p>You're doing great!</p>
             <img
