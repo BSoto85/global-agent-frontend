@@ -1,48 +1,86 @@
-# Firebase Auth Portfolio Project Example - Frontend
+# Global Agent Frontend
 
-This is a client side login for Firebase. It includes the [login with email and password](https://firebase.google.com/docs/auth/web/password-auth) functionality and the [sign in with Google functionaility](https://firebase.google.com/docs/auth/web/google-signin) from Firebase.
+## Project Overview
+**Global Agent** is an innovative edutainment application designed for middle to high school students, where players join an elite agency of news detectives to solve cases by investigating current events and world news. This project utilizes a gamified approach to education, making learning engaging and interactive.
 
-This firebase refactor and scaffold is based on [The Debug Arena's implementation of firebase](https://www.youtube.com/watch?v=7jOq6SXBF-k)
+![Global Agent Logo](https://res.cloudinary.com/dgifdj6nx/image/upload/v1720808364/GlobalAgent-logo-background_lylute.png)
 
-It includes the use of [Firebase Firestore](https://firebase.google.com/docs/firestore) which is the NoSQL Database that can be added to Firebase projects.
+## Team Members
+- **Anita Owen** - [GitHub](https://github.com/AnitaOwen)
+- **Armando Pires** - [GitHub](https://github.com/ArmandoPires103)
+- **Brenda Soto** - [GitHub](https://github.com/BSoto85)
+- **Luis Tejada** - [GitHub](https://github.com/Blui322)
+- **Marlon Regis** - [GitHub](https://github.com/MarlonPelau)
 
-Here is the [original REPO](https://github.com/the-debug-arena/Login-Auth-Firebase-ReactJS). The original project was created using `create-react-app` toolchain instead of `vite`
+## Game Structure
+1. **Agency Headquarters** (Dashboard): The main interface for managing detective profiles, viewing cases, and tracking progress.
+2. **Case Files**: Each news article is transformed into a case file with a brief headline and a "difficulty rating".
+3. **Investigation Process**:
+   - Read the article summary (case briefing)
+   - Gather evidence (answer questions about the article)
+   - Write up the case report (final summary question or task)
+4. **Ranking System**:
+   - Rookie Detective - 0 xp
+   - Junior Investigator - 500 xp
+   - Gumshoe - 1300 xp
+   - Chief Detective - 2800 xp
+   - Master Sleuth - 5000 xp
+5. **Rewards**:
+   - Detective badges for different countries
+   - Agency points for solving cases and leveling up to buy special gear or tools
+6. **Missions**:
+   - Daily cases (breaking news)
+   - Weekly investigations (in-depth stories)
 
-This refactor uses [vite](https://vitejs.dev/guide/)
+## Future Features
+- **Multiplayer Elements**: Form detective teams, agency competitions, and global leaderboards.
+- **Mini-games**: Spot the fake news, rapid fact-checking, and guessing the country of case file images.
+- **Social Media Connect**: Create, share, and feature new cases; integrate badges and achievements.
+- **All Countries & Ages**: Expanded demographics, language customization, and translation options.
 
-## Note: You must manually configure your Firebase account
+## Technologies Used
+- React Hooks
+- React Router 6.2.1
+- Express Server
+- Firebase
+- APIs: "World News API", "CLAUDE" by Anthropic
+- HTML, CSS, JS
+- CSS Grid
+- Cloudinary
+- Trello Board
+- dbdiagram (ERDs)
+- Figma for wireframes
 
-### TO DO:
+## User Stories
+1. The app should be free to download and informative on any mobile device.
+2. Users can create personalized detective avatars and profiles.
+3. Users receive daily or weekly news cases to solve.
+4. Users earn badges and rewards for solving cases and completing challenges.
+5. Users can participate in leaderboards and compete with others.
+6. Users can collaborate on complex cases and share insights.
+7. Users can track their progress and review solved cases.
+8. Users receive feedback and tips from virtual mentors.
 
-- create your firebase web app
-- set up and `Enable` authentication methods
-  - Email/Password
-  - Google
-- add the Firebase Firestore NoSQL database
-- change the `Rules` in your Firestore DB to
+## Visual Examples
+Here are some visual examples of the `Global Agent` app at different stages of development:
 
-```js
-rules_version = '2';
+![Workflow](https://res.cloudinary.com/dgifdj6nx/image/upload/v1720446301/Screenshot_2024-07-08_at_9.44.37_AM_xc7o0r.png)
 
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if request.auth != null;
-    }
-  }
-}
+### Wireframes
+- ![Landing/Home](https://res.cloudinary.com/dgifdj6nx/image/upload/v1720446495/Screenshot_2024-07-08_at_9.47.44_AM_frjnxv.png)
+- ![Sign-Up](https://res.cloudinary.com/dgifdj6nx/image/upload/v1720447060/Screenshot_2024-07-08_at_9.57.09_AM_tnzpse.png)
+- ![Achievements View](https://res.cloudinary.com/dgifdj6nx/image/upload/v1720463960/Screenshot_2024-07-08_at_2.38.48_PM_q8fcic.png)
+- ![Leaderboard View](https://res.cloudinary.com/dgifdj6nx/image/upload/v1720463960/Screenshot_2024-07-08_at_2.38.48_PM_q8fcic.png)
+- ![Countries View](https://res.cloudinary.com/dgifdj6nx/image/upload/v1720448616/Screenshot_2024-07-08_at_10.23.04_AM_hos26b.png)
+- ![Case File View](https://res.cloudinary.com/dgifdj6nx/image/upload/v1720463960/Screenshot_2024-07-08_at_2.38.48_PM_q8fcic.png)
 
-```
+## Deployment Links
+- **Live Application**: [Global Agent](https://www.globalagentgame.com/)
+- **Frontend Repository**: [GitHub - Global Agent Frontend](https://github.com/BSoto85/global-agent-frontend)
+- **Backend Repository**: [GitHub - Global Agent Backend](https://github.com/BSoto85/global-agent-backend)
+- **Digital Ocean**: [Global Agent on Digital Ocean](https://global-agent-jwxj4.ondigitalocean.app)
+- **ERD**: ![View ERD](https://dbdiagram.io/d/GLOBAL-AGENT-667b0cd79939893dae3ecffd)
+- **Wireframe & Workflow**: ![Figma Board](https://www.figma.com/board/uXvEwPA6D7COhDQfPEOi4g/Game-Wireframes?node-id=0-1&t=smUWPUZvSoTq0Hw9-0)
+- **Trello Board**: ![Trello](https://trello.com/b/GYEUXvML/team-1-global-agent)
+- **Presentation Slide**: ![Google Slides](https://docs.google.com/presentation/d/1F9470-SofbGxbyYypaedeN2jcAKpEvrS4pJsUvC7JnE/edit#slide=id.g1e171d5b465_0_399)
 
-You are not required to use both Email/Password sign in and Google sign in. You can refactor the code to only use one or the other.
-
-## User
-
-The logged in user is automatically set in state in the `App.jsx` parent component.
-This allows you to protect your routes using a ternary in your `element` attribute.
-
-Do Not pass the user as a prop. Instead, Use the `fetchUserData` helper function in a `useEffect` in the component you are navigating to. This will allow you to `refresh` the page.
-
-## FULLSTACK ADJUSTMENTS
-
-You will need to adjust the code in the fetchUserData.js file to make a fetch call to the backend.
